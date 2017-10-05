@@ -11,18 +11,40 @@ import { Tile } from "react-native-elements";
 
 export default class Requestor extends Component {
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={{ fontSize: 30, color: "white" }}>
+          <Text
+            style={{
+              fontSize: 30,
+              color: "white",
+              fontFamily: "sans-serif-thin"
+            }}
+          >
             What do you want to do?
           </Text>
         </View>
-        <TouchableOpacity style={styles.viewTop}>
-          <Text>Submit/check application</Text>
+        <TouchableOpacity
+          style={styles.viewTop}
+          onPress={() => navigate("RequestForm")}
+        >
+          <Text
+            style={{
+              fontFamily: "sans-serif-thin"
+            }}
+          >
+            Submit
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.viewBottom}>
-          <Text>Approve application</Text>
+          <Text
+            style={{
+              fontFamily: "sans-serif-thin"
+            }}
+          >
+            Approve
+          </Text>
         </TouchableOpacity>
       </View>
     );
@@ -37,11 +59,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#73D6F7"
   },
   header: {
-    flex: 0.1,
+    flex: 0.2,
     marginBottom: 25
   },
   viewTop: {
-    flex: 0.3,
+    flex: 0.15,
     justifyContent: "center",
     alignItems: "center",
     width: "90%",
@@ -50,7 +72,7 @@ const styles = StyleSheet.create({
     borderRadius: 20
   },
   viewBottom: {
-    flex: 0.3,
+    flex: 0.15,
     justifyContent: "center",
     alignItems: "center",
     width: "90%",

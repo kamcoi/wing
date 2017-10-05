@@ -4,6 +4,7 @@ import { compose, createStore, applyMiddleware } from "redux";
 import { persistStore, autoRehydrate } from "redux-persist";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
+import Stack from "./routes/Stack";
 
 // import reducer from "./redux/reducer";
 // // const store = createStore(reducer, undefined, compose(applyMiddleware(thunk)))
@@ -23,8 +24,8 @@ export default class wing extends Component {
     return (
       // <Provider store={store}>
       <View style={styles.container}>
-        <StatusBar backgroundColor="#ffffff" barStyle="light-content" />
-        <Requestor />
+        <StatusBar backgroundColor="#73D6F7" barStyle="light-content" />
+        <Stack />
       </View>
       // </Provider>
     );
