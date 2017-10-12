@@ -17,14 +17,12 @@ import Stack from "./routes/Stack";
 // persistStore(store, { storage: AsyncStorage });
 // // persistStore(store, { storage: AsyncStorage }).purge();
 
-import Requestor from "./components/Requestor/Requestor";
-
 export default class wing extends Component {
   render() {
     return (
       // <Provider store={store}>
       <View style={styles.container}>
-        <StatusBar backgroundColor="#73D6F7" barStyle="light-content" />
+        <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
         <Stack />
       </View>
       // </Provider>
