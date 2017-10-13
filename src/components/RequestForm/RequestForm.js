@@ -9,6 +9,7 @@ import {
   TouchableOpacity
 } from "react-native";
 
+import PersonalForm from "./PersonalForm";
 import TravelForm from "./TravelForm";
 import CostForm from "./CostForm";
 import ApprovalForm from "./ApprovalForm";
@@ -16,11 +17,14 @@ import ApprovalForm from "./ApprovalForm";
 class RequestForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { page: "travel" };
+    this.state = { page: "personal" };
   }
   render() {
     let displayedPage;
     switch (this.state.page) {
+      case "personal":
+        displayedPage = <PersonalForm />;
+        break;
       case "travel":
         displayedPage = <TravelForm />;
         break;
@@ -31,14 +35,14 @@ class RequestForm extends React.Component {
         displayedPage = <ApprovalForm />;
         break;
       default:
-        displayedPage = <TravelForm />;
+        displayedPage = <PersonalForm />;
     }
     return (
-      <View behavior="padding" style={{ flex: 1, backgroundColor: "#c4c4c4" }}>
+      <View behavior="padding" style={{ flex: 1, backgroundColor: "#ffffff" }}>
         <View
           style={{
             height: 60,
-            backgroundColor: "grey",
+            backgroundColor: "white",
             paddingTop: 32,
             alignItems: "center"
           }}
@@ -50,24 +54,24 @@ class RequestForm extends React.Component {
           style={{
             flex: 0.05,
             flexDirection: "row",
-            marginHorizontal: 16,
-            marginVertical: 24
+            marginHorizontal: 18,
+            marginVertical: 26
           }}
         >
           <TouchableOpacity
-            onPress={() => this.setState({ page: "travel" })}
+            onPress={() => this.setState({ page: "personal" })}
             style={{
               flex: 0.25,
-              backgroundColor: "white",
               justifyContent: "center",
               alignItems: "center",
               borderWidth: 1,
               borderRightWidth: 0,
               borderTopLeftRadius: 8,
-              borderBottomLeftRadius: 8
+              borderBottomLeftRadius: 8,
+              backgroundColor: "#f47178"
             }}
           >
-            <Text style={{ fontSize: 12 }}>Personal</Text>
+            <Text style={{ fontSize: 12, color: "white" }}>Personal</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => this.setState({ page: "travel" })}
@@ -122,7 +126,7 @@ class RequestForm extends React.Component {
               borderBottomRightRadius: 8
             }}
           >
-            <Text style={{ fontSize: 12 }}>Done!</Text>
+            <Text style={{ fontSize: 12 }}>Submit</Text>
           </TouchableOpacity>
         </View>
 

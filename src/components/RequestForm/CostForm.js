@@ -20,7 +20,8 @@ class FinancialForm extends React.Component {
           paddingVertical: 16,
           marginBottom: 16,
           justifyContent: "flex-start",
-          backgroundColor: "#ffffff"
+          backgroundColor: "#ffffff",
+          borderRadius: 20
         }}
       >
         <Text

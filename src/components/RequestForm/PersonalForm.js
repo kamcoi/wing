@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import Next from "react-native-vector-icons/Entypo";
 
-class TravelForm extends React.Component {
+class PersonalForm extends React.Component {
   render() {
     return (
       <View
@@ -33,12 +33,12 @@ class TravelForm extends React.Component {
             fontWeight: "bold"
           }}
         >
-          Travel Information
+          Applicant Information
         </Text>
 
         <View style={{ flex: 1 }}>
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Name</Text>
+            <Text style={{ fontSize: 14, paddingVertical: 16 }}>Name</Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
               <TextInput
                 style={{
@@ -55,7 +55,7 @@ class TravelForm extends React.Component {
           </View>
 
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Division</Text>
+            <Text style={{ fontSize: 14, paddingVertical: 16 }}>Division</Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
               <TextInput
                 style={{
@@ -72,40 +72,21 @@ class TravelForm extends React.Component {
           </View>
 
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
-              Additional Member (Optional)
+            <Text style={{ fontSize: 14, paddingVertical: 16 }}>
+              Additional Travellers
             </Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <TextInput
-                style={{
-                  color: "#ee7202",
-                  fontSize: 16,
-                  paddingBottom: 8,
-                  alignItems: "flex-end"
-                }}
-                placeholder="Staff 1"
-                clearButtonMode="always"
-                underlineColorAndroid="rgba(0,0,0,0)"
-              />
-            </View>
-          </View>
-
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
-              Destination
-            </Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <TextInput
-                style={{
-                  color: "#ee7202",
-                  fontSize: 16,
-                  paddingBottom: 8,
-                  alignItems: "flex-end"
-                }}
-                placeholder="e.g. Seremban, Negeri Sembilan"
-                clearButtonMode="always"
-                underlineColorAndroid="rgba(0,0,0,0)"
-              />
+            <View>
+              <TouchableOpacity>
+                <Text
+                  style={{
+                    fontSize: 18,
+                    paddingVertical: 4,
+                    color: "#f44242"
+                  }}
+                >
+                  + Add Travellers
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -132,4 +113,4 @@ class TravelForm extends React.Component {
   }
 }
 
-export default TravelForm;
+export default PersonalForm;
