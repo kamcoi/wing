@@ -7,9 +7,19 @@ import {
   TouchableOpacity
 } from "react-native";
 import Next from "react-native-vector-icons/Entypo";
+import { Dropdown } from "react-native-material-dropdown";
 
 class FinancialForm extends React.Component {
   render() {
+    let data = [
+      {
+        value: "TM Sponsor"
+      },
+      {
+        value: "Sponsorship"
+      }
+    ];
+
     return (
       <View
         style={{
@@ -33,12 +43,12 @@ class FinancialForm extends React.Component {
             fontWeight: "bold"
           }}
         >
-          Financial Information
+          Costing Information
         </Text>
 
         <View style={{ flex: 1 }}>
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Name</Text>
+            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Cost</Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
               <TextInput
                 style={{
@@ -47,7 +57,7 @@ class FinancialForm extends React.Component {
                   paddingBottom: 8,
                   alignItems: "flex-end"
                 }}
-                placeholder="Full Name"
+                placeholder="e.g. RM43,000.00"
                 clearButtonMode="always"
                 underlineColorAndroid="rgba(0,0,0,0)"
               />
@@ -55,7 +65,7 @@ class FinancialForm extends React.Component {
           </View>
 
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Division</Text>
+            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Budget</Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
               <TextInput
                 style={{
@@ -64,7 +74,7 @@ class FinancialForm extends React.Component {
                   paddingBottom: 8,
                   alignItems: "flex-end"
                 }}
-                placeholder="e.g. Group Finance"
+                placeholder="e.g. RM46,000.00"
                 clearButtonMode="always"
                 underlineColorAndroid="rgba(0,0,0,0)"
               />
@@ -73,7 +83,7 @@ class FinancialForm extends React.Component {
 
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
             <Text style={{ fontSize: 12, paddingVertical: 16 }}>
-              Additional Member (Optional)
+              Cost Centre
             </Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
               <TextInput
@@ -83,9 +93,24 @@ class FinancialForm extends React.Component {
                   paddingBottom: 8,
                   alignItems: "flex-end"
                 }}
-                placeholder="Staff 1"
+                placeholder="e.g. BMCE02"
                 clearButtonMode="always"
                 underlineColorAndroid="rgba(0,0,0,0)"
+              />
+            </View>
+          </View>
+
+          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
+            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
+              Cost Category
+            </Text>
+            <View style={{ borderColor: "#c4c4c4" }}>
+              <Dropdown
+                placeholder="e.g. TM Sponsor"
+                labelHeight={0}
+                label=""
+                data={data}
+                onSelect={data === "Sponsorship"}
               />
             </View>
           </View>

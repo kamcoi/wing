@@ -60,58 +60,98 @@ class RequestForm extends React.Component {
         >
           <TouchableOpacity
             onPress={() => this.setState({ page: "personal" })}
-            style={{
-              flex: 0.25,
-              justifyContent: "center",
-              alignItems: "center",
-              borderWidth: 1,
-              borderRightWidth: 0,
-              borderTopLeftRadius: 8,
-              borderBottomLeftRadius: 8,
-              backgroundColor: "#f47178"
-            }}
+            style={[
+              {
+                flex: 0.25,
+                justifyContent: "center",
+                alignItems: "center",
+                borderWidth: 1,
+                borderRightWidth: 0,
+                borderTopLeftRadius: 8,
+                borderBottomLeftRadius: 8,
+                backgroundColor: "#ffffff"
+              },
+              this.state.page === "personal" && { backgroundColor: "#f47178" }
+            ]}
           >
-            <Text style={{ fontSize: 12, color: "white" }}>Personal</Text>
+            <Text
+              style={[
+                { fontSize: 12, color: "black" },
+                this.state.page === "personal" && { color: "#ffffff" }
+              ]}
+            >
+              Personal
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => this.setState({ page: "travel" })}
-            style={{
-              flex: 0.25,
-              backgroundColor: "white",
-              justifyContent: "center",
-              alignItems: "center",
-              borderWidth: 1,
-              borderRightWidth: 0,
-              borderTopLeftRadius: 0,
-              borderBottomLeftRadius: 0
-            }}
+            style={[
+              {
+                flex: 0.25,
+                backgroundColor: "white",
+                justifyContent: "center",
+                alignItems: "center",
+                borderWidth: 1,
+                borderRightWidth: 0,
+                borderTopLeftRadius: 0,
+                borderBottomLeftRadius: 0
+              },
+              this.state.page === "travel" && { backgroundColor: "#f47178" }
+            ]}
           >
-            <Text style={{ fontSize: 12 }}>Travel</Text>
+            <Text
+              style={[
+                { fontSize: 12, color: "black" },
+                this.state.page === "travel" && { color: "#ffffff" }
+              ]}
+            >
+              Travel
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => this.setState({ page: "cost" })}
-            style={{
-              flex: 0.25,
-              backgroundColor: "white",
-              justifyContent: "center",
-              alignItems: "center",
-              borderWidth: 1
-            }}
+            style={[
+              {
+                flex: 0.25,
+                backgroundColor: "white",
+                justifyContent: "center",
+                alignItems: "center",
+                borderWidth: 1
+              },
+              this.state.page === "cost" && { backgroundColor: "#f47178" }
+            ]}
           >
-            <Text style={{ fontSize: 12 }}>Cost</Text>
+            <Text
+              style={[
+                { fontSize: 12, color: "black" },
+                this.state.page === "cost" && { color: "#ffffff" }
+              ]}
+            >
+              Cost
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => this.setState({ page: "approval" })}
-            style={{
-              flex: 0.25,
-              backgroundColor: "white",
-              justifyContent: "center",
-              alignItems: "center",
-              borderWidth: 1,
-              borderLeftWidth: 0
-            }}
+            style={[
+              {
+                flex: 0.25,
+                backgroundColor: "white",
+                justifyContent: "center",
+                alignItems: "center",
+                borderWidth: 1,
+                borderLeftWidth: 0
+              },
+              this.state.page === "approval" && { backgroundColor: "#f47178" }
+            ]}
           >
-            <Text style={{ fontSize: 12 }}>Approval</Text>
+            <Text
+              style={[
+                { fontSize: 12, color: "black" },
+                this.state.page === "approval" && { color: "#ffffff" }
+              ]}
+            >
+              Approval
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => null}

@@ -7,9 +7,26 @@ import {
   TouchableOpacity
 } from "react-native";
 import Next from "react-native-vector-icons/Entypo";
+import { Dropdown } from "react-native-material-dropdown";
+import DatePicker from "react-native-datepicker";
 
 class TravelForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { date: "01-11-2017" };
+  }
   render() {
+    let data = [
+      {
+        value: "Training"
+      },
+      {
+        value: "Education"
+      },
+      {
+        value: "Entertainment"
+      }
+    ];
     return (
       <View
         style={{
@@ -37,55 +54,44 @@ class TravelForm extends React.Component {
         </Text>
 
         <View style={{ flex: 1 }}>
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Name</Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <TextInput
-                style={{
-                  color: "#ee7202",
-                  fontSize: 16,
-                  paddingBottom: 8,
-                  alignItems: "flex-end"
-                }}
-                placeholder="Full Name"
-                clearButtonMode="always"
-                underlineColorAndroid="rgba(0,0,0,0)"
+          <View style={{ paddingHorizontal: 16, paddingBottom: 8 }}>
+            <Text style={{ fontSize: 12, paddingVertical: 8 }}>Type</Text>
+            <View style={{ borderColor: "#c4c4c4" }}>
+              <Dropdown
+                placeholder="e.g. Training"
+                labelHeight={0}
+                label=""
+                data={data}
               />
             </View>
           </View>
 
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Division</Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <TextInput
-                style={{
-                  color: "#ee7202",
-                  fontSize: 16,
-                  paddingBottom: 8,
-                  alignItems: "flex-end"
+            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Date</Text>
+            <View style={{ borderColor: "#c4c4c4" }}>
+              <DatePicker
+                style={{ width: 200 }}
+                date={this.state.date}
+                mode="date"
+                format="DD-MM-YYYY"
+                minDate="01-01-1990"
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                customStyles={{
+                  dateIcon: {
+                    position: "absolute",
+                    left: 0,
+                    top: 4,
+                    marginLeft: 0
+                  },
+                  dateInput: {
+                    marginLeft: 36
+                  }
+                  // ... You can check the source to find the other keys.
                 }}
-                placeholder="e.g. Group Finance"
-                clearButtonMode="always"
-                underlineColorAndroid="rgba(0,0,0,0)"
-              />
-            </View>
-          </View>
-
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
-              Additional Member (Optional)
-            </Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <TextInput
-                style={{
-                  color: "#ee7202",
-                  fontSize: 16,
-                  paddingBottom: 8,
-                  alignItems: "flex-end"
+                onDateChange={date => {
+                  this.setState({ date: date });
                 }}
-                placeholder="Staff 1"
-                clearButtonMode="always"
-                underlineColorAndroid="rgba(0,0,0,0)"
               />
             </View>
           </View>
