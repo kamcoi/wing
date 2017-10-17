@@ -7,9 +7,36 @@ import {
   TouchableOpacity
 } from "react-native";
 import Next from "react-native-vector-icons/Entypo";
+import { Dropdown } from "react-native-material-dropdown";
 
 class ApprovalForm extends React.Component {
   render() {
+    let data = [
+      {
+        value: "AGM and below"
+      },
+      {
+        value: "GLT Members"
+      },
+      {
+        value: "Direct report to GLT Members"
+      },
+      {
+        value: "CEO/President(Subsidiaries)"
+      },
+      {
+        value: "GM/VP(Subsidiaries)"
+      },
+      {
+        value: "AGM/AVP/Senior Manager & Below(Subsidiaries)"
+      },
+      {
+        value: "CFO(Subsidiaries)"
+      },
+      {
+        value: "Head of Finance/Business Contoller"
+      }
+    ];
     return (
       <View
         style={{
@@ -38,55 +65,62 @@ class ApprovalForm extends React.Component {
 
         <View style={{ flex: 1 }}>
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Nominator</Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <TextInput
-                style={{
-                  color: "#ee7202",
-                  fontSize: 16,
-                  paddingBottom: 8,
-                  alignItems: "flex-end"
-                }}
-                placeholder="Full Name"
-                clearButtonMode="always"
-                underlineColorAndroid="rgba(0,0,0,0)"
+            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
+              Your Designation
+            </Text>
+            <View style={{ borderColor: "#c4c4c4" }}>
+              <Dropdown
+                placeholder="e.g. AGM and below"
+                labelHeight={0}
+                label=""
+                data={data}
               />
             </View>
           </View>
 
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Endorser</Text>
+          <TouchableOpacity
+            style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+          >
+            <Text style={{ fontSize: 12, paddingVertical: 20 }}>
+              Nominator 1
+            </Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <TextInput
-                style={{
-                  color: "#ee7202",
-                  fontSize: 16,
-                  paddingBottom: 8,
-                  alignItems: "flex-end"
-                }}
-                placeholder="Full Name"
-                clearButtonMode="always"
-                underlineColorAndroid="rgba(0,0,0,0)"
-              />
+              <Text style={{ color: "grey" }}>
+                Direct Report to a GLT Member
+              </Text>
             </View>
-          </View>
+          </TouchableOpacity>
 
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Approver</Text>
+          <TouchableOpacity
+            style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+          >
+            <Text style={{ fontSize: 12, paddingVertical: 20 }}>
+              Nominator 2
+            </Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <TextInput
-                style={{
-                  color: "#ee7202",
-                  fontSize: 16,
-                  paddingBottom: 8,
-                  alignItems: "flex-end"
-                }}
-                placeholder="Full Name"
-                clearButtonMode="always"
-                underlineColorAndroid="rgba(0,0,0,0)"
-              />
+              <Text style={{ color: "grey" }}>Immediate Superior</Text>
             </View>
-          </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+          >
+            <Text style={{ fontSize: 12, paddingVertical: 20 }}>Endorser</Text>
+            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+              <Text style={{ color: "grey" }}>
+                Head of Finance/Business Contollers
+              </Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+          >
+            <Text style={{ fontSize: 12, paddingVertical: 20 }}>Approver</Text>
+            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+              <Text style={{ color: "grey" }}>GLT Member</Text>
+            </View>
+          </TouchableOpacity>
         </View>
 
         <View style={{ flexDirection: "row", justifyContent: "center" }}>

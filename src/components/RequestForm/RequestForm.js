@@ -20,6 +20,7 @@ class RequestForm extends React.Component {
     this.state = { page: "personal" };
   }
   render() {
+    const { navigate } = this.props.navigation;
     let displayedPage;
     switch (this.state.page) {
       case "personal":

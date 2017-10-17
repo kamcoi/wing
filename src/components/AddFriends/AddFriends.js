@@ -8,9 +8,8 @@ import {
 } from "react-native";
 import Next from "react-native-vector-icons/Entypo";
 
-class PersonalForm extends React.Component {
+class AddFriends extends React.Component {
   render() {
-    const { navigate } = this.props;
     return (
       <View
         style={{
@@ -34,7 +33,7 @@ class PersonalForm extends React.Component {
             fontWeight: "bold"
           }}
         >
-          Applicant Information
+          Add Travellers
         </Text>
 
         <View style={{ flex: 1 }}>
@@ -77,7 +76,7 @@ class PersonalForm extends React.Component {
               Additional Travellers
             </Text>
             <View>
-              <TouchableOpacity onPress={() => navigate("AddFriends")}>
+              <TouchableOpacity>
                 <Text
                   style={{
                     fontSize: 18,
@@ -114,4 +113,4 @@ class PersonalForm extends React.Component {
   }
 }
 
-export default PersonalForm;
+export default AddFriends;

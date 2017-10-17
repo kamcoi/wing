@@ -21,10 +21,19 @@ class TravelForm extends React.Component {
         value: "Training"
       },
       {
-        value: "Education"
+        value: "Market Research"
       },
       {
-        value: "Entertainment"
+        value: "Meetings"
+      },
+      {
+        value: "Conference"
+      },
+      {
+        value: "Site visit"
+      },
+      {
+        value: "Sales visit"
       }
     ];
     return (
