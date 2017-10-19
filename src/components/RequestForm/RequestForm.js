@@ -13,6 +13,7 @@ import PersonalForm from "./PersonalForm";
 import TravelForm from "./TravelForm";
 import CostForm from "./CostForm";
 import ApprovalForm from "./ApprovalForm";
+import SubmitForm from "./SubmitForm";
 
 class RequestForm extends React.Component {
   constructor(props) {
@@ -34,6 +35,9 @@ class RequestForm extends React.Component {
         break;
       case "approval":
         displayedPage = <ApprovalForm />;
+        break;
+      case "submit":
+        displayedPage = <SubmitForm />;
         break;
       default:
         displayedPage = <PersonalForm />;
@@ -81,7 +85,7 @@ class RequestForm extends React.Component {
                 this.state.page === "personal" && { color: "#ffffff" }
               ]}
             >
-              Personal
+              Profile
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -155,24 +159,36 @@ class RequestForm extends React.Component {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => null}
-            style={{
-              flex: 0.25,
-              backgroundColor: "white",
-              justifyContent: "center",
-              alignItems: "center",
-              borderWidth: 1,
-              borderLeftWidth: 0,
-              borderTopRightRadius: 8,
-              borderBottomRightRadius: 8
-            }}
+            onPress={() => this.setState({ page: "submit" })}
+            style={[
+              {
+                flex: 0.25,
+                backgroundColor: "white",
+                justifyContent: "center",
+                alignItems: "center",
+                borderWidth: 1,
+                borderLeftWidth: 0,
+                borderTopRightRadius: 8,
+                borderBottomRightRadius: 8
+              },
+              this.state.page === "submit" && { backgroundColor: "#f47178" }
+            ]}
           >
-            <Text style={{ fontSize: 12 }}>Submit</Text>
+            <Text
+              style={[
+                { fontSize: 12 },
+                this.state.page === "submit" && { color: "#ffffff" }
+              ]}
+            >
+              Submit
+            </Text>
           </TouchableOpacity>
         </View>
 
         <ScrollView style={{ flex: 1 }}>
-          <View style={{ alignItems: "center", paddingTop: 16 }}>
+          <View
+            style={{ alignItems: "center", paddingTop: 8, paddingBottom: 24 }}
+          >
             {displayedPage}
           </View>
         </ScrollView>

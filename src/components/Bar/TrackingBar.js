@@ -95,11 +95,17 @@ class TrackingBar extends React.Component {
           />
         </View>
 
-        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <Text style={{ fontSize: 10 }}>Request</Text>
-          <Text style={{ fontSize: 10 }}>Nominate</Text>
-          <Text style={{ fontSize: 10 }}>Endorse</Text>
-          <Text style={{ fontSize: 10 }}>Approve</Text>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            paddingBottom: 16
+          }}
+        >
+          <Text style={{ fontSize: 10 }}>Submission</Text>
+          <Text style={{ fontSize: 10 }}>Nomination</Text>
+          <Text style={{ fontSize: 10 }}>Endorsement</Text>
+          <Text style={{ fontSize: 10 }}>Approval</Text>
         </View>
       </View>
     );

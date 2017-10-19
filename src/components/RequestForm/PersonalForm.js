@@ -80,7 +80,7 @@ class PersonalForm extends React.Component {
               <TouchableOpacity onPress={() => navigate("AddFriends")}>
                 <Text
                   style={{
-                    fontSize: 18,
+                    fontSize: 16,
                     paddingVertical: 4,
                     color: "#f44242"
                   }}

@@ -49,34 +49,54 @@ class FinancialForm extends React.Component {
         <View style={{ flex: 1 }}>
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
             <Text style={{ fontSize: 12, paddingVertical: 16 }}>Cost</Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+            <View
+              style={{
+                flexDirection: "row",
+                borderColor: "#c4c4c4",
+                borderBottomWidth: 1
+              }}
+            >
+              <Text style={{ fontSize: 16 }}>RM</Text>
               <TextInput
                 style={{
+                  flex: 1,
                   color: "#ee7202",
                   fontSize: 16,
                   paddingBottom: 8,
+                  paddingLeft: 8,
                   alignItems: "flex-end"
                 }}
-                placeholder="e.g. RM43,000.00"
+                placeholder="State your cost.."
                 clearButtonMode="always"
                 underlineColorAndroid="rgba(0,0,0,0)"
+                keyboardType="number-pad"
               />
             </View>
           </View>
 
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
             <Text style={{ fontSize: 12, paddingVertical: 16 }}>Budget</Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+            <View
+              style={{
+                flexDirection: "row",
+                borderColor: "#c4c4c4",
+                borderBottomWidth: 1
+              }}
+            >
+              <Text style={{ fontSize: 16 }}>RM</Text>
               <TextInput
                 style={{
+                  flex: 1,
                   color: "#ee7202",
                   fontSize: 16,
                   paddingBottom: 8,
+                  paddingLeft: 8,
                   alignItems: "flex-end"
                 }}
-                placeholder="e.g. RM46,000.00"
+                placeholder="State your budget.."
                 clearButtonMode="always"
                 underlineColorAndroid="rgba(0,0,0,0)"
+                keyboardType="number-pad"
               />
             </View>
           </View>
@@ -118,20 +138,7 @@ class FinancialForm extends React.Component {
 
         <View style={{ flexDirection: "row", justifyContent: "center" }}>
           <TouchableOpacity
-            LongPress={() => null}
-            style={{
-              flex: 0.1,
-              alignItems: "center",
-              padding: 16,
-              marginVertical: 16,
-              borderRadius: 100,
-              backgroundColor: "grey"
-            }}
-          >
-            <Next name="chevron-thin-left" size={24} color="#000000" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            LongPress={() => null}
+            onPress={() => this.setState({ page: "cost" })}
             style={{
               flex: 0.1,
               alignItems: "center",
@@ -139,10 +146,26 @@ class FinancialForm extends React.Component {
               marginLeft: 8,
               marginVertical: 16,
               borderRadius: 100,
-              backgroundColor: "grey"
+              backgroundColor: "#ffffff",
+              borderWidth: 0.5
             }}
           >
-            <Next name="chevron-thin-right" size={24} color="#000000" />
+            <Next name="chevron-thin-left" size={22} color="#000000" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => this.setState({ page: "cost" })}
+            style={{
+              flex: 0.1,
+              alignItems: "center",
+              padding: 16,
+              marginLeft: 8,
+              marginVertical: 16,
+              borderRadius: 100,
+              backgroundColor: "#ffffff",
+              borderWidth: 0.5
+            }}
+          >
+            <Next name="chevron-thin-right" size={22} color="#000000" />
           </TouchableOpacity>
         </View>
       </View>

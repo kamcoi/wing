@@ -73,7 +73,7 @@ class Main extends Component {
                 this.state.page === "request" && { color: "#ffffff" }
               ]}
             >
-              Request
+              My Request
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -97,7 +97,7 @@ class Main extends Component {
                 this.state.page === "task" && { color: "#ffffff" }
               ]}
             >
-              Task
+              My Task
             </Text>
           </TouchableOpacity>
         </View>

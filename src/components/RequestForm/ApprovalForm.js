@@ -85,7 +85,7 @@ class ApprovalForm extends React.Component {
               Nominator 1
             </Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <Text style={{ color: "grey" }}>
+              <Text style={{ color: "grey", paddingBottom: 8 }}>
                 Direct Report to a GLT Member
               </Text>
             </View>
@@ -98,7 +98,9 @@ class ApprovalForm extends React.Component {
               Nominator 2
             </Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <Text style={{ color: "grey" }}>Immediate Superior</Text>
+              <Text style={{ color: "grey", paddingBottom: 8 }}>
+                Immediate Superior
+              </Text>
             </View>
           </TouchableOpacity>
 
@@ -107,7 +109,7 @@ class ApprovalForm extends React.Component {
           >
             <Text style={{ fontSize: 12, paddingVertical: 20 }}>Endorser</Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <Text style={{ color: "grey" }}>
+              <Text style={{ color: "grey", paddingBottom: 8 }}>
                 Head of Finance/Business Contollers
               </Text>
             </View>
@@ -118,14 +120,16 @@ class ApprovalForm extends React.Component {
           >
             <Text style={{ fontSize: 12, paddingVertical: 20 }}>Approver</Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <Text style={{ color: "grey" }}>GLT Member</Text>
+              <Text style={{ color: "grey", paddingBottom: 8 }}>
+                GLT Member
+              </Text>
             </View>
           </TouchableOpacity>
         </View>
 
         <View style={{ flexDirection: "row", justifyContent: "center" }}>
           <TouchableOpacity
-            LongPress={() => null}
+            onPress={() => this.setState({ page: "cost" })}
             style={{
               flex: 0.1,
               alignItems: "center",
@@ -133,10 +137,26 @@ class ApprovalForm extends React.Component {
               marginLeft: 8,
               marginVertical: 16,
               borderRadius: 100,
-              backgroundColor: "grey"
+              backgroundColor: "#ffffff",
+              borderWidth: 0.5
             }}
           >
-            <Next name="chevron-thin-right" size={24} color="#000000" />
+            <Next name="chevron-thin-left" size={22} color="#000000" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => this.setState({ page: "cost" })}
+            style={{
+              flex: 0.1,
+              alignItems: "center",
+              padding: 16,
+              marginLeft: 8,
+              marginVertical: 16,
+              borderRadius: 100,
+              backgroundColor: "#ffffff",
+              borderWidth: 0.5
+            }}
+          >
+            <Next name="chevron-thin-right" size={22} color="#000000" />
           </TouchableOpacity>
         </View>
       </View>

@@ -64,7 +64,7 @@ class TravelForm extends React.Component {
 
         <View style={{ flex: 1 }}>
           <View style={{ paddingHorizontal: 16, paddingBottom: 8 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 8 }}>Type</Text>
+            <Text style={{ fontSize: 14, paddingVertical: 8 }}>Type</Text>
             <View style={{ borderColor: "#c4c4c4" }}>
               <Dropdown
                 placeholder="e.g. Training"
@@ -76,7 +76,7 @@ class TravelForm extends React.Component {
           </View>
 
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Date</Text>
+            <Text style={{ fontSize: 14, paddingVertical: 16 }}>From</Text>
             <View style={{ borderColor: "#c4c4c4" }}>
               <DatePicker
                 style={{ width: 200 }}
@@ -106,7 +106,37 @@ class TravelForm extends React.Component {
           </View>
 
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
+            <Text style={{ fontSize: 14, paddingVertical: 16 }}>Until</Text>
+            <View style={{ borderColor: "#c4c4c4" }}>
+              <DatePicker
+                style={{ width: 200 }}
+                date={this.state.date}
+                mode="date"
+                format="DD-MM-YYYY"
+                minDate="01-01-1990"
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                customStyles={{
+                  dateIcon: {
+                    position: "absolute",
+                    left: 0,
+                    top: 4,
+                    marginLeft: 0
+                  },
+                  dateInput: {
+                    marginLeft: 36
+                  }
+                  // ... You can check the source to find the other keys.
+                }}
+                onDateChange={date => {
+                  this.setState({ date: date });
+                }}
+              />
+            </View>
+          </View>
+
+          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
+            <Text style={{ fontSize: 14, paddingVertical: 16 }}>
               Destination
             </Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
@@ -126,6 +156,21 @@ class TravelForm extends React.Component {
         </View>
 
         <View style={{ flexDirection: "row", justifyContent: "center" }}>
+          <TouchableOpacity
+            onPress={() => this.setState({ page: "cost" })}
+            style={{
+              flex: 0.1,
+              alignItems: "center",
+              padding: 16,
+              marginLeft: 8,
+              marginVertical: 16,
+              borderRadius: 100,
+              backgroundColor: "#ffffff",
+              borderWidth: 0.5
+            }}
+          >
+            <Next name="chevron-thin-left" size={22} color="#000000" />
+          </TouchableOpacity>
           <TouchableOpacity
             onPress={() => this.setState({ page: "cost" })}
             style={{
