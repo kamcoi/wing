@@ -4,13 +4,17 @@ import {
   Text,
   View,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from "react-native";
 import Next from "react-native-vector-icons/Entypo";
 import { Dropdown } from "react-native-material-dropdown";
+import Icon from "react-native-vector-icons/EvilIcons";
 
 class ApprovalForm extends React.Component {
   render() {
+    const { navigate } = this.props.navigation;
+    const { goBack } = this.props.navigation;
     let data = [
       {
         value: "AGM and below"
@@ -38,32 +42,117 @@ class ApprovalForm extends React.Component {
       }
     ];
     return (
-      <View
-        style={{
-          shadowOpacity: 0.7,
-          height: "100%",
-          width: "90%",
-          paddingHorizontal: 8,
-          paddingVertical: 16,
-          marginBottom: 16,
-          justifyContent: "flex-start",
-          backgroundColor: "#ffffff",
-          borderRadius: 20
-        }}
-      >
-        <Text
+      <View behavior="padding" style={{ flex: 1, backgroundColor: "#ffffff" }}>
+        <View
           style={{
-            paddingHorizontal: 8,
-            paddingTop: 8,
-            paddingBottom: 8,
-            fontSize: 24,
-            fontWeight: "bold"
+            height: 60,
+            backgroundColor: "#f27178",
+            paddingTop: 32,
+            alignItems: "center"
           }}
         >
-          Approval Information
-        </Text>
+          <Text style={{ fontSize: 16 }}>Request Form</Text>
+        </View>
 
-        <View style={{ flex: 1 }}>
+        <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
+          <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+            Fill up the form
+          </Text>
+        </View>
+
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            paddingTop: 8,
+            paddingBottom: 24
+          }}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              paddingBottom: 4,
+              flex: 0.2,
+              justifyContent: "center"
+            }}
+          >
+            <View style={{ justifyContent: "center", paddingHorizontal: 2 }}>
+              <Icon name="user" size={24} color="#000000" />
+            </View>
+            <View style={{ justifyContent: "center" }}>
+              <Text style={{ fontSize: 12 }}>One</Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              paddingBottom: 4,
+              flex: 0.2,
+              justifyContent: "center"
+            }}
+          >
+            <View style={{ justifyContent: "center", paddingHorizontal: 2 }}>
+              <Icon name="location" size={24} color="#000000" />
+            </View>
+            <View style={{ justifyContent: "center" }}>
+              <Text style={{ fontSize: 12 }}>Two</Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              paddingBottom: 4,
+              flex: 0.2,
+              justifyContent: "center"
+            }}
+          >
+            <View style={{ justifyContent: "center", paddingHorizontal: 2 }}>
+              <Icon name="credit-card" size={24} color="#000000" />
+            </View>
+            <View style={{ justifyContent: "center" }}>
+              <Text style={{ fontSize: 12 }}>Three</Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              paddingBottom: 4,
+              borderBottomWidth: 1,
+              borderColor: "#f27178",
+              flex: 0.2,
+              justifyContent: "center"
+            }}
+          >
+            <View style={{ justifyContent: "center", paddingHorizontal: 2 }}>
+              <Icon name="check" size={24} color="#f27178" />
+            </View>
+            <View style={{ justifyContent: "center" }}>
+              <Text style={{ fontSize: 12, color: "#f27178" }}>Four</Text>
+            </View>
+          </View>
+        </View>
+
+        <ScrollView style={{ flex: 1 }}>
+          <View
+            style={{
+              paddingHorizontal: 16,
+              paddingVertical: 8,
+              marginHorizontal: 40,
+              borderRadius: 100,
+              alignItems: "center",
+              backgroundColor: "#f27178"
+            }}
+          >
+            <Text
+              style={{
+                paddingHorizontal: 8,
+                fontSize: 18,
+                fontWeight: "bold"
+              }}
+            >
+              Approver Information
+            </Text>
+          </View>
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
             <Text style={{ fontSize: 12, paddingVertical: 16 }}>
               Your Designation
@@ -125,38 +214,41 @@ class ApprovalForm extends React.Component {
               </Text>
             </View>
           </TouchableOpacity>
-        </View>
+        </ScrollView>
 
-        <View style={{ flexDirection: "row", justifyContent: "center" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            paddingVertical: 24,
+            justifyContent: "center"
+          }}
+        >
           <TouchableOpacity
-            onPress={() => this.setState({ page: "cost" })}
+            onPress={() => goBack()}
             style={{
-              flex: 0.1,
+              flex: 0.4,
               alignItems: "center",
-              padding: 16,
-              marginLeft: 8,
-              marginVertical: 16,
-              borderRadius: 100,
-              backgroundColor: "#ffffff",
-              borderWidth: 0.5
+              borderColor: "grey",
+              borderWidth: 1,
+              paddingVertical: 8,
+              marginRight: 8,
+              borderRadius: 100
             }}
           >
-            <Next name="chevron-thin-left" size={22} color="#000000" />
+            <Text>Back</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => this.setState({ page: "cost" })}
+            onPress={() => navigate("SubmitForm")}
             style={{
-              flex: 0.1,
+              flex: 0.4,
               alignItems: "center",
-              padding: 16,
-              marginLeft: 8,
-              marginVertical: 16,
-              borderRadius: 100,
-              backgroundColor: "#ffffff",
-              borderWidth: 0.5
+              borderColor: "grey",
+              borderWidth: 1,
+              paddingVertical: 8,
+              borderRadius: 100
             }}
           >
-            <Next name="chevron-thin-right" size={22} color="#000000" />
+            <Text>Done</Text>
           </TouchableOpacity>
         </View>
       </View>

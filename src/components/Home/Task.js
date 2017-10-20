@@ -105,28 +105,10 @@ const ApplicationSingle = ({ number, name, destination, travelType }) => (
         <Text style={{ fontSize: 16, paddingBottom: 2, color: "white" }}>
           {destination}
         </Text>
-        <Text style={{ fontSize: 12, paddingBottom: 16, color: "white" }}>
+        <Text style={{ fontSize: 12, paddingBottom: 8, color: "white" }}>
           {travelType}
         </Text>
       </View>
-      <TrackingBar />
     </TouchableOpacity>
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "flex-end",
-        backgroundColor: "red",
-        paddingVertical: 8,
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10
-      }}
-    >
-      <TouchableOpacity onPress={() => null} style={{ paddingHorizontal: 24 }}>
-        <Icon name="pencil" size={32} color="#000000" />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => null}>
-        <Icon name="trash" size={32} color="#000000" />
-      </TouchableOpacity>
-    </View>
   </View>
 );

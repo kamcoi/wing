@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import Circle from "react-native-vector-icons/Entypo";
 
 class TrackingBar extends React.Component {
   render() {
@@ -12,16 +13,13 @@ class TrackingBar extends React.Component {
             paddingVertical: 8
           }}
         >
-          <View
-            style={{
-              backgroundColor: "white",
-              paddingVertical: 10,
-              alignItems: "center",
-              flex: 0.06,
-              borderRadius: 100
-            }}
+          <Circle
+            name="circle"
+            size={24}
+            color="#000000"
+            style={{ paddingHorizontal: 4 }}
           />
-          <View style={{ flex: 0.2 }}>
+          <View style={{ flex: 0.25 }}>
             <View
               style={{
                 alignItems: "center",
@@ -36,16 +34,13 @@ class TrackingBar extends React.Component {
               }}
             />
           </View>
-          <View
-            style={{
-              backgroundColor: "white",
-              paddingVertical: 10,
-              alignItems: "center",
-              flex: 0.06,
-              borderRadius: 100
-            }}
+          <Circle
+            name="circle"
+            size={24}
+            color="#000000"
+            style={{ paddingHorizontal: 4 }}
           />
-          <View style={{ flex: 0.2 }}>
+          <View style={{ flex: 0.25 }}>
             <View
               style={{
                 alignItems: "center",
@@ -60,16 +55,13 @@ class TrackingBar extends React.Component {
               }}
             />
           </View>
-          <View
-            style={{
-              backgroundColor: "white",
-              paddingVertical: 10,
-              alignItems: "center",
-              flex: 0.06,
-              borderRadius: 100
-            }}
+          <Circle
+            name="circle"
+            size={24}
+            color="#000000"
+            style={{ paddingHorizontal: 4 }}
           />
-          <View style={{ flex: 0.2 }}>
+          <View style={{ flex: 0.25 }}>
             <View
               style={{
                 alignItems: "center",
@@ -84,14 +76,11 @@ class TrackingBar extends React.Component {
               }}
             />
           </View>
-          <View
-            style={{
-              backgroundColor: "white",
-              paddingVertical: 10,
-              alignItems: "center",
-              flex: 0.06,
-              borderRadius: 100
-            }}
+          <Circle
+            name="circle"
+            size={24}
+            color="#000000"
+            style={{ paddingHorizontal: 4 }}
           />
         </View>
 

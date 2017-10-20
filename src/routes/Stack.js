@@ -3,7 +3,10 @@ import { Image, Text, View, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import Main from "../components/Home/Main";
 import RequestForm from "../components/RequestForm/RequestForm";
-import PersonalForm from "../components/RequestForm/PersonalForm";
+import TravelForm from "../components/RequestForm/TravelForm";
+import CostForm from "../components/RequestForm/CostForm";
+import ApprovalForm from "../components/RequestForm/ApprovalForm";
+import SubmitForm from "../components/RequestForm/SubmitForm";
 import AddFriends from "../components/AddFriends/AddFriends";
 
 const Stack = StackNavigator({
@@ -19,14 +22,32 @@ const Stack = StackNavigator({
       header: null
     })
   },
-  PersonalForm: {
-    screen: PersonalForm,
+  AddFriends: {
+    screen: AddFriends,
     navigationOptions: ({ navigation }) => ({
       header: null
     })
   },
-  AddFriends: {
-    screen: AddFriends,
+  TravelForm: {
+    screen: TravelForm,
+    navigationOptions: ({ navigation }) => ({
+      header: null
+    })
+  },
+  CostForm: {
+    screen: CostForm,
+    navigationOptions: ({ navigation }) => ({
+      header: null
+    })
+  },
+  ApprovalForm: {
+    screen: ApprovalForm,
+    navigationOptions: ({ navigation }) => ({
+      header: null
+    })
+  },
+  SubmitForm: {
+    screen: SubmitForm,
     navigationOptions: ({ navigation }) => ({
       header: null
     })

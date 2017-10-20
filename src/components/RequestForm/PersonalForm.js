@@ -34,12 +34,12 @@ class PersonalForm extends React.Component {
             fontWeight: "bold"
           }}
         >
-          Applicant Information
+          Profile Information
         </Text>
 
         <View style={{ flex: 1 }}>
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 14, paddingVertical: 16 }}>Name</Text>
+            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Name</Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
               <TextInput
                 style={{
@@ -56,7 +56,7 @@ class PersonalForm extends React.Component {
           </View>
 
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 14, paddingVertical: 16 }}>Division</Text>
+            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Division</Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
               <TextInput
                 style={{
@@ -73,7 +73,7 @@ class PersonalForm extends React.Component {
           </View>
 
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 14, paddingVertical: 16 }}>
+            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
               Additional Travellers
             </Text>
             <View>
@@ -92,21 +92,38 @@ class PersonalForm extends React.Component {
           </View>
         </View>
 
-        <View style={{ flexDirection: "row", justifyContent: "center" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            paddingVertical: 24,
+            justifyContent: "space-around"
+          }}
+        >
           <TouchableOpacity
-            onPress={() => this.setState({ page: "cost" })}
+            onPress={() => null}
             style={{
-              flex: 0.1,
+              flex: 0.4,
               alignItems: "center",
-              padding: 16,
-              marginLeft: 8,
-              marginVertical: 16,
-              borderRadius: 100,
-              backgroundColor: "#ffffff",
-              borderWidth: 0.5
+              borderColor: "grey",
+              borderWidth: 1,
+              paddingVertical: 8,
+              borderRadius: 100
             }}
           >
-            <Next name="chevron-thin-right" size={22} color="#000000" />
+            <Text>Back</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => null}
+            style={{
+              flex: 0.4,
+              alignItems: "center",
+              borderColor: "grey",
+              borderWidth: 1,
+              paddingVertical: 8,
+              borderRadius: 100
+            }}
+          >
+            <Text>Next</Text>
           </TouchableOpacity>
         </View>
       </View>

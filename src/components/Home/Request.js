@@ -25,6 +25,7 @@ class Request extends React.Component {
             destination={applicationSingle.destination}
             name={applicationSingle.name}
             travelType={applicationSingle.travelType}
+            message={applicationSingle.message}
           />
         ))}
       </View>
@@ -40,39 +41,50 @@ const applications = [
     number: "76VD-TG7Q",
     destination: "Singapore",
     name: "Mohammad Hafiz bin Burhan",
-    travelType: "Site Survey"
+    travelType: "Site Survey",
+    message: "Hasniza has endorsed your.. "
   },
   {
     id: "2",
     number: "F54Y-82V5",
     destination: "Phnom Penh, Cambodia",
     name: "Ali Muhd Wasil bin Ali Absar",
-    travelType: "Berjimba Berdansa Berdosa"
+    travelType: "Berjimba Berdansa Berdosa",
+    message: "Toss"
   },
   {
     id: "3",
     number: "F54Y-82V5",
     destination: "Barcelona, Spain",
     name: "Mohammad Saifuddin Othman bin Kamal",
-    travelType: "Berjimba Berdansa Berdosa"
+    travelType: "Berjimba Berdansa Berdosa",
+    message: "Lolz"
   },
   {
     id: "4",
     number: "F54Y-82V5",
     destination: "Pyongyang, North Korea",
     name: "Nur Sazaliza Hiryiani Binti Zainol Abidin",
-    travelType: "Mentelaah Ilmu untuk Cukup Bekalan"
+    travelType: "Mentelaah Ilmu untuk Cukup Bekalan",
+    message: "Lili Lulu Lolo"
   },
   {
     id: "5",
     number: "F54Y-82V5",
     destination: "Jerusalem, Israel",
     name: "Nur Sazaliza Hiryiani Binti Zainol Abidin",
-    travelType: "Mentelaah Ilmu untuk Cukup Bekalan"
+    travelType: "Mentelaah Ilmu untuk Cukup Bekalan",
+    message: "Huhu Hihi Haha"
   }
 ];
 
-const ApplicationSingle = ({ number, destination, name, travelType }) => (
+const ApplicationSingle = ({
+  number,
+  destination,
+  name,
+  travelType,
+  message
+}) => (
   <View
     style={{
       shadowOpacity: 0.7,
@@ -80,7 +92,7 @@ const ApplicationSingle = ({ number, destination, name, travelType }) => (
       width: "95%",
       marginBottom: 16,
       justifyContent: "flex-start",
-      backgroundColor: "#c4c4c4",
+      backgroundColor: "#d1d3d4",
       borderRadius: 10
     }}
   >
@@ -117,38 +129,29 @@ const ApplicationSingle = ({ number, destination, name, travelType }) => (
     <View
       style={{
         flexDirection: "row",
-        justifyContent: "flex-end",
-        backgroundColor: "red",
-        paddingVertical: 8,
+        justifyContent: "space-between",
+        backgroundColor: "#f47178",
+        paddingVertical: 4,
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10
       }}
     >
-      <TouchableOpacity onPress={() => null} style={{ paddingHorizontal: 24 }}>
-        <Icon name="pencil" size={32} color="#000000" />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => null}>
+      <View
+        style={{
+          justifyContent: "center",
+          paddingHorizontal: 16,
+          borderRightWidth: 1,
+          flex: 1
+        }}
+      >
+        <Text style={{ fontWeight: "bold" }}>{message}</Text>
+      </View>
+      <TouchableOpacity
+        onPress={() => null}
+        style={{ paddingHorizontal: 16, paddingVertical: 8 }}
+      >
         <Icon name="trash" size={32} color="#000000" />
       </TouchableOpacity>
     </View>
   </View>
 );
-
-// <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-//   <TouchableOpacity onPress={() => null} style={{ paddingHorizontal: 24 }}>
-//     <Icon name="pencil" size={32} color="#000000" />
-//   </TouchableOpacity>
-//   <TouchableOpacity onPress={() => null}>
-//     <Icon name="trash" size={32} color="#000000" />
-//   </TouchableOpacity>
-// </View>
-
-// shadowOpacity: 0.7,
-// flex: 0.2,
-// width: "95%",
-// paddingHorizontal: 8,
-// paddingVertical: 8,
-// justifyContent: "flex-start",
-// backgroundColor: "#c4c4c4",
-// borderTopRightRadius: 10,
-// borderTopLeftRadius: 10
