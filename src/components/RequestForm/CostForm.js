@@ -17,10 +17,10 @@ class FinancialForm extends React.Component {
     const { goBack } = this.props.navigation;
     let data = [
       {
-        value: "TM Sponsor"
+        value: "TM Sponsorship"
       },
       {
-        value: "Sponsorship"
+        value: "External Sponsorship"
       }
     ];
 
@@ -220,11 +220,11 @@ class FinancialForm extends React.Component {
             </Text>
             <View style={{ borderColor: "#c4c4c4" }}>
               <Dropdown
-                placeholder="e.g. TM Sponsor"
+                placeholder="e.g. TM Sponsorship"
                 labelHeight={0}
                 label=""
                 data={data}
-                onSelect={data === "Sponsorship"}
+                onSelect={data === "External Sponsorship"}
               />
             </View>
           </View>

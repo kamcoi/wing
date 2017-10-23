@@ -247,7 +247,7 @@ class TravelForm extends React.Component {
 
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
             <Text style={{ fontSize: 12, paddingVertical: 16 }}>
-              Description
+              Justification for Travelling
             </Text>
             <View>
               <AutoGrowingTextInput
@@ -257,7 +257,7 @@ class TravelForm extends React.Component {
                   fontSize: 16,
                   paddingVertical: 8
                 }}
-                placeholder="Provide description on your travel.."
+                placeholder="Provide justification for your travel..."
               />
             </View>
           </View>

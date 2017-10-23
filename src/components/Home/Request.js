@@ -42,7 +42,7 @@ const applications = [
     destination: "Singapore",
     name: "Mohammad Hafiz bin Burhan",
     travelType: "Site Survey",
-    message: "Hasniza has endorsed your.. "
+    message: "Hasniza endorsed your.. "
   },
   {
     id: "2",
@@ -50,7 +50,7 @@ const applications = [
     destination: "Phnom Penh, Cambodia",
     name: "Ali Muhd Wasil bin Ali Absar",
     travelType: "Berjimba Berdansa Berdosa",
-    message: "Toss"
+    message: "Mohd approved your.."
   },
   {
     id: "3",
@@ -151,6 +151,12 @@ const ApplicationSingle = ({
         style={{ paddingHorizontal: 16, paddingVertical: 8 }}
       >
         <Icon name="trash" size={32} color="#000000" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => null}
+        style={{ paddingRight: 16, paddingVertical: 8 }}
+      >
+        <Icon name="close" size={32} color="#000000" />
       </TouchableOpacity>
     </View>
   </View>
