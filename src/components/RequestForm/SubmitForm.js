@@ -5,24 +5,45 @@ import {
   View,
   TouchableOpacity,
   Alert,
-  ScrollView
+  ScrollView,
+  StatusBar
 } from "react-native";
+import NavigationBar from "react-native-navbar";
+
+const leftButtonConfig = {
+  title: "Exit",
+  handler: () =>
+    Alert.alert("confirm to Exit without submitting?", "Lala", [
+      {
+        text: "Yes",
+        style: "default"
+      },
+      {
+        text: "No",
+        style: "default"
+      }
+    ])
+};
+
+const titleConfig = {
+  title: "Confirmation"
+};
 
 class SubmitForm extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View behavior="padding" style={{ flex: 1, backgroundColor: "#ffffff" }}>
-        <View
-          style={{
-            height: 60,
-            backgroundColor: "#f27178",
-            paddingTop: 32,
-            alignItems: "center"
-          }}
-        >
-          <Text style={{ fontSize: 16 }}>Request Form</Text>
-        </View>
+      <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
+        <StatusBar
+          backgroundColor="black"
+          setBackgroundColor="#f27178"
+          barStyle="dark-content"
+        />
+        <NavigationBar
+          style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
+          title={titleConfig}
+          leftButton={leftButtonConfig}
+        />
 
         <ScrollView style={{ flex: 1, paddingHorizontal: 8 }}>
           <View
@@ -51,9 +72,9 @@ class SubmitForm extends React.Component {
               </Text>
             </View>
             <View style={{ paddingHorizontal: 8, justifyContent: "center" }}>
-              <Text style={{ fontSize: 12 }}>XCSD-12BG</Text>
-              <Text style={{ fontSize: 12 }}>12 Sept 2017</Text>
-              <Text style={{ fontSize: 12 }}>9.30am</Text>
+              <Text style={{ fontSize: 12 }}>{applications.ref}</Text>
+              <Text style={{ fontSize: 12 }}>{applications.applyDate}</Text>
+              <Text style={{ fontSize: 12 }}>{applications.applyTime}</Text>
             </View>
           </View>
 
@@ -65,7 +86,18 @@ class SubmitForm extends React.Component {
 
         <View style={{ paddingVertical: 16 }}>
           <TouchableOpacity
-            onPress={() => Alert.alert("Ready to submit travel request?")}
+            onPress={() =>
+              Alert.alert("Ready to submit travel request?", "Hi Ho", [
+                {
+                  text: "Yes",
+                  style: "default",
+                  onPress: () => navigate("Main")
+                },
+                {
+                  text: "No",
+                  style: "destructive"
+                }
+              ])}
             style={{
               borderWidth: 1,
               paddingVertical: 8,
@@ -95,19 +127,19 @@ const TravelDetails = () => (
       </TouchableOpacity>
     </View>
     <Text style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}>
-      Seremban, Negeri Sembilan
+      {applications.destination}
     </Text>
     <Text style={{ fontSize: 14, paddingBottom: 4 }}>
-      17 Sept to 18 Oct 2016
+      {applications.travelFrom} to {applications.travelUntil} 2016
     </Text>
-    <Text style={{ fontSize: 14, paddingBottom: 4 }}>Site Survey</Text>
+    <Text style={{ fontSize: 14, paddingBottom: 4 }}>
+      {applications.travelType}
+    </Text>
     <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
       Description
     </Text>
     <Text style={{ fontSize: 12, lineHeight: 18, textAlign: "justify" }}>
-      Kan ku kenang semua suara mu, oh sayang. Janganlah dikau pergi
-      meninggalkan aku keseorangan di sini. Betapa kejamnya hatimu, sanggup
-      meninggalkan ku seorang diri di sini.
+      {applications.justificationText}
     </Text>
   </View>
 );
@@ -123,10 +155,10 @@ const ProfileDetails = () => (
       </TouchableOpacity>
     </View>
     <Text style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}>
-      Mohammad Hafiz bin Burhanuddin Helmi
+      {applications.requestorName}
     </Text>
     <Text style={{ fontSize: 12, paddingBottom: 16 }}>
-      Group Digital Centre
+      {applications.requestorDivision}
     </Text>
     <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
       Additional Travellers
@@ -139,10 +171,10 @@ const ProfileDetails = () => (
         fontWeight: "bold"
       }}
     >
-      Ali Muhd Wasil bin Ali Absar
+      {applications.additionalTravellerName1}
     </Text>
     <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-      Group Digital Centre
+      {applications.additionalTravellerDivision1}
     </Text>
     <Text
       style={{
@@ -152,10 +184,10 @@ const ProfileDetails = () => (
         fontWeight: "bold"
       }}
     >
-      Engku Fariez bin Engku Azahan
+      {applications.additionalTravellerName2}
     </Text>
     <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-      Group Digital Centre
+      {applications.additionalTravellerDivision2}
     </Text>
     <Text
       style={{
@@ -165,10 +197,10 @@ const ProfileDetails = () => (
         fontWeight: "bold"
       }}
     >
-      Khairold Safri bin Ibrahim
+      {applications.additionalTravellerName3}
     </Text>
     <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-      Group Digital Centre
+      {applications.additionalTravellerDivision3}
     </Text>
   </View>
 );
@@ -184,15 +216,15 @@ const ApproverDetails = () => (
       </TouchableOpacity>
     </View>
     <Text style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}>
-      Hasniza binti Mohamed
+      {applications.nominatorName}
     </Text>
     <Text style={{ fontSize: 12, paddingBottom: 12 }}>Nominator</Text>
     <Text style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}>
-      Ahmad Azhar bin Yahya
+      {applications.endorserName}
     </Text>
     <Text style={{ fontSize: 12, paddingBottom: 12 }}>Endorser</Text>
     <Text style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}>
-      Dato Sri Mohammed Shazalli bin Ramly
+      {applications.approverName}
     </Text>
     <Text style={{ fontSize: 12, paddingBottom: 12 }}>Approver</Text>
   </View>
@@ -217,8 +249,12 @@ const CostDetails = () => (
         borderColor: "#c4c4c4"
       }}
     >
-      <Text style={{ color: "grey" }}>Budget (BMCE02)</Text>
-      <Text style={{ paddingRight: 8, color: "grey" }}>RM43,000.00</Text>
+      <Text style={{ color: "grey" }}>
+        Budget - {applications.costCategory}
+      </Text>
+      <Text style={{ paddingRight: 8, color: "grey" }}>
+        {applications.budget}
+      </Text>
     </View>
     <View
       style={{
@@ -229,8 +265,34 @@ const CostDetails = () => (
     >
       <Text style={{ fontSize: 18 }}>TOTAL</Text>
       <Text style={{ paddingRight: 8, fontSize: 18, fontWeight: "bold" }}>
-        RM43,000.00
+        {applications.cost}
       </Text>
     </View>
   </View>
 );
+
+const applications = {
+  ref: "XSAW-532C",
+  applyDate: "12 Sept 2017",
+  applyTime: "10.20am",
+  destination: "Monte Carlo, Monaco",
+  travelFrom: "21 Oct",
+  travelUntil: "10 Nov",
+  travelType: "Site Survey",
+  justificationText:
+    "I would like to Experience the ka-cing ka-cing while experiencing the magnificent of Alain Ducasse Le Louis XV Dinner",
+  requestorName: "Ali Muhd Wasil bin Ali Absar",
+  requestorDivision: "Group Brand and Communication",
+  additionalTravellerName1: "Abu bin Ah Beng",
+  additionalTravellerDivision1: "IT&NT",
+  additionalTravellerName2: "Abu bin Ah Ngah",
+  additionalTravellerDivision2: "IT&NT",
+  additionalTravellerName3: "Abu bin Ah Teng",
+  additionalTravellerDivision3: "IT&NT",
+  nominatorName: "Jusoh bin Ali",
+  endorserName: "Ali bin Awang",
+  approverName: "Kabil bin Ali",
+  cost: "RM 12000.00",
+  budget: "RM 34000.00",
+  costCategory: "EEIU"
+};

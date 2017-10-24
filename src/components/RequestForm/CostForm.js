@@ -5,13 +5,34 @@ import {
   TextInput,
   View,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  KeyboardAvoidingView
 } from "react-native";
 import Next from "react-native-vector-icons/Entypo";
 import { Dropdown } from "react-native-material-dropdown";
 import Icon from "react-native-vector-icons/EvilIcons";
+import NavigationBar from "react-native-navbar";
 
-class FinancialForm extends React.Component {
+const leftButtonConfig = {
+  title: "Exit",
+  handler: () =>
+    Alert.alert("confirm to Exit without submitting?", "Lala", [
+      {
+        text: "Yes",
+        style: "default"
+      },
+      {
+        text: "No",
+        style: "default"
+      }
+    ])
+};
+
+const titleConfig = {
+  title: "New Request"
+};
+
+class CostForm extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     const { goBack } = this.props.navigation;
@@ -25,17 +46,15 @@ class FinancialForm extends React.Component {
     ];
 
     return (
-      <View behavior="padding" style={{ flex: 1, backgroundColor: "#ffffff" }}>
-        <View
-          style={{
-            height: 60,
-            backgroundColor: "#f27178",
-            paddingTop: 32,
-            alignItems: "center"
-          }}
-        >
-          <Text style={{ fontSize: 16 }}>Request Form</Text>
-        </View>
+      <KeyboardAvoidingView
+        behavior="padding"
+        style={{ flex: 1, backgroundColor: "#ffffff" }}
+      >
+        <NavigationBar
+          style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
+          title={titleConfig}
+          leftButton={leftButtonConfig}
+        />
 
         <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
           <Text style={{ fontSize: 16, fontWeight: "bold" }}>
@@ -43,99 +62,29 @@ class FinancialForm extends React.Component {
           </Text>
         </View>
 
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-around",
-            paddingTop: 8,
-            paddingBottom: 24
-          }}
-        >
-          <View
-            style={{
-              flexDirection: "row",
-              paddingBottom: 4,
-              flex: 0.2,
-              justifyContent: "center"
-            }}
-          >
-            <View style={{ justifyContent: "center", paddingHorizontal: 2 }}>
-              <Icon name="user" size={24} color="#000000" />
-            </View>
-            <View style={{ justifyContent: "center" }}>
-              <Text style={{ fontSize: 12 }}>One</Text>
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              paddingBottom: 4,
-              flex: 0.2,
-              justifyContent: "center"
-            }}
-          >
-            <View style={{ justifyContent: "center", paddingHorizontal: 2 }}>
-              <Icon name="location" size={24} color="#000000" />
-            </View>
-            <View style={{ justifyContent: "center" }}>
-              <Text style={{ fontSize: 12 }}>Two</Text>
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              paddingBottom: 4,
-              flex: 0.2,
-              justifyContent: "center",
-              borderBottomWidth: 1,
-              borderColor: "#f27178"
-            }}
-          >
-            <View
-              style={{
-                justifyContent: "center",
-                paddingHorizontal: 2
-              }}
-            >
-              <Icon name="credit-card" size={24} color="#f27178" />
-            </View>
-            <View style={{ justifyContent: "center" }}>
-              <Text style={{ fontSize: 12, color: "#f27178" }}>Three</Text>
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              paddingBottom: 4,
-              flex: 0.2,
-              justifyContent: "center"
-            }}
-          >
-            <View style={{ justifyContent: "center", paddingHorizontal: 2 }}>
-              <Icon name="check" size={24} color="#000000" />
-            </View>
-            <View style={{ justifyContent: "center" }}>
-              <Text style={{ fontSize: 12 }}>Four</Text>
-            </View>
-          </View>
-        </View>
+        <FormBar />
 
         <ScrollView style={{ flex: 1 }}>
           <View
             style={{
               paddingHorizontal: 16,
               paddingVertical: 8,
+              marginVertical: 8,
               marginHorizontal: 40,
               borderRadius: 100,
               alignItems: "center",
-              backgroundColor: "#f27178"
+              backgroundColor: "#ffffff",
+              borderColor: "#f27178",
+              borderWidth: 2,
+              borderRadius: 100
             }}
           >
             <Text
               style={{
                 paddingHorizontal: 8,
-                fontSize: 20,
-                fontWeight: "bold"
+                fontSize: 18,
+                fontWeight: "bold",
+                color: "#f27178"
               }}
             >
               Cost Information
@@ -163,7 +112,7 @@ class FinancialForm extends React.Component {
                 placeholder="State your cost.."
                 clearButtonMode="always"
                 underlineColorAndroid="rgba(0,0,0,0)"
-                keyboardType="number-pad"
+                keyboardType="numeric"
               />
             </View>
           </View>
@@ -190,7 +139,7 @@ class FinancialForm extends React.Component {
                 placeholder="State your budget.."
                 clearButtonMode="always"
                 underlineColorAndroid="rgba(0,0,0,0)"
-                keyboardType="number-pad"
+                keyboardType="numeric"
               />
             </View>
           </View>
@@ -228,46 +177,125 @@ class FinancialForm extends React.Component {
               />
             </View>
           </View>
-        </ScrollView>
 
-        <View
-          style={{
-            flexDirection: "row",
-            paddingVertical: 24,
-            justifyContent: "center"
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => goBack()}
+          <View
             style={{
-              flex: 0.4,
-              alignItems: "center",
-              borderColor: "grey",
-              borderWidth: 1,
-              paddingVertical: 8,
-              marginRight: 8,
-              borderRadius: 100
+              flexDirection: "row",
+              paddingVertical: 24,
+              justifyContent: "center"
             }}
           >
-            <Text>Back</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigate("ApprovalForm")}
-            style={{
-              flex: 0.4,
-              alignItems: "center",
-              borderColor: "grey",
-              borderWidth: 1,
-              paddingVertical: 8,
-              borderRadius: 100
-            }}
-          >
-            <Text>Next</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+            <TouchableOpacity
+              onPress={() => goBack()}
+              style={{
+                flex: 0.4,
+                alignItems: "center",
+                borderColor: "grey",
+                borderWidth: 1,
+                paddingVertical: 8,
+                marginRight: 8,
+                borderRadius: 100
+              }}
+            >
+              <Text>Back</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigate("ApprovalForm")}
+              style={{
+                flex: 0.4,
+                alignItems: "center",
+                borderColor: "grey",
+                borderWidth: 1,
+                paddingVertical: 8,
+                borderRadius: 100
+              }}
+            >
+              <Text>Next</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }
 
-export default FinancialForm;
+export default CostForm;
+
+const FormBar = () => (
+  <View
+    style={{
+      flexDirection: "row",
+      justifyContent: "space-around",
+      paddingTop: 8,
+      paddingBottom: 24
+    }}
+  >
+    <View
+      style={{
+        flexDirection: "row",
+        paddingBottom: 4,
+        flex: 0.2,
+        justifyContent: "center"
+      }}
+    >
+      <View style={{ justifyContent: "center", paddingHorizontal: 2 }}>
+        <Icon name="user" size={24} color="#000000" />
+      </View>
+      <View style={{ justifyContent: "center" }}>
+        <Text style={{ fontSize: 12 }}>One</Text>
+      </View>
+    </View>
+    <View
+      style={{
+        flexDirection: "row",
+        paddingBottom: 4,
+        flex: 0.2,
+        justifyContent: "center"
+      }}
+    >
+      <View style={{ justifyContent: "center", paddingHorizontal: 2 }}>
+        <Icon name="location" size={24} color="#000000" />
+      </View>
+      <View style={{ justifyContent: "center" }}>
+        <Text style={{ fontSize: 12 }}>Two</Text>
+      </View>
+    </View>
+    <View
+      style={{
+        flexDirection: "row",
+        paddingBottom: 4,
+        flex: 0.2,
+        justifyContent: "center",
+        borderBottomWidth: 1,
+        borderColor: "#f27178"
+      }}
+    >
+      <View
+        style={{
+          justifyContent: "center",
+          paddingHorizontal: 2
+        }}
+      >
+        <Icon name="credit-card" size={24} color="#f27178" />
+      </View>
+      <View style={{ justifyContent: "center" }}>
+        <Text style={{ fontSize: 12, color: "#f27178" }}>Three</Text>
+      </View>
+    </View>
+    <View
+      style={{
+        flexDirection: "row",
+        paddingBottom: 4,
+        flex: 0.2,
+        justifyContent: "center"
+      }}
+    >
+      <View style={{ justifyContent: "center", paddingHorizontal: 2 }}>
+        <Icon name="check" size={24} color="#000000" />
+      </View>
+      <View style={{ justifyContent: "center" }}>
+        <Text style={{ fontSize: 12 }}>Four</Text>
+      </View>
+    </View>
+  </View>
+);

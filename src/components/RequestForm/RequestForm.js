@@ -6,26 +6,45 @@ import {
   View,
   KeyboardAvoidingView,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from "react-native";
 import Icon from "react-native-vector-icons/EvilIcons";
+import NavigationBar from "react-native-navbar";
+
+const leftButtonConfig = {
+  title: "Exit",
+  handler: () =>
+    Alert.alert("Save and Exit?", "Test", [
+      {
+        text: "Yes",
+        style: "default"
+      },
+      {
+        text: "No",
+        style: "default"
+      }
+    ])
+};
+
+const titleConfig = {
+  title: "New Request"
+};
 
 class RequestForm extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     const { goBack } = this.props.navigation;
     return (
-      <View behavior="padding" style={{ flex: 1, backgroundColor: "#ffffff" }}>
-        <View
-          style={{
-            height: 60,
-            backgroundColor: "#f27178",
-            paddingTop: 32,
-            alignItems: "center"
-          }}
-        >
-          <Text style={{ fontSize: 16 }}>Request Form</Text>
-        </View>
+      <KeyboardAvoidingView
+        behavior="padding"
+        style={{ flex: 1, backgroundColor: "#ffffff" }}
+      >
+        <NavigationBar
+          style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
+          title={titleConfig}
+          leftButton={leftButtonConfig}
+        />
         <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
           <Text style={{ fontSize: 16, fontWeight: "bold" }}>
             Fill up the form
@@ -36,44 +55,43 @@ class RequestForm extends React.Component {
 
         <ScrollView>
           <ProfileQuestion />
-        </ScrollView>
 
-        <View
-          style={{
-            flexDirection: "row",
-            paddingVertical: 24,
-            justifyContent: "center"
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => goBack()}
+          <View
             style={{
-              flex: 0.4,
-              alignItems: "center",
-              borderColor: "grey",
-              borderWidth: 1,
-              paddingVertical: 8,
-              marginRight: 8,
-              borderRadius: 100
+              flexDirection: "row",
+              paddingVertical: 24,
+              justifyContent: "center"
             }}
           >
-            <Text>Back</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigate("TravelForm")}
-            style={{
-              flex: 0.4,
-              alignItems: "center",
-              borderColor: "grey",
-              borderWidth: 1,
-              paddingVertical: 8,
-              borderRadius: 100
-            }}
-          >
-            <Text>Next</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+            <View
+              style={{
+                flex: 0.4,
+                alignItems: "center",
+                borderColor: "#c4c4c4",
+                borderWidth: 1,
+                paddingVertical: 8,
+                marginRight: 8,
+                borderRadius: 100
+              }}
+            >
+              <Text style={{ color: "#c4c4c4" }}>Back</Text>
+            </View>
+            <TouchableOpacity
+              onPress={() => navigate("TravelForm")}
+              style={{
+                flex: 0.4,
+                alignItems: "center",
+                borderColor: "grey",
+                borderWidth: 1,
+                paddingVertical: 8,
+                borderRadius: 100
+              }}
+            >
+              <Text>Next</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -160,17 +178,22 @@ const ProfileQuestion = () => (
       style={{
         paddingHorizontal: 16,
         paddingVertical: 8,
+        marginVertical: 8,
         marginHorizontal: 40,
         borderRadius: 100,
         alignItems: "center",
-        backgroundColor: "#f27178"
+        backgroundColor: "#ffffff",
+        borderColor: "#f27178",
+        borderWidth: 2,
+        borderRadius: 100
       }}
     >
       <Text
         style={{
           paddingHorizontal: 8,
-          fontSize: 20,
-          fontWeight: "bold"
+          fontSize: 18,
+          fontWeight: "bold",
+          color: "#f27178"
         }}
       >
         Profile Information
