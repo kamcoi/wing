@@ -6,6 +6,7 @@ import TrackingBar from "../Bar/TrackingBar";
 
 class Task extends React.Component {
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View
         style={{
@@ -17,6 +18,7 @@ class Task extends React.Component {
       >
         {applications.map(applicationSingle => (
           <ApplicationSingle
+            navigate={navigate}
             key={applicationSingle.id}
             number={applicationSingle.number}
             name={applicationSingle.name}
@@ -69,43 +71,49 @@ const applications = [
   }
 ];
 
-const ApplicationSingle = ({ number, name, destination, travelType }) => (
+const ApplicationSingle = ({
+  number,
+  name,
+  destination,
+  travelType,
+  navigate
+}) => (
   <View
     style={{
-      shadowOpacity: 0.7,
+      shadowOpacity: 0.3,
       flex: 0.3,
       width: "95%",
       marginBottom: 16,
       justifyContent: "flex-start",
-      backgroundColor: "#c4c4c4",
+      backgroundColor: "#ffffff",
       borderRadius: 10
     }}
   >
     <TouchableOpacity
-      LongPress={() => null}
+      onPress={() => navigate("TaskStatus")}
       style={{
         paddingHorizontal: 8,
         paddingVertical: 8
       }}
     >
-      <View style={{ width: "100%" }}>
-        <Text style={{ fontSize: 12, paddingBottom: 2, color: "white" }}>
+      <View style={{ width: "100%", paddingTop: 8, paddingHorizontal: 8 }}>
+        <Text style={{ fontSize: 12, paddingBottom: 2, color: "#000000" }}>
           {number}
         </Text>
         <Text
           style={{
             fontSize: 22,
             paddingBottom: 2,
-            color: "white",
+            color: "#000000",
             fontWeight: "bold"
           }}
         >
           {name}
         </Text>
-        <Text style={{ fontSize: 16, paddingBottom: 2, color: "white" }}>
+        <Text style={{ fontSize: 16, paddingBottom: 2, color: "#000000" }}>
           {destination}
         </Text>
-        <Text style={{ fontSize: 12, paddingBottom: 8, color: "white" }}>
+        <Text style={{ fontSize: 12, paddingBottom: 8, color: "#000000" }}>
           {travelType}
         </Text>
       </View>

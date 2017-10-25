@@ -6,31 +6,13 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Alert
 } from "react-native";
 import Next from "react-native-vector-icons/Entypo";
 import { Dropdown } from "react-native-material-dropdown";
 import Icon from "react-native-vector-icons/EvilIcons";
 import NavigationBar from "react-native-navbar";
-
-const leftButtonConfig = {
-  title: "Exit",
-  handler: () =>
-    Alert.alert("confirm to Exit without submitting?", "Lala", [
-      {
-        text: "Yes",
-        style: "default"
-      },
-      {
-        text: "No",
-        style: "default"
-      }
-    ])
-};
-
-const titleConfig = {
-  title: "New Request"
-};
 
 class CostForm extends React.Component {
   render() {
@@ -52,13 +34,27 @@ class CostForm extends React.Component {
       >
         <NavigationBar
           style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
-          title={titleConfig}
-          leftButton={leftButtonConfig}
+          title={{ title: "New Request" }}
+          leftButton={{
+            title: "Exit",
+            handler: () =>
+              Alert.alert("confirm to Exit without submitting?", "Lala", [
+                {
+                  text: "No",
+                  style: "destructive"
+                },
+                {
+                  text: "Yes",
+                  onPress: () => navigate("Home"),
+                  style: "default"
+                }
+              ])
+          }}
         />
 
         <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
-          <Text style={{ fontSize: 16, fontWeight: "bold" }}>
-            Fill up the form
+          <Text style={{ fontSize: 14, fontWeight: "bold" }}>
+            Step 3: Cost Information
           </Text>
         </View>
 
@@ -66,32 +62,9 @@ class CostForm extends React.Component {
 
         <ScrollView style={{ flex: 1 }}>
           <View
-            style={{
-              paddingHorizontal: 16,
-              paddingVertical: 8,
-              marginVertical: 8,
-              marginHorizontal: 40,
-              borderRadius: 100,
-              alignItems: "center",
-              backgroundColor: "#ffffff",
-              borderColor: "#f27178",
-              borderWidth: 2,
-              borderRadius: 100
-            }}
+            style={{ paddingHorizontal: 16, paddingBottom: 16, paddingTop: 24 }}
           >
-            <Text
-              style={{
-                paddingHorizontal: 8,
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "#f27178"
-              }}
-            >
-              Cost Information
-            </Text>
-          </View>
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Cost</Text>
+            <Text style={{ fontSize: 12, paddingBottom: 16 }}>Cost</Text>
             <View
               style={{
                 flexDirection: "row",
@@ -177,43 +150,35 @@ class CostForm extends React.Component {
               />
             </View>
           </View>
+        </ScrollView>
 
-          <View
+        <View
+          style={{
+            flexDirection: "row",
+            paddingVertical: 4,
+            justifyContent: "center"
+          }}
+        >
+          <TouchableOpacity
+            onPress={() => goBack()}
             style={{
-              flexDirection: "row",
-              paddingVertical: 24,
-              justifyContent: "center"
+              alignItems: "center",
+              marginRight: 16,
+              borderRadius: 100
             }}
           >
-            <TouchableOpacity
-              onPress={() => goBack()}
-              style={{
-                flex: 0.4,
-                alignItems: "center",
-                borderColor: "grey",
-                borderWidth: 1,
-                paddingVertical: 8,
-                marginRight: 8,
-                borderRadius: 100
-              }}
-            >
-              <Text>Back</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => navigate("ApprovalForm")}
-              style={{
-                flex: 0.4,
-                alignItems: "center",
-                borderColor: "grey",
-                borderWidth: 1,
-                paddingVertical: 8,
-                borderRadius: 100
-              }}
-            >
-              <Text>Next</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
+            <Icon name="chevron-left" size={32} color="#000000" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigate("ApprovalForm")}
+            style={{
+              alignItems: "center",
+              borderRadius: 100
+            }}
+          >
+            <Icon name="chevron-right" size={32} color="#000000" />
+          </TouchableOpacity>
+        </View>
       </KeyboardAvoidingView>
     );
   }
@@ -227,7 +192,9 @@ const FormBar = () => (
       flexDirection: "row",
       justifyContent: "space-around",
       paddingTop: 8,
-      paddingBottom: 24
+      borderTopWidth: 1,
+      borderBottomWidth: 1,
+      borderColor: "#c4c4c4"
     }}
   >
     <View
@@ -266,7 +233,7 @@ const FormBar = () => (
         paddingBottom: 4,
         flex: 0.2,
         justifyContent: "center",
-        borderBottomWidth: 1,
+        borderBottomWidth: 2,
         borderColor: "#f27178"
       }}
     >

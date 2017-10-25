@@ -7,8 +7,11 @@ import TravelForm from "../components/RequestForm/TravelForm";
 import CostForm from "../components/RequestForm/CostForm";
 import ApprovalForm from "../components/RequestForm/ApprovalForm";
 import TaskForm from "../components/Task/TaskForm";
-import SubmitForm from "../components/RequestForm/SubmitForm";
+import TaskStatus from "../components/TaskStatus/TaskStatus";
+import RequestStatus from "../components/RequestStatus/RequestStatus";
+import SubmitForm from "../components/SubmitForm/SubmitForm";
 import AddFriends from "../components/AddFriends/AddFriends";
+import Comments from "../components/Comments/Comments";
 
 const Stack = StackNavigator({
   Home: {
@@ -55,6 +58,24 @@ const Stack = StackNavigator({
   },
   TaskForm: {
     screen: TaskForm,
+    navigationOptions: ({ navigation }) => ({
+      header: null
+    })
+  },
+  Comments: {
+    screen: Comments,
+    navigationOptions: ({ navigation }) => ({
+      header: null
+    })
+  },
+  TaskStatus: {
+    screen: TaskStatus,
+    navigationOptions: ({ navigation }) => ({
+      header: null
+    })
+  },
+  RequestStatus: {
+    screen: RequestStatus,
     navigationOptions: ({ navigation }) => ({
       header: null
     })

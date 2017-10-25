@@ -24,13 +24,13 @@ class Main extends Component {
     let displayedPage;
     switch (this.state.page) {
       case "request":
-        displayedPage = <Request />;
+        displayedPage = <Request navigation={this.props.navigation} />;
         break;
       case "task":
-        displayedPage = <Task />;
+        displayedPage = <Task navigation={this.props.navigation} />;
         break;
       default:
-        displayedPage = <Request />;
+        displayedPage = <Request navigation={this.props.navigation} />;
     }
     return (
       <View style={{ flex: 1 }}>
@@ -102,7 +102,7 @@ class Main extends Component {
           </TouchableOpacity>
         </View>
 
-        <ScrollView style={{ flex: 1, backgroundColor: "#ffffff" }}>
+        <ScrollView style={{ flex: 1, backgroundColor: "#c4c4c4" }}>
           {displayedPage}
         </ScrollView>
         <ActionButton buttonColor="#333333">

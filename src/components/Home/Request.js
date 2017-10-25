@@ -8,18 +8,19 @@ import TrackingBar from "../Bar/TrackingBar";
 
 class Request extends React.Component {
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View
         style={{
           flex: 1,
           alignItems: "center",
           justifyContent: "center",
-          marginVertical: 8,
-          backgroundColor: "#ffffff"
+          marginVertical: 8
         }}
       >
         {applications.map(applicationSingle => (
           <ApplicationSingle
+            navigate={navigate}
             key={applicationSingle.id}
             number={applicationSingle.number}
             destination={applicationSingle.destination}
@@ -83,35 +84,36 @@ const ApplicationSingle = ({
   destination,
   name,
   travelType,
-  message
+  message,
+  navigate
 }) => (
   <View
     style={{
-      shadowOpacity: 0.7,
+      shadowOpacity: 0.3,
       flex: 0.3,
       width: "95%",
       marginBottom: 16,
       justifyContent: "flex-start",
-      backgroundColor: "#d1d3d4",
+      backgroundColor: "#ffffff",
       borderRadius: 10
     }}
   >
     <TouchableOpacity
-      LongPress={() => null}
+      onPress={() => navigate("RequestStatus")}
       style={{
         paddingHorizontal: 8,
         paddingVertical: 8
       }}
     >
-      <View style={{ width: "100%" }}>
-        <Text style={{ fontSize: 12, paddingBottom: 2, color: "white" }}>
+      <View style={{ width: "100%", paddingTop: 8, paddingHorizontal: 8 }}>
+        <Text style={{ fontSize: 12, paddingBottom: 2, color: "black" }}>
           {number}
         </Text>
         <Text
           style={{
             fontSize: 22,
             paddingBottom: 2,
-            color: "white",
+            color: "black",
             fontWeight: "bold"
           }}
         >
