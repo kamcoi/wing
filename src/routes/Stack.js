@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, Text, View, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
-import Main from "../components/Home/Main";
+import Drawer from "./Drawer";
 import RequestForm from "../components/RequestForm/RequestForm";
 import TravelForm from "../components/RequestForm/TravelForm";
 import CostForm from "../components/RequestForm/CostForm";
@@ -14,8 +14,8 @@ import AddFriends from "../components/AddFriends/AddFriends";
 import Comments from "../components/Comments/Comments";
 
 const Stack = StackNavigator({
-  Home: {
-    screen: Main,
+  Drawer: {
+    screen: Drawer,
     navigationOptions: ({ navigation }) => ({
       header: null
     })
