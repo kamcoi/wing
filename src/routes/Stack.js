@@ -12,6 +12,8 @@ import RequestStatus from "../components/RequestStatus/RequestStatus";
 import SubmitForm from "../components/SubmitForm/SubmitForm";
 import AddFriends from "../components/AddFriends/AddFriends";
 import Comments from "../components/Comments/Comments";
+import GuidelineHome from "../components/Guideline/GuidelineHome";
+import GuidelineContent from "../components/Guideline/GuidelineContent";
 
 const Stack = StackNavigator({
   Drawer: {
@@ -76,6 +78,18 @@ const Stack = StackNavigator({
   },
   RequestStatus: {
     screen: RequestStatus,
+    navigationOptions: ({ navigation }) => ({
+      header: null
+    })
+  },
+  GuidelineHome: {
+    screen: GuidelineHome,
+    navigationOptions: ({ navigation }) => ({
+      header: null
+    })
+  },
+  GuidelineContent: {
+    screen: GuidelineContent,
     navigationOptions: ({ navigation }) => ({
       header: null
     })

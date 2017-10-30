@@ -182,6 +182,7 @@ class TravelForm extends React.Component {
                   paddingVertical: 8
                 }}
                 placeholder="Provide justification for your travel..."
+                underlineColorAndroid="rgba(0,0,0,0)"
               />
             </View>
           </View>

@@ -14,6 +14,10 @@ import Icon from "react-native-vector-icons/Ionicons";
 import Request from "./Request";
 import Task from "./Task";
 
+const titleConfig = {
+  title: "Home"
+};
+
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -36,13 +40,24 @@ class Main extends Component {
       <View style={{ flex: 1 }}>
         <View
           style={{
-            height: 60,
-            backgroundColor: "#ffffff",
+            flexDirection: "row",
+            justifyContent: "space-between",
             paddingTop: 32,
-            alignItems: "center"
+            paddingBottom: 8
           }}
         >
-          <Text style={{ fontSize: 16 }}>WING @TM</Text>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("DrawerOpen")}
+            style={{ flex: 0.15, alignItems: "center" }}
+          >
+            <Icon name="ios-menu" size={24} color="#000000" />
+          </TouchableOpacity>
+          <View style={{ flex: 0.15, alignItems: "center" }}>
+            <Text style={{ fontSize: 16 }}>Home</Text>
+          </View>
+          <View style={{ flex: 0.15 }}>
+            <Text />
+          </View>
         </View>
 
         <View
@@ -50,7 +65,7 @@ class Main extends Component {
             flexDirection: "row",
             paddingHorizontal: 16,
             backgroundColor: "#ffffff",
-            paddingVertical: 16
+            paddingVertical: 8
           }}
         >
           <TouchableOpacity
@@ -102,9 +117,7 @@ class Main extends Component {
           </TouchableOpacity>
         </View>
 
-        <ScrollView style={{ flex: 1, backgroundColor: "#c4c4c4" }}>
-          {displayedPage}
-        </ScrollView>
+        <ScrollView style={{ flex: 1 }}>{displayedPage}</ScrollView>
         <ActionButton buttonColor="#333333">
           <ActionButton.Item
             buttonColor="#333333"

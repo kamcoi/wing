@@ -22,7 +22,7 @@ export default class wing extends Component {
     return (
       // <Provider store={store}>
       <View style={styles.container}>
-        <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
+        <StatusBar backgroundColor="blue" showHiddenTransition="fade" />
         <Stack />
       </View>
       // </Provider>

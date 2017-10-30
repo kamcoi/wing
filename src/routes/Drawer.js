@@ -2,6 +2,8 @@ import React from "react";
 import { Image, Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { DrawerNavigator } from "react-navigation";
 import Main from "../components/Home/Main";
+import GuidelineHome from "../components/Guideline/GuidelineHome";
+import ActivityLog from "../components/Activity/ActivityLog";
 
 class Home extends React.Component {
   static navigationOptions = {
@@ -20,7 +22,22 @@ class Home extends React.Component {
 
 const Drawer = DrawerNavigator({
   Home: {
-    screen: Main
+    screen: Main,
+    navigationOptions: {
+      drawerLabel: "Home"
+    }
+  },
+  Guideline: {
+    screen: GuidelineHome,
+    navigationOptions: {
+      drawerLabel: "Guideline"
+    }
+  },
+  Log: {
+    screen: ActivityLog,
+    navigationOptions: {
+      drawerLabel: "Activity Log"
+    }
   }
 });
 

@@ -106,7 +106,7 @@ const ApplicationSingle = ({
       }}
     >
       <View style={{ width: "100%", paddingTop: 8, paddingHorizontal: 8 }}>
-        <Text style={{ fontSize: 12, paddingBottom: 2, color: "black" }}>
+        <Text style={{ fontSize: 14, paddingBottom: 4, color: "black" }}>
           {number}
         </Text>
         <Text
@@ -119,10 +119,10 @@ const ApplicationSingle = ({
         >
           {destination}
         </Text>
-        <Text style={{ fontSize: 16, paddingBottom: 2, color: "black" }}>
+        <Text style={{ fontSize: 16, paddingBottom: 4, color: "black" }}>
           {name}
         </Text>
-        <Text style={{ fontSize: 12, paddingBottom: 16, color: "black" }}>
+        <Text style={{ fontSize: 14, paddingBottom: 16, color: "black" }}>
           {travelType}
         </Text>
       </View>

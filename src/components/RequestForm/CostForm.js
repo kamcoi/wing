@@ -15,6 +15,10 @@ import Icon from "react-native-vector-icons/EvilIcons";
 import NavigationBar from "react-native-navbar";
 
 class CostForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { data: "" };
+  }
   render() {
     const { navigate } = this.props.navigation;
     const { goBack } = this.props.navigation;
@@ -72,15 +76,18 @@ class CostForm extends React.Component {
                 borderBottomWidth: 1
               }}
             >
-              <Text style={{ fontSize: 16 }}>RM</Text>
+              <View style={{ justifyContent: "center" }}>
+                <Text style={{ fontSize: 16, paddingBottom: 8 }}>RM</Text>
+              </View>
               <TextInput
                 style={{
                   flex: 1,
                   color: "#ee7202",
                   fontSize: 16,
-                  paddingBottom: 8,
                   paddingLeft: 8,
-                  alignItems: "flex-end"
+                  paddingBottom: 8,
+                  alignItems: "flex-end",
+                  justifyContent: "center"
                 }}
                 placeholder="State your cost.."
                 clearButtonMode="always"
@@ -89,7 +96,6 @@ class CostForm extends React.Component {
               />
             </View>
           </View>
-
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
             <Text style={{ fontSize: 12, paddingVertical: 16 }}>Budget</Text>
             <View
@@ -99,7 +105,9 @@ class CostForm extends React.Component {
                 borderBottomWidth: 1
               }}
             >
-              <Text style={{ fontSize: 16 }}>RM</Text>
+              <View style={{ justifyContent: "center" }}>
+                <Text style={{ fontSize: 16, paddingBottom: 8 }}>RM</Text>
+              </View>
               <TextInput
                 style={{
                   flex: 1,
@@ -116,7 +124,6 @@ class CostForm extends React.Component {
               />
             </View>
           </View>
-
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
             <Text style={{ fontSize: 12, paddingVertical: 16 }}>
               Cost Centre
@@ -135,7 +142,6 @@ class CostForm extends React.Component {
               />
             </View>
           </View>
-
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
             <Text style={{ fontSize: 12, paddingVertical: 16 }}>
               Cost Category
@@ -146,8 +152,9 @@ class CostForm extends React.Component {
                 labelHeight={0}
                 label=""
                 data={data}
-                onSelect={data === "External Sponsorship"}
+                onSelect={this.onHandlerSelect}
               />
+              {this.data === "External Sponsorship" && <Text>Hi</Text>}
             </View>
           </View>
         </ScrollView>
