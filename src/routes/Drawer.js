@@ -20,25 +20,31 @@ class Home extends React.Component {
   };
 }
 
-const Drawer = DrawerNavigator({
-  Home: {
-    screen: Main,
-    navigationOptions: {
-      drawerLabel: "Home"
+const Drawer = DrawerNavigator(
+  {
+    Home: {
+      screen: Main,
+      navigationOptions: {
+        drawerLabel: "Home"
+      }
+    },
+    Guideline: {
+      screen: GuidelineHome,
+      navigationOptions: {
+        drawerLabel: "Guideline"
+      }
+    },
+    Log: {
+      screen: ActivityLog,
+      navigationOptions: {
+        drawerLabel: "Activity Log"
+      }
     }
   },
-  Guideline: {
-    screen: GuidelineHome,
-    navigationOptions: {
-      drawerLabel: "Guideline"
-    }
-  },
-  Log: {
-    screen: ActivityLog,
-    navigationOptions: {
-      drawerLabel: "Activity Log"
-    }
+  {
+    drawerBackgroundColor: "black",
+    drawerWidth: 300
   }
-});
+);
 
 export default Drawer;

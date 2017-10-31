@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/EvilIcons";
+import Cancel from "react-native-vector-icons/MaterialIcons";
 // import ActionButton from "react-native-action-button";
 // import ActionButtonIcon from "react-native-action-button/SimpleLineIcons";
 
@@ -24,7 +25,8 @@ class Request extends React.Component {
             key={applicationSingle.id}
             number={applicationSingle.number}
             destination={applicationSingle.destination}
-            name={applicationSingle.name}
+            travelFrom={applicationSingle.travelFrom}
+            travelUntil={applicationSingle.travelUntil}
             travelType={applicationSingle.travelType}
             message={applicationSingle.message}
           />
@@ -41,7 +43,8 @@ const applications = [
     id: "1",
     number: "76VD-TG7Q",
     destination: "Singapore",
-    name: "Mohammad Hafiz bin Burhan",
+    travelFrom: "18 April",
+    travelUntil: "29 April",
     travelType: "Site Survey",
     message: "Hasniza endorsed your.. "
   },
@@ -49,7 +52,8 @@ const applications = [
     id: "2",
     number: "F54Y-82V5",
     destination: "Phnom Penh, Cambodia",
-    name: "Ali Muhd Wasil bin Ali Absar",
+    travelFrom: "18 April",
+    travelUntil: "29 April",
     travelType: "Berjimba Berdansa Berdosa",
     message: "Mohd approved your.."
   },
@@ -57,7 +61,8 @@ const applications = [
     id: "3",
     number: "F54Y-82V5",
     destination: "Barcelona, Spain",
-    name: "Mohammad Saifuddin Othman bin Kamal",
+    travelFrom: "18 April",
+    travelUntil: "29 April",
     travelType: "Berjimba Berdansa Berdosa",
     message: "Lolz"
   },
@@ -65,7 +70,8 @@ const applications = [
     id: "4",
     number: "F54Y-82V5",
     destination: "Pyongyang, North Korea",
-    name: "Nur Sazaliza Hiryiani Binti Zainol Abidin",
+    travelFrom: "18 April",
+    travelUntil: "29 April",
     travelType: "Mentelaah Ilmu untuk Cukup Bekalan",
     message: "Lili Lulu Lolo"
   },
@@ -73,7 +79,8 @@ const applications = [
     id: "5",
     number: "F54Y-82V5",
     destination: "Jerusalem, Israel",
-    name: "Nur Sazaliza Hiryiani Binti Zainol Abidin",
+    travelFrom: "18 April",
+    travelUntil: "29 April",
     travelType: "Mentelaah Ilmu untuk Cukup Bekalan",
     message: "Huhu Hihi Haha"
   }
@@ -82,7 +89,8 @@ const applications = [
 const ApplicationSingle = ({
   number,
   destination,
-  name,
+  travelFrom,
+  travelUntil,
   travelType,
   message,
   navigate
@@ -98,67 +106,66 @@ const ApplicationSingle = ({
       borderRadius: 10
     }}
   >
-    <TouchableOpacity
-      onPress={() => navigate("RequestStatus")}
-      style={{
-        paddingHorizontal: 8,
-        paddingVertical: 8
-      }}
-    >
-      <View style={{ width: "100%", paddingTop: 8, paddingHorizontal: 8 }}>
-        <Text style={{ fontSize: 14, paddingBottom: 4, color: "black" }}>
-          {number}
-        </Text>
-        <Text
-          style={{
-            fontSize: 22,
-            paddingBottom: 2,
-            color: "black",
-            fontWeight: "bold"
-          }}
-        >
-          {destination}
-        </Text>
-        <Text style={{ fontSize: 16, paddingBottom: 4, color: "black" }}>
-          {name}
-        </Text>
-        <Text style={{ fontSize: 14, paddingBottom: 16, color: "black" }}>
-          {travelType}
-        </Text>
-      </View>
-      <TrackingBar />
-    </TouchableOpacity>
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "space-between",
-        backgroundColor: "#f47178",
-        paddingVertical: 4,
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10
-      }}
-    >
+    <View>
       <View
         style={{
-          justifyContent: "center",
-          paddingHorizontal: 16,
-          borderRightWidth: 1,
-          flex: 1
+          flexDirection: "row",
+          justifyContent: "space-between",
+          borderBottomWidth: 0.5,
+          paddingVertical: 16
         }}
       >
-        <Text style={{ fontWeight: "bold" }}>{message}</Text>
+        <View style={{ justifyContent: "center", paddingHorizontal: 16 }}>
+          <Text
+            style={{
+              fontSize: 14,
+              color: "black"
+            }}
+          >
+            {number}
+          </Text>
+        </View>
+        <TouchableOpacity
+          onPress={() => null}
+          style={{ justifyContent: "center", paddingRight: 16 }}
+        >
+          <Cancel name="cancel" size={24} color="#000000" />
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        onPress={() => null}
-        style={{ paddingHorizontal: 16, paddingVertical: 8 }}
-      >
-        <Icon name="trash" size={32} color="#000000" />
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => null}
-        style={{ paddingRight: 16, paddingVertical: 8 }}
-      >
-        <Icon name="close" size={32} color="#000000" />
+
+      <TouchableOpacity onPress={() => navigate("RequestForm")}>
+        <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
+          <Text
+            style={{
+              fontSize: 22,
+              paddingBottom: 4,
+              color: "black",
+              fontWeight: "bold"
+            }}
+          >
+            {travelType}
+          </Text>
+          <Text style={{ fontSize: 16, paddingBottom: 4, color: "black" }}>
+            {destination}
+          </Text>
+          <Text style={{ fontSize: 14, paddingBottom: 4, color: "#c4c4c4" }}>
+            {travelFrom} until {travelUntil} 2017
+          </Text>
+        </View>
+
+        <TrackingBar />
+
+        <View
+          style={{
+            backgroundColor: "#f47178",
+            paddingVertical: 16,
+            paddingHorizontal: 16,
+            borderBottomLeftRadius: 10,
+            borderBottomRightRadius: 10
+          }}
+        >
+          <Text style={{ fontWeight: "bold" }}>{message}</Text>
+        </View>
       </TouchableOpacity>
     </View>
   </View>

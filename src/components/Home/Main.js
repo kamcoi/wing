@@ -118,15 +118,10 @@ class Main extends Component {
         </View>
 
         <ScrollView style={{ flex: 1 }}>{displayedPage}</ScrollView>
-        <ActionButton buttonColor="#333333">
-          <ActionButton.Item
-            buttonColor="#333333"
-            title="New Task"
-            onPress={() => navigate("RequestForm")}
-          >
-            <Icon name="md-create" style={styles.actionButtonIcon} />
-          </ActionButton.Item>
-        </ActionButton>
+        <ActionButton
+          buttonColor="#333333"
+          onPress={() => navigate("RequestForm")}
+        />
       </View>
     );
   }

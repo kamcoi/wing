@@ -36,7 +36,7 @@ class TaskStatus extends React.Component {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              marginVertical: 40
+              marginTop: 32
             }}
           >
             <View
@@ -62,6 +62,10 @@ class TaskStatus extends React.Component {
               <Text style={{ fontSize: 12 }}>12 Sept 2017</Text>
               <Text style={{ fontSize: 12 }}>9.30am</Text>
             </View>
+          </View>
+
+          <View style={{ paddingVertical: 32, paddingHorizontal: 8 }}>
+            <Text>Hi</Text>
           </View>
 
           <ProfileDetails />

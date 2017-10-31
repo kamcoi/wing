@@ -13,18 +13,21 @@ const activities = [
     date: "19 October 2017",
     data: [
       {
+        id: 1,
         name: "You",
         action: "have send a",
         document: "Travel Request",
         time: "2.30pm"
       },
       {
+        id: 2,
         name: "Hasniza",
         action: "have posted a",
         document: "Comment",
         time: "2.30pm"
       },
       {
+        id: 3,
         name: "Ahmad",
         action: "have rejected your",
         document: "Travel Request",
@@ -36,12 +39,14 @@ const activities = [
     date: "20 October 2017",
     data: [
       {
+        id: 4,
         name: "You",
         action: "have send a",
         document: "Travel Request",
         time: "2.30pm"
       },
       {
+        id: 5,
         name: "Hasniza",
         action: "have posted a",
         document: "Comment",
@@ -60,6 +65,7 @@ const LogSingle = ({ data, date }) => (
     </Text>
     {data.map(activitySingle => (
       <ActivitySingle
+        key={activitySingle.id}
         name={activitySingle.name}
         action={activitySingle.action}
         document={activitySingle.document}
@@ -85,7 +91,7 @@ const ActivitySingle = ({ name, action, document, time }) => (
       <Text style={{ paddingRight: 4 }}>{action}</Text>
       <Text style={{ paddingRight: 4, fontWeight: "bold" }}>{document}</Text>
     </View>
-    <View style={{ textAlign: "center", justifyContent: "center" }}>
+    <View>
       <Text style={{ fontSize: 10 }}>{time}</Text>
     </View>
   </View>
