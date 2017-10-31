@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { DrawerNavigator } from "react-navigation";
-import Main from "../components/Home/Main";
+import Main from "../components/Home";
 import GuidelineHome from "../components/Guideline/GuidelineHome";
 import ActivityLog from "../components/Activity/ActivityLog";
 
@@ -20,31 +20,25 @@ class Home extends React.Component {
   };
 }
 
-const Drawer = DrawerNavigator(
-  {
-    Home: {
-      screen: Main,
-      navigationOptions: {
-        drawerLabel: "Home"
-      }
-    },
-    Guideline: {
-      screen: GuidelineHome,
-      navigationOptions: {
-        drawerLabel: "Guideline"
-      }
-    },
-    Log: {
-      screen: ActivityLog,
-      navigationOptions: {
-        drawerLabel: "Activity Log"
-      }
+const Drawer = DrawerNavigator({
+  Home: {
+    screen: Main,
+    navigationOptions: {
+      drawerLabel: "Home"
     }
   },
-  {
-    drawerBackgroundColor: "black",
-    drawerWidth: 300
+  Guideline: {
+    screen: GuidelineHome,
+    navigationOptions: {
+      drawerLabel: "Guideline"
+    }
+  },
+  Log: {
+    screen: ActivityLog,
+    navigationOptions: {
+      drawerLabel: "Activity Log"
+    }
   }
-);
+});
 
 export default Drawer;

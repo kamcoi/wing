@@ -25,6 +25,7 @@ class Main extends Component {
   }
   render() {
     const { navigate } = this.props.navigation;
+    const { user } = this.props;
     let displayedPage;
     switch (this.state.page) {
       case "request":
@@ -38,6 +39,7 @@ class Main extends Component {
     }
     return (
       <View style={{ flex: 1 }}>
+        <Text>{user.name}</Text>
         <View
           style={{
             flexDirection: "row",

@@ -65,7 +65,7 @@ class TaskStatus extends React.Component {
           </View>
 
           <View style={{ paddingVertical: 32, paddingHorizontal: 8 }}>
-            <Text>Hi</Text>
+            <Text>Request Form below</Text>
           </View>
 
           <ProfileDetails />
