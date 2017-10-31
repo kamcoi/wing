@@ -39,7 +39,6 @@ class Main extends Component {
     }
     return (
       <View style={{ flex: 1 }}>
-        <Text>{user.name}</Text>
         <View
           style={{
             flexDirection: "row",
@@ -56,6 +55,7 @@ class Main extends Component {
           </TouchableOpacity>
           <View style={{ flex: 0.15, alignItems: "center" }}>
             <Text style={{ fontSize: 16 }}>Home</Text>
+            <Text>{user.name}</Text>
           </View>
           <View style={{ flex: 0.15 }}>
             <Text />

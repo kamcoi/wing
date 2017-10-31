@@ -1,33 +1,58 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity
+} from "react-native";
 import Icon from "react-native-vector-icons/EvilIcons";
 import Cancel from "react-native-vector-icons/MaterialIcons";
-
-import TrackingBar from "../Bar/TrackingBar";
+import Menu from "react-native-vector-icons/Ionicons";
 
 class Task extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          marginVertical: 8
-        }}
-      >
-        {applications.map(applicationSingle => (
-          <ApplicationSingle
-            navigate={navigate}
-            key={applicationSingle.id}
-            number={applicationSingle.number}
-            name={applicationSingle.name}
-            destination={applicationSingle.destination}
-            travelType={applicationSingle.travelType}
-            cost={applicationSingle.cost}
-          />
-        ))}
+      <View style={{ flex: 1 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            backgroundColor: "#ffffff",
+            justifyContent: "space-between",
+            paddingTop: 32,
+            paddingBottom: 8
+          }}
+        >
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("DrawerOpen")}
+            style={{ flex: 0.1, alignItems: "center" }}
+          >
+            <Menu name="ios-menu" size={24} color="#000000" />
+          </TouchableOpacity>
+          <View style={{ flex: 0.15, alignItems: "center" }}>
+            <Text style={{ fontSize: 16 }}>Home</Text>
+          </View>
+          <View style={{ flex: 0.15 }}>
+            <Text />
+          </View>
+        </View>
+
+        <ScrollView style={{ flex: 1 }}>
+          <View style={{ alignItems: "center", paddingTop: 8 }}>
+            {applications.map(applicationSingle => (
+              <ApplicationSingle
+                navigate={navigate}
+                key={applicationSingle.id}
+                number={applicationSingle.number}
+                name={applicationSingle.name}
+                destination={applicationSingle.destination}
+                travelType={applicationSingle.travelType}
+                cost={applicationSingle.cost}
+              />
+            ))}
+          </View>
+        </ScrollView>
       </View>
     );
   }
@@ -101,8 +126,7 @@ const ApplicationSingle = ({
       style={{
         flexDirection: "row",
         justifyContent: "space-between",
-        borderBottomWidth: 0.5,
-        paddingVertical: 16
+        paddingTop: 16
       }}
     >
       <View style={{ justifyContent: "center", paddingHorizontal: 16 }}>
@@ -119,7 +143,7 @@ const ApplicationSingle = ({
         onPress={() => null}
         style={{ justifyContent: "center", paddingRight: 16 }}
       >
-        <Cancel name="cancel" size={24} color="#000000" />
+        <Cancel name="cancel" size={24} color="grey" />
       </TouchableOpacity>
     </View>
     <TouchableOpacity

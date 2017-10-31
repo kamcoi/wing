@@ -14,6 +14,7 @@ class SubmitForm extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     const { goBack } = this.props.navigation;
+    const { submit } = this.props;
     return (
       <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
         <StatusBar
@@ -34,7 +35,7 @@ class SubmitForm extends React.Component {
                 },
                 {
                   text: "Yes",
-                  onPress: () => navigate("Home"),
+                  onPress: () => navigate("Request"),
                   style: "default"
                 }
               ])
@@ -69,9 +70,9 @@ class SubmitForm extends React.Component {
               </Text>
             </View>
             <View style={{ paddingHorizontal: 8, justifyContent: "center" }}>
-              <Text style={{ fontSize: 12 }}>{applications.ref}</Text>
-              <Text style={{ fontSize: 12 }}>{applications.applyDate}</Text>
-              <Text style={{ fontSize: 12 }}>{applications.applyTime}</Text>
+              <Text style={{ fontSize: 12 }}>{submit.ref}</Text>
+              <Text style={{ fontSize: 12 }}>{submit.applyDate}</Text>
+              <Text style={{ fontSize: 12 }}>{submit.applyTime}</Text>
             </View>
           </View>
 
@@ -94,13 +95,13 @@ class SubmitForm extends React.Component {
             <Text
               style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}
             >
-              {applications.destination}
+              {submit.destination}
             </Text>
             <Text style={{ fontSize: 14, paddingBottom: 4 }}>
-              {applications.travelFrom} to {applications.travelUntil} 2016
+              {submit.travelFrom} to {submit.travelUntil} 2016
             </Text>
             <Text style={{ fontSize: 14, paddingBottom: 4 }}>
-              {applications.travelType}
+              {submit.travelType}
             </Text>
             <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
               Description
@@ -108,7 +109,7 @@ class SubmitForm extends React.Component {
             <Text
               style={{ fontSize: 12, lineHeight: 18, textAlign: "justify" }}
             >
-              {applications.justificationText}
+              {submit.justificationText}
             </Text>
           </View>
 
@@ -131,10 +132,10 @@ class SubmitForm extends React.Component {
             <Text
               style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}
             >
-              {applications.requestorName}
+              {submit.requestorName}
             </Text>
             <Text style={{ fontSize: 12, paddingBottom: 16 }}>
-              {applications.requestorDivision}
+              {submit.requestorDivision}
             </Text>
             <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
               Additional Travellers
@@ -147,10 +148,10 @@ class SubmitForm extends React.Component {
                 fontWeight: "bold"
               }}
             >
-              {applications.additionalTravellerName1}
+              {submit.additionalTravellerName1}
             </Text>
             <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-              {applications.additionalTravellerDivision1}
+              {submit.additionalTravellerDivision1}
             </Text>
             <Text
               style={{
@@ -160,10 +161,10 @@ class SubmitForm extends React.Component {
                 fontWeight: "bold"
               }}
             >
-              {applications.additionalTravellerName2}
+              {submit.additionalTravellerName2}
             </Text>
             <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-              {applications.additionalTravellerDivision2}
+              {submit.additionalTravellerDivision2}
             </Text>
             <Text
               style={{
@@ -173,10 +174,10 @@ class SubmitForm extends React.Component {
                 fontWeight: "bold"
               }}
             >
-              {applications.additionalTravellerName3}
+              {submit.additionalTravellerName3}
             </Text>
             <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-              {applications.additionalTravellerDivision3}
+              {submit.additionalTravellerDivision3}
             </Text>
           </View>
 
@@ -199,19 +200,19 @@ class SubmitForm extends React.Component {
             <Text
               style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}
             >
-              {applications.nominatorName}
+              {submit.nominatorName}
             </Text>
             <Text style={{ fontSize: 12, paddingBottom: 12 }}>Nominator</Text>
             <Text
               style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}
             >
-              {applications.endorserName}
+              {submit.endorserName}
             </Text>
             <Text style={{ fontSize: 12, paddingBottom: 12 }}>Endorser</Text>
             <Text
               style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}
             >
-              {applications.approverName}
+              {submit.approverName}
             </Text>
             <Text style={{ fontSize: 12, paddingBottom: 12 }}>Approver</Text>
           </View>
@@ -242,10 +243,10 @@ class SubmitForm extends React.Component {
               }}
             >
               <Text style={{ color: "grey" }}>
-                Budget - {applications.costCategory}
+                Budget - {submit.costCategory}
               </Text>
               <Text style={{ paddingRight: 8, color: "grey" }}>
-                {applications.budget}
+                {submit.budget}
               </Text>
             </View>
             <View
@@ -259,7 +260,7 @@ class SubmitForm extends React.Component {
               <Text
                 style={{ paddingRight: 8, fontSize: 18, fontWeight: "bold" }}
               >
-                {applications.cost}
+                {submit.cost}
               </Text>
             </View>
           </View>
@@ -279,7 +280,7 @@ class SubmitForm extends React.Component {
                 },
                 {
                   text: "Yes",
-                  onPress: () => navigate("Home"),
+                  onPress: () => navigate("Request"),
                   style: "default"
                 }
               ])}
@@ -303,28 +304,28 @@ class SubmitForm extends React.Component {
 
 export default SubmitForm;
 
-const applications = {
-  ref: "XSAW-532C",
-  applyDate: "12 Sept 2017",
-  applyTime: "10.20am",
-  destination: "Monte Carlo, Monaco",
-  travelFrom: "21 Oct",
-  travelUntil: "10 Nov",
-  travelType: "Site Survey",
-  justificationText:
-    "I would like to Experience the ka-cing ka-cing while experiencing the magnificent of Alain Ducasse Le Louis XV Dinner",
-  requestorName: "Ali Muhd Wasil bin Ali Absar",
-  requestorDivision: "Group Brand and Communication",
-  additionalTravellerName1: "Abu bin Ah Beng",
-  additionalTravellerDivision1: "IT&NT",
-  additionalTravellerName2: "Abu bin Ah Ngah",
-  additionalTravellerDivision2: "IT&NT",
-  additionalTravellerName3: "Abu bin Ah Teng",
-  additionalTravellerDivision3: "IT&NT",
-  nominatorName: "Jusoh bin Ali",
-  endorserName: "Ali bin Awang",
-  approverName: "Kabil bin Ali",
-  cost: "RM 12000.00",
-  budget: "RM 34000.00",
-  costCategory: "EEIU"
-};
+// const applications = {
+//   ref: "XSAW-532C",
+//   applyDate: "12 Sept 2017",
+//   applyTime: "10.20am",
+//   destination: "Monte Carlo, Monaco",
+//   travelFrom: "21 Oct",
+//   travelUntil: "10 Nov",
+//   travelType: "Site Survey",
+//   justificationText:
+//     "I would like to Experience the ka-cing ka-cing while experiencing the magnificent of Alain Ducasse Le Louis XV Dinner",
+//   requestorName: "Ali Muhd Wasil bin Ali Absar",
+//   requestorDivision: "Group Brand and Communication",
+//   additionalTravellerName1: "Abu bin Ah Beng",
+//   additionalTravellerDivision1: "IT&NT",
+//   additionalTravellerName2: "Abu bin Ah Ngah",
+//   additionalTravellerDivision2: "IT&NT",
+//   additionalTravellerName3: "Abu bin Ah Teng",
+//   additionalTravellerDivision3: "IT&NT",
+//   nominatorName: "Jusoh bin Ali",
+//   endorserName: "Ali bin Awang",
+//   approverName: "Kabil bin Ali",
+//   cost: "RM 12000.00",
+//   budget: "RM 34000.00",
+//   costCategory: "EEIU"
+// };

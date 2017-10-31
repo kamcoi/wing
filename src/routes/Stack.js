@@ -6,10 +6,9 @@ import RequestForm from "../components/RequestForm/RequestForm";
 import TravelForm from "../components/RequestForm/TravelForm";
 import CostForm from "../components/RequestForm/CostForm";
 import ApprovalForm from "../components/RequestForm/ApprovalForm";
-import TaskForm from "../components/Task/TaskForm";
 import TaskStatus from "../components/TaskStatus/TaskStatus";
 import RequestStatus from "../components/RequestStatus/RequestStatus";
-import SubmitForm from "../components/SubmitForm/SubmitForm";
+import SubmitForm from "../components/SubmitForm";
 import AddFriends from "../components/AddFriends/AddFriends";
 import Comments from "../components/Comments/Comments";
 import GuidelineHome from "../components/Guideline/GuidelineHome";
@@ -34,12 +33,6 @@ const Stack = StackNavigator({
       header: null
     })
   },
-  TravelForm: {
-    screen: TravelForm,
-    navigationOptions: ({ navigation }) => ({
-      header: null
-    })
-  },
   CostForm: {
     screen: CostForm,
     navigationOptions: ({ navigation }) => ({
@@ -54,12 +47,6 @@ const Stack = StackNavigator({
   },
   SubmitForm: {
     screen: SubmitForm,
-    navigationOptions: ({ navigation }) => ({
-      header: null
-    })
-  },
-  TaskForm: {
-    screen: TaskForm,
     navigationOptions: ({ navigation }) => ({
       header: null
     })
@@ -90,6 +77,12 @@ const Stack = StackNavigator({
   },
   GuidelineContent: {
     screen: GuidelineContent,
+    navigationOptions: ({ navigation }) => ({
+      header: null
+    })
+  },
+  TravelForm: {
+    screen: TravelForm,
     navigationOptions: ({ navigation }) => ({
       header: null
     })

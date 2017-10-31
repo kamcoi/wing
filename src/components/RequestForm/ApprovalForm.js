@@ -62,7 +62,7 @@ class ApprovalForm extends React.Component {
                 },
                 {
                   text: "Yes",
-                  onPress: () => navigate("Home"),
+                  onPress: () => navigate("Request"),
                   style: "default"
                 }
               ])

@@ -1,6 +1,8 @@
-import { combineReducers } from 'redux'
-import user from './user/reducer'
+import { combineReducers } from "redux";
+import requestHome from "./requestHome/reducer";
+import submitForm from "./submitForm/reducer";
 
 export default combineReducers({
-  user
-})
+  requestHome,
+  submitForm
+});

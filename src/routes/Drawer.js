@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { DrawerNavigator } from "react-navigation";
-import Main from "../components/Home";
+import Tabs from "./Tabs";
 import GuidelineHome from "../components/Guideline/GuidelineHome";
 import ActivityLog from "../components/Activity/ActivityLog";
 
@@ -21,8 +21,8 @@ class Home extends React.Component {
 }
 
 const Drawer = DrawerNavigator({
-  Home: {
-    screen: Main,
+  Tabs: {
+    screen: Tabs,
     navigationOptions: {
       drawerLabel: "Home"
     }

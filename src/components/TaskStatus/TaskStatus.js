@@ -64,8 +64,16 @@ class TaskStatus extends React.Component {
             </View>
           </View>
 
-          <View style={{ paddingVertical: 32, paddingHorizontal: 8 }}>
-            <Text>Request Form below</Text>
+          <View
+            style={{
+              paddingVertical: 32,
+              paddingHorizontal: 8,
+              alignItems: "center"
+            }}
+          >
+            <Text style={{ fontWeight: "bold" }}>
+              Request Form below is pending your approval
+            </Text>
           </View>
 
           <ProfileDetails />
