@@ -2,15 +2,15 @@ import React from "react";
 import { Image, Text, View, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import Drawer from "./Drawer";
-import RequestForm from "../components/RequestForm/RequestForm";
+import ProfileForm from "../components/RequestForm/ProfileForm";
 import TravelForm from "../components/RequestForm/TravelForm";
 import CostForm from "../components/RequestForm/CostForm";
 import ApprovalForm from "../components/RequestForm/ApprovalForm";
-import TaskStatus from "../components/TaskStatus/TaskStatus";
-import RequestStatus from "../components/RequestStatus/RequestStatus";
+import TaskStatus from "../components/TaskStatus";
+import RequestStatus from "../components/RequestStatus";
 import SubmitForm from "../components/SubmitForm";
 import AddFriends from "../components/AddFriends/AddFriends";
-import Comments from "../components/Comments/Comments";
+import Comments from "../components/Comments";
 import GuidelineHome from "../components/Guideline/GuidelineHome";
 import GuidelineContent from "../components/Guideline/GuidelineContent";
 
@@ -21,8 +21,8 @@ const Stack = StackNavigator({
       header: null
     })
   },
-  RequestForm: {
-    screen: RequestForm,
+  ProfileForm: {
+    screen: ProfileForm,
     navigationOptions: ({ navigation }) => ({
       header: null
     })

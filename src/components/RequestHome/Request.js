@@ -28,8 +28,7 @@ class Request extends React.Component {
             backgroundColor: "#ffffff",
             justifyContent: "space-between",
             paddingTop: 32,
-            paddingBottom: 8,
-            marginBottom: 16
+            paddingBottom: 8
           }}
         >
           <TouchableOpacity
@@ -46,7 +45,7 @@ class Request extends React.Component {
           </View>
         </View>
 
-        <View style={{ paddingVertical: 15, paddingHorizontal: 15 }}>
+        <View style={{ flex: 1, paddingHorizontal: 8 }}>
           <FlatList
             data={request1}
             keyExtractor={(item, index) => item.id}
@@ -66,7 +65,7 @@ class Request extends React.Component {
 
         <ActionButton
           buttonColor="#333333"
-          onPress={() => navigate("RequestForm")}
+          onPress={() => navigate("ProfileForm")}
         />
       </View>
     );
@@ -95,21 +94,6 @@ const ApplicationSingle = ({
     }}
   >
     <View>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          paddingTop: 16
-        }}
-      >
-        <TouchableOpacity
-          onPress={() => null}
-          style={{ justifyContent: "center", paddingRight: 16 }}
-        >
-          <Cancel name="cancel" size={24} color="grey" />
-        </TouchableOpacity>
-      </View>
-
       <TouchableOpacity onPress={() => navigate("RequestStatus")}>
         <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
           <Text

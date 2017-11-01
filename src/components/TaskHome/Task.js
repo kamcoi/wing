@@ -4,7 +4,8 @@ import {
   Text,
   View,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  FlatList
 } from "react-native";
 import Icon from "react-native-vector-icons/EvilIcons";
 import Cancel from "react-native-vector-icons/MaterialIcons";
@@ -13,6 +14,7 @@ import Menu from "react-native-vector-icons/Ionicons";
 class Task extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
+    const { task } = this.props;
     return (
       <View style={{ flex: 1 }}>
         <View
@@ -38,21 +40,22 @@ class Task extends React.Component {
           </View>
         </View>
 
-        <ScrollView style={{ flex: 1 }}>
-          <View style={{ alignItems: "center", paddingTop: 8 }}>
-            {applications.map(applicationSingle => (
+        <View style={{ flex: 1, paddingHorizontal: 8 }}>
+          <FlatList
+            data={task}
+            keyExtractor={(item, index) => item.id}
+            renderItem={({ item }) => (
               <ApplicationSingle
                 navigate={navigate}
-                key={applicationSingle.id}
-                number={applicationSingle.number}
-                name={applicationSingle.name}
-                destination={applicationSingle.destination}
-                travelType={applicationSingle.travelType}
-                cost={applicationSingle.cost}
+                id={item.id}
+                requestorName={item.requestorName}
+                destination={item.destination}
+                travelType={item.travelType}
+                cost={item.cost}
               />
-            ))}
-          </View>
-        </ScrollView>
+            )}
+          />
+        </View>
       </View>
     );
   }
@@ -60,52 +63,9 @@ class Task extends React.Component {
 
 export default Task;
 
-const applications = [
-  {
-    id: "1",
-    number: "76VD-TG7Q",
-    name: "Mohammad Hafiz bin Burhan",
-    destination: "Las Vegas, United States",
-    travelType: "Site Survey",
-    cost: "2.6 billion"
-  },
-  {
-    id: "2",
-    number: "F54Y-82V5",
-    name: "Ali Muhd Wasil bin Ali Absar",
-    destination: "Shanghai, China",
-    travelType: "Berjimba Berdansa Berdosa",
-    cost: "3.1 billion"
-  },
-  {
-    id: "3",
-    number: "F54Y-82V5",
-    name: "Mohammad Saifuddin Othman bin Kamal",
-    destination: "Sarawak, Malaysia",
-    travelType: "Berjimba Berdansa Berdosa",
-    cost: "1 trillion"
-  },
-  {
-    id: "4",
-    number: "F54Y-82V5",
-    name: "Nur Sazaliza Hiryiani Binti Zainol Abidin",
-    destination: "Hawaii, United States",
-    travelType: "Mentelaah Ilmu untuk Cukup Bekalan",
-    cost: "2.6 billion"
-  },
-  {
-    id: "5",
-    number: "F54Y-82V5",
-    name: "Nur Sazaliza Hiryiani Binti Zainol Abidin",
-    destination: "Ho Chi Minh, Vietnam",
-    travelType: "Mentelaah Ilmu untuk Cukup Bekalan",
-    cost: "3.1 billion"
-  }
-];
-
 const ApplicationSingle = ({
-  number,
-  name,
+  id,
+  requestorName,
   destination,
   travelType,
   navigate,
@@ -115,37 +75,12 @@ const ApplicationSingle = ({
     style={{
       shadowOpacity: 0.3,
       flex: 0.3,
-      width: "95%",
       marginBottom: 16,
       justifyContent: "flex-start",
       backgroundColor: "#ffffff",
       borderRadius: 10
     }}
   >
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "space-between",
-        paddingTop: 16
-      }}
-    >
-      <View style={{ justifyContent: "center", paddingHorizontal: 16 }}>
-        <Text
-          style={{
-            fontSize: 14,
-            color: "black"
-          }}
-        >
-          {number}
-        </Text>
-      </View>
-      <TouchableOpacity
-        onPress={() => null}
-        style={{ justifyContent: "center", paddingRight: 16 }}
-      >
-        <Cancel name="cancel" size={24} color="grey" />
-      </TouchableOpacity>
-    </View>
     <TouchableOpacity
       onPress={() => navigate("TaskStatus")}
       style={{
@@ -162,7 +97,7 @@ const ApplicationSingle = ({
             fontWeight: "bold"
           }}
         >
-          {name}
+          {requestorName}
         </Text>
         <Text style={{ fontSize: 16, paddingBottom: 4, color: "#000000" }}>
           {destination}

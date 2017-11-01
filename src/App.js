@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { AsyncStorage, StatusBar, StyleSheet, Text, View } from 'react-native'
-import { compose, createStore, applyMiddleware } from 'redux'
-import { persistStore, autoRehydrate } from 'redux-persist'
-import thunk from 'redux-thunk'
-import { Provider } from 'react-redux'
-import Stack from './routes/Stack'
+import React, { Component } from "react";
+import { AsyncStorage, StatusBar, StyleSheet, Text, View } from "react-native";
+import { compose, createStore, applyMiddleware } from "redux";
+import { persistStore, autoRehydrate } from "redux-persist";
+import thunk from "redux-thunk";
+import { Provider } from "react-redux";
+import Stack from "./routes/Stack";
 
-import reducers from './redux/reducers'
-const store = createStore(reducers, undefined, compose(applyMiddleware(thunk)))
+import reducers from "./redux/reducers";
+const store = createStore(reducers, undefined, compose(applyMiddleware(thunk)));
 
 // const store = createStore(
 //   reducer,
@@ -20,6 +20,7 @@ const store = createStore(reducers, undefined, compose(applyMiddleware(thunk)))
 
 export default class wing extends Component {
   render() {
+    console.disableYellowBox = true;
     return (
       <Provider store={store}>
         <View style={styles.container}>
@@ -27,7 +28,7 @@ export default class wing extends Component {
           <Stack />
         </View>
       </Provider>
-    )
+    );
   }
 }
 
@@ -36,6 +37,6 @@ const styles = StyleSheet.create({
     flex: 1,
     // justifyContent: 'center',
     // alignItems: 'center',
-    backgroundColor: '#FFFFFF'
+    backgroundColor: "#FFFFFF"
   }
-})
+});

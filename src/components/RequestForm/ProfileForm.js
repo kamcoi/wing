@@ -12,7 +12,7 @@ import {
 import Icon from "react-native-vector-icons/EvilIcons";
 import NavigationBar from "react-native-navbar";
 
-class RequestForm extends React.Component {
+class ProfileForm extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     const { goBack } = this.props.navigation;
@@ -84,7 +84,7 @@ class RequestForm extends React.Component {
   }
 }
 
-export default RequestForm;
+export default ProfileForm;
 
 const FormBar = () => (
   <View

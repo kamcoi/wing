@@ -17,6 +17,7 @@ class TaskStatus extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     const { goBack } = this.props.navigation;
+    const { status } = this.props;
     return (
       <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
         <NavigationBar
@@ -58,9 +59,9 @@ class TaskStatus extends React.Component {
               </Text>
             </View>
             <View style={{ paddingHorizontal: 8, justifyContent: "center" }}>
-              <Text style={{ fontSize: 12 }}>XCSD-12BG</Text>
-              <Text style={{ fontSize: 12 }}>12 Sept 2017</Text>
-              <Text style={{ fontSize: 12 }}>9.30am</Text>
+              <Text style={{ fontSize: 12 }}>{status.ref}</Text>
+              <Text style={{ fontSize: 12 }}>{status.applyDate}</Text>
+              <Text style={{ fontSize: 12 }}>{status.applyTime}</Text>
             </View>
           </View>
 
@@ -76,11 +77,118 @@ class TaskStatus extends React.Component {
             </Text>
           </View>
 
-          <ProfileDetails />
+          <View style={{ paddingHorizontal: 8, paddingBottom: 32 }}>
+            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
+              Profile Details
+            </Text>
+            <Text
+              style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}
+            >
+              {status.requestorName}
+            </Text>
+            <Text style={{ fontSize: 12, paddingBottom: 16 }}>
+              {status.requestorDivision}
+            </Text>
+            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
+              Additional Travellers
+            </Text>
+            <Text
+              style={{
+                paddingLeft: 8,
+                fontSize: 14,
+                paddingBottom: 4,
+                fontWeight: "bold"
+              }}
+            >
+              {status.additionalTravellerName1}
+            </Text>
+            <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
+              {status.additionalTravellerDivision1}
+            </Text>
+            <Text
+              style={{
+                paddingLeft: 8,
+                fontSize: 14,
+                paddingBottom: 4,
+                fontWeight: "bold"
+              }}
+            >
+              {status.additionalTravellerName2}
+            </Text>
+            <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
+              {status.additionalTravellerDivision2}
+            </Text>
+            <Text
+              style={{
+                paddingLeft: 8,
+                fontSize: 14,
+                paddingBottom: 4,
+                fontWeight: "bold"
+              }}
+            >
+              {status.additionalTravellerName3}
+            </Text>
+            <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
+              {status.additionalTravellerDivision3}
+            </Text>
+          </View>
 
-          <TravelDetails />
+          <View style={{ paddingHorizontal: 8, paddingBottom: 40 }}>
+            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
+              Travel Details
+            </Text>
+            <Text
+              style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}
+            >
+              {status.destination}
+            </Text>
+            <Text style={{ fontSize: 14, paddingBottom: 4 }}>
+              {status.travelFrom} to {status.travelUntil} 2016
+            </Text>
+            <Text style={{ fontSize: 14, paddingBottom: 4 }}>Site Survey</Text>
+            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
+              Description
+            </Text>
+            <Text
+              style={{ fontSize: 12, lineHeight: 18, textAlign: "justify" }}
+            >
+              {status.justificationText}
+            </Text>
+          </View>
 
-          <CostDetails />
+          <View style={{ paddingBottom: 40, paddingHorizontal: 8 }}>
+            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
+              Cost Details
+            </Text>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                paddingBottom: 8,
+                borderBottomWidth: 0.5,
+                borderColor: "#c4c4c4"
+              }}
+            >
+              <Text style={{ color: "grey" }}>Budget {status.costCentre}</Text>
+              <Text style={{ paddingRight: 8, color: "grey" }}>
+                RM{status.budget}
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                paddingVertical: 8
+              }}
+            >
+              <Text style={{ fontSize: 18 }}>TOTAL</Text>
+              <Text
+                style={{ paddingRight: 8, fontSize: 18, fontWeight: "bold" }}
+              >
+                RM{status.cost}
+              </Text>
+            </View>
+          </View>
 
           <CalltoAction />
 
@@ -105,12 +213,9 @@ class TaskStatus extends React.Component {
             style={{ flex: 1, paddingVertical: 8, paddingHorizontal: 16 }}
           >
             <Text style={{ fontWeight: "bold", paddingBottom: 2 }}>
-              Hasniza binti Mohamed
+              {status.endorserName}
             </Text>
-            <Text>
-              Hafiz, I did not expect that you can be this good! Keep up the
-              good work!
-            </Text>
+            <Text>{status.commentText}</Text>
           </TouchableOpacity>
 
           <View
@@ -209,117 +314,6 @@ const CalltoAction = () => (
         </TouchableOpacity>
         <Text style={{ fontSize: 12 }}>Reject</Text>
       </View>
-    </View>
-  </View>
-);
-
-const TravelDetails = () => (
-  <View style={{ paddingHorizontal: 8, paddingBottom: 40 }}>
-    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
-      Travel Details
-    </Text>
-    <Text style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}>
-      Seremban, Negeri Sembilan
-    </Text>
-    <Text style={{ fontSize: 14, paddingBottom: 4 }}>
-      17 Sept to 18 Oct 2016
-    </Text>
-    <Text style={{ fontSize: 14, paddingBottom: 4 }}>Site Survey</Text>
-    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
-      Description
-    </Text>
-    <Text style={{ fontSize: 12, lineHeight: 18, textAlign: "justify" }}>
-      Kan ku kenang semua suara mu, oh sayang. Janganlah dikau pergi
-      meninggalkan aku keseorangan di sini. Betapa kejamnya hatimu, sanggup
-      meninggalkan ku seorang diri di sini.
-    </Text>
-  </View>
-);
-
-const ProfileDetails = () => (
-  <View style={{ paddingHorizontal: 8, paddingBottom: 32 }}>
-    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
-      Profile Details
-    </Text>
-    <Text style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}>
-      Mohammad Hafiz bin Burhanuddin Helmi
-    </Text>
-    <Text style={{ fontSize: 12, paddingBottom: 16 }}>
-      Group Digital Centre
-    </Text>
-    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
-      Additional Travellers
-    </Text>
-    <Text
-      style={{
-        paddingLeft: 8,
-        fontSize: 14,
-        paddingBottom: 4,
-        fontWeight: "bold"
-      }}
-    >
-      Ali Muhd Wasil bin Ali Absar
-    </Text>
-    <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-      Group Digital Centre
-    </Text>
-    <Text
-      style={{
-        paddingLeft: 8,
-        fontSize: 14,
-        paddingBottom: 4,
-        fontWeight: "bold"
-      }}
-    >
-      Engku Fariez bin Engku Azahan
-    </Text>
-    <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-      Group Digital Centre
-    </Text>
-    <Text
-      style={{
-        paddingLeft: 8,
-        fontSize: 14,
-        paddingBottom: 4,
-        fontWeight: "bold"
-      }}
-    >
-      Khairold Safri bin Ibrahim
-    </Text>
-    <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-      Group Digital Centre
-    </Text>
-  </View>
-);
-
-const CostDetails = () => (
-  <View style={{ paddingBottom: 40, paddingHorizontal: 8 }}>
-    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
-      Cost Details
-    </Text>
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "space-between",
-        paddingBottom: 8,
-        borderBottomWidth: 0.5,
-        borderColor: "#c4c4c4"
-      }}
-    >
-      <Text style={{ color: "grey" }}>Budget (BMCE02)</Text>
-      <Text style={{ paddingRight: 8, color: "grey" }}>RM43,000.00</Text>
-    </View>
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "space-between",
-        paddingVertical: 8
-      }}
-    >
-      <Text style={{ fontSize: 18 }}>TOTAL</Text>
-      <Text style={{ paddingRight: 8, fontSize: 18, fontWeight: "bold" }}>
-        RM43,000.00
-      </Text>
     </View>
   </View>
 );

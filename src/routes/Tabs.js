@@ -1,7 +1,7 @@
 import React from "react";
 import { TabNavigator, TabBarBottom } from "react-navigation";
 import Request from "../components/RequestHome";
-import Task from "../components/TaskHome/Task";
+import Task from "../components/TaskHome";
 import { Icon } from "react-native-elements";
 
 const navOps = iconName => ({ navigation }) => ({

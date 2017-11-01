@@ -18,6 +18,7 @@ class RequestStatus extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     const { goBack } = this.props.navigation;
+    const { reqStatus } = this.props;
     return (
       <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
         <NavigationBar
@@ -62,16 +63,150 @@ class RequestStatus extends React.Component {
               </Text>
             </View>
             <View style={{ paddingHorizontal: 8, justifyContent: "center" }}>
-              <Text style={{ fontSize: 12 }}>XCSD-12BG</Text>
-              <Text style={{ fontSize: 12 }}>12 Sept 2017</Text>
-              <Text style={{ fontSize: 12 }}>9.30am</Text>
+              <Text style={{ fontSize: 12 }}>{reqStatus.ref}</Text>
+              <Text style={{ fontSize: 12 }}>{reqStatus.applyDate}</Text>
+              <Text style={{ fontSize: 12 }}>{reqStatus.applyTime}</Text>
             </View>
           </View>
 
-          <TravelDetails />
-          <ProfileDetails />
-          <ApproverDetails />
-          <CostDetails />
+          <View style={{ paddingHorizontal: 8, paddingBottom: 40 }}>
+            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
+              Travel Details
+            </Text>
+            <Text
+              style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}
+            >
+              {reqStatus.destination}
+            </Text>
+            <Text style={{ fontSize: 14, paddingBottom: 4 }}>
+              {reqStatus.travelFrom} to {reqStatus.travelUntil} 2016
+            </Text>
+            <Text style={{ fontSize: 14, paddingBottom: 4 }}>Site Survey</Text>
+            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
+              Description
+            </Text>
+            <Text
+              style={{ fontSize: 12, lineHeight: 18, textAlign: "justify" }}
+            >
+              {reqStatus.justificationText}
+            </Text>
+          </View>
+
+          <View style={{ paddingHorizontal: 8, paddingBottom: 32 }}>
+            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
+              Profile Details
+            </Text>
+            <Text
+              style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}
+            >
+              {reqStatus.requestorName}
+            </Text>
+            <Text style={{ fontSize: 12, paddingBottom: 16 }}>
+              {reqStatus.requestorDivision}
+            </Text>
+            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
+              Additional Travellers
+            </Text>
+            <Text
+              style={{
+                paddingLeft: 8,
+                fontSize: 14,
+                paddingBottom: 4,
+                fontWeight: "bold"
+              }}
+            >
+              {reqStatus.additionalTravellerName1}
+            </Text>
+            <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
+              {reqStatus.additionalTravellerDivision1}
+            </Text>
+            <Text
+              style={{
+                paddingLeft: 8,
+                fontSize: 14,
+                paddingBottom: 4,
+                fontWeight: "bold"
+              }}
+            >
+              {reqStatus.additionalTravellerName2}
+            </Text>
+            <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
+              {reqStatus.additionalTravellerDivision2}
+            </Text>
+            <Text
+              style={{
+                paddingLeft: 8,
+                fontSize: 14,
+                paddingBottom: 4,
+                fontWeight: "bold"
+              }}
+            >
+              {reqStatus.additionalTravellerName3}
+            </Text>
+            <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
+              {reqStatus.additionalTravellerDivision3}
+            </Text>
+          </View>
+
+          <View style={{ paddingHorizontal: 8, paddingBottom: 32 }}>
+            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
+              Approvers Details
+            </Text>
+            <Text
+              style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}
+            >
+              {reqStatus.endorserName}
+            </Text>
+            <Text style={{ fontSize: 12, paddingBottom: 12 }}>Nominator</Text>
+            <Text
+              style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}
+            >
+              {reqStatus.nominatorName}
+            </Text>
+            <Text style={{ fontSize: 12, paddingBottom: 12 }}>Endorser</Text>
+            <Text
+              style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}
+            >
+              {reqStatus.approverName}
+            </Text>
+            <Text style={{ fontSize: 12, paddingBottom: 12 }}>Approver</Text>
+          </View>
+
+          <View style={{ paddingBottom: 40, paddingHorizontal: 8 }}>
+            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
+              Cost Details
+            </Text>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                paddingBottom: 8,
+                borderBottomWidth: 0.5,
+                borderColor: "#c4c4c4"
+              }}
+            >
+              <Text style={{ color: "grey" }}>
+                Budget {reqStatus.costCentre}
+              </Text>
+              <Text style={{ paddingRight: 8, color: "grey" }}>
+                RM{reqStatus.budget}
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                paddingVertical: 8
+              }}
+            >
+              <Text style={{ fontSize: 18 }}>TOTAL</Text>
+              <Text
+                style={{ paddingRight: 8, fontSize: 18, fontWeight: "bold" }}
+              >
+                RM{reqStatus.cost}
+              </Text>
+            </View>
+          </View>
 
           <View>
             <View
@@ -95,12 +230,9 @@ class RequestStatus extends React.Component {
               style={{ flex: 1, paddingVertical: 8, paddingHorizontal: 16 }}
             >
               <Text style={{ fontWeight: "bold", paddingBottom: 2 }}>
-                Hasniza binti Mohamed
+                {reqStatus.approverName}
               </Text>
-              <Text>
-                Hafiz, I did not expect that you can be this good! Keep up the
-                good work!
-              </Text>
+              <Text>{reqStatus.commentText}</Text>
             </TouchableOpacity>
 
             <View
@@ -139,134 +271,3 @@ class RequestStatus extends React.Component {
 }
 
 export default RequestStatus;
-
-const TravelDetails = () => (
-  <View style={{ paddingHorizontal: 8, paddingBottom: 40 }}>
-    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
-      Travel Details
-    </Text>
-    <Text style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}>
-      Seremban, Negeri Sembilan
-    </Text>
-    <Text style={{ fontSize: 14, paddingBottom: 4 }}>
-      17 Sept to 18 Oct 2016
-    </Text>
-    <Text style={{ fontSize: 14, paddingBottom: 4 }}>Site Survey</Text>
-    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
-      Description
-    </Text>
-    <Text style={{ fontSize: 12, lineHeight: 18, textAlign: "justify" }}>
-      Kan ku kenang semua suara mu, oh sayang. Janganlah dikau pergi
-      meninggalkan aku keseorangan di sini. Betapa kejamnya hatimu, sanggup
-      meninggalkan ku seorang diri di sini.
-    </Text>
-  </View>
-);
-
-const ProfileDetails = () => (
-  <View style={{ paddingHorizontal: 8, paddingBottom: 32 }}>
-    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
-      Profile Details
-    </Text>
-    <Text style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}>
-      Mohammad Hafiz bin Burhanuddin Helmi
-    </Text>
-    <Text style={{ fontSize: 12, paddingBottom: 16 }}>
-      Group Digital Centre
-    </Text>
-    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
-      Additional Travellers
-    </Text>
-    <Text
-      style={{
-        paddingLeft: 8,
-        fontSize: 14,
-        paddingBottom: 4,
-        fontWeight: "bold"
-      }}
-    >
-      Ali Muhd Wasil bin Ali Absar
-    </Text>
-    <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-      Group Digital Centre
-    </Text>
-    <Text
-      style={{
-        paddingLeft: 8,
-        fontSize: 14,
-        paddingBottom: 4,
-        fontWeight: "bold"
-      }}
-    >
-      Engku Fariez bin Engku Azahan
-    </Text>
-    <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-      Group Digital Centre
-    </Text>
-    <Text
-      style={{
-        paddingLeft: 8,
-        fontSize: 14,
-        paddingBottom: 4,
-        fontWeight: "bold"
-      }}
-    >
-      Khairold Safri bin Ibrahim
-    </Text>
-    <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-      Group Digital Centre
-    </Text>
-  </View>
-);
-
-const ApproverDetails = () => (
-  <View style={{ paddingHorizontal: 8, paddingBottom: 32 }}>
-    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
-      Approvers Details
-    </Text>
-    <Text style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}>
-      Hasniza binti Mohamed
-    </Text>
-    <Text style={{ fontSize: 12, paddingBottom: 12 }}>Nominator</Text>
-    <Text style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}>
-      Ahmad Azhar bin Yahya
-    </Text>
-    <Text style={{ fontSize: 12, paddingBottom: 12 }}>Endorser</Text>
-    <Text style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}>
-      Dato Sri Mohammed Shazalli bin Ramly
-    </Text>
-    <Text style={{ fontSize: 12, paddingBottom: 12 }}>Approver</Text>
-  </View>
-);
-
-const CostDetails = () => (
-  <View style={{ paddingBottom: 40, paddingHorizontal: 8 }}>
-    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
-      Cost Details
-    </Text>
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "space-between",
-        paddingBottom: 8,
-        borderBottomWidth: 0.5,
-        borderColor: "#c4c4c4"
-      }}
-    >
-      <Text style={{ color: "grey" }}>Budget (BMCE02)</Text>
-      <Text style={{ paddingRight: 8, color: "grey" }}>RM43,000.00</Text>
-    </View>
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "space-between",
-        paddingVertical: 8
-      }}
-    >
-      <Text style={{ fontSize: 18 }}>TOTAL</Text>
-      <Text style={{ paddingRight: 8, fontSize: 18, fontWeight: "bold" }}>
-        RM43,000.00
-      </Text>
-    </View>
-  </View>
-);

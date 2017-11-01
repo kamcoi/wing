@@ -6,7 +6,8 @@ import {
   View,
   ScrollView,
   KeyboardAvoidingView,
-  TouchableOpacity
+  TouchableOpacity,
+  FlatList
 } from "react-native";
 import Send from "react-native-vector-icons/MaterialIcons";
 import NavigationBar from "react-native-navbar";
@@ -14,6 +15,7 @@ import NavigationBar from "react-native-navbar";
 class Comments extends React.Component {
   render() {
     const { goBack } = this.props.navigation;
+    const { comment1, comment2 } = this.props;
     return (
       <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
         <NavigationBar
@@ -28,21 +30,51 @@ class Comments extends React.Component {
           }}
         />
 
-        <ChatHeading
-          destination={ChatHeading.destination}
-          date={ChatHeading.date}
-          travelType={ChatHeading.travelType}
-          name={ChatHeading.name}
-        />
+        <View
+          style={{
+            marginHorizontal: 8,
+            paddingHorizontal: 8,
+            paddingVertical: 16,
+            borderBottomWidth: 1
+          }}
+        >
+          <Text style={{ paddingBottom: 4, fontSize: 24, fontWeight: "bold" }}>
+            {comment1.destination}
+          </Text>
+          <Text style={{ paddingBottom: 4, fontSize: 14 }}>
+            {comment1.travelFrom} until {comment1.travelUntil}
+          </Text>
+          <Text style={{ paddingBottom: 4, fontSize: 14 }}>
+            {comment1.travelType}
+          </Text>
+          <View style={{ flexDirection: "row", paddingBottom: 4 }}>
+            <Text style={{ fontSize: 14 }}>By:</Text>
+            <Text style={{ paddingLeft: 8, fontSize: 14, color: "green" }}>
+              {comment1.name}
+            </Text>
+          </View>
+          <View style={{ flexDirection: "row" }}>
+            <Text style={{ fontSize: 14 }}>Status:</Text>
+            <Text style={{ paddingLeft: 8, fontSize: 14, color: "#f27178" }}>
+              {comment1.statusText}
+            </Text>
+          </View>
+        </View>
 
         <ScrollView style={{ flex: 1 }}>
-          {comments.map(chatSingle => (
-            <ChatSingle
-              name={chatSingle.name}
-              text={chatSingle.text}
-              time={chatSingle.time}
-            />
-          ))}
+          <FlatList
+            data={comment2}
+            keyExtractor={(item, index) => item.id}
+            renderItem={({ item }) => (
+              <ChatSingle
+                id={item.id}
+                requestorName={item.requestorName}
+                commentText={item.commentText}
+                submitDate={item.submitDate}
+                submitTime={item.submitTime}
+              />
+            )}
+          />
         </ScrollView>
 
         <KeyboardAvoidingView
@@ -81,36 +113,13 @@ class Comments extends React.Component {
 
 export default Comments;
 
-const ChatHeading = ({ destination, date, travelType, name }) => (
-  <View
-    style={{
-      marginHorizontal: 8,
-      paddingHorizontal: 8,
-      paddingVertical: 16,
-      borderBottomWidth: 1
-    }}
-  >
-    <Text style={{ paddingBottom: 4, fontSize: 24, fontWeight: "bold" }}>
-      {details.destination}
-    </Text>
-    <Text style={{ paddingBottom: 4, fontSize: 14 }}>{details.date}</Text>
-    <Text style={{ paddingBottom: 4, fontSize: 14 }}>{details.travelType}</Text>
-    <View style={{ flexDirection: "row", paddingBottom: 4 }}>
-      <Text style={{ fontSize: 14 }}>By:</Text>
-      <Text style={{ paddingLeft: 8, fontSize: 14, color: "green" }}>
-        {details.name}
-      </Text>
-    </View>
-    <View style={{ flexDirection: "row" }}>
-      <Text style={{ fontSize: 14 }}>Status:</Text>
-      <Text style={{ paddingLeft: 8, fontSize: 14, color: "#f27178" }}>
-        {details.status}
-      </Text>
-    </View>
-  </View>
-);
-
-const ChatSingle = ({ name, text, time }) => (
+const ChatSingle = ({
+  id,
+  requestorName,
+  commentText,
+  submitDate,
+  submitTime
+}) => (
   <View
     style={{
       paddingHorizontal: 16,
@@ -120,37 +129,12 @@ const ChatSingle = ({ name, text, time }) => (
       marginHorizontal: 8
     }}
   >
-    <Text style={{ fontWeight: "bold", paddingBottom: 4 }}>{name}</Text>
-    <Text style={{ paddingBottom: 4, lineHeight: 18 }}>{text}</Text>
-    <Text style={{ fontSize: 12, color: "#c4c4c4" }}>{time}</Text>
+    <Text style={{ fontWeight: "bold", paddingBottom: 4 }}>
+      {requestorName}
+    </Text>
+    <Text style={{ paddingBottom: 4, lineHeight: 18 }}>{commentText}</Text>
+    <Text style={{ fontSize: 12, color: "#c4c4c4" }}>
+      {submitDate}, {submitTime}
+    </Text>
   </View>
 );
-
-const comments = [
-  {
-    name: "Ali Muhd Wasil bin Ali Absar",
-    text:
-      "Hafiz, where can we have all beautiful shawties around that area? I want them like right now!",
-    time: "17 Oct 2017, 3.20pm"
-  },
-  {
-    name: "Mohammad Hafiz bin Burhan",
-    text:
-      "Hold your horses my comrad, a good man is a man that can hold their lust without giving them up! Conquer your desire and become a great leader like Khairold!",
-    time: "17 Oct 2017, 5.01pm"
-  },
-  {
-    name: "Engku Fariez bin Engku Azahan",
-    text:
-      "Did you guys forget about me? Ali, Hafiz, spare me a blonde for a night? Or maybe two? Tired of having a brunette",
-    time: "18 Oct 2017 8.30am"
-  }
-];
-
-const details = {
-  destination: "Phnom Penh, Cambodia",
-  date: "2 Oct until 18 Oct 2017",
-  travelType: "Meeting",
-  name: "Mohammad Hafiz bin Burhan",
-  status: "Nomination Rejected"
-};
