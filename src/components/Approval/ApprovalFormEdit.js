@@ -18,6 +18,7 @@ class ApprovalForm extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     const { goBack } = this.props.navigation;
+    const { approver } = this.props;
     let data = [
       {
         value: "AGM and below"
@@ -53,19 +54,8 @@ class ApprovalForm extends React.Component {
           style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
           title={{ title: "New Request" }}
           leftButton={{
-            title: "Exit",
-            handler: () =>
-              Alert.alert("confirm to Exit without submitting?", "Lala", [
-                {
-                  text: "No",
-                  style: "destructive"
-                },
-                {
-                  text: "Yes",
-                  onPress: () => navigate("Request"),
-                  style: "default"
-                }
-              ])
+            title: "Back",
+            handler: () => goBack()
           }}
         />
 
@@ -95,6 +85,7 @@ class ApprovalForm extends React.Component {
           </View>
 
           <TouchableOpacity
+            onPress={() => navigate("AddFriends")}
             style={{ paddingHorizontal: 16, paddingBottom: 16 }}
           >
             <Text style={{ fontSize: 12, paddingVertical: 20 }}>
@@ -108,6 +99,7 @@ class ApprovalForm extends React.Component {
           </TouchableOpacity>
 
           <TouchableOpacity
+            onPress={() => navigate("AddFriends")}
             style={{ paddingHorizontal: 16, paddingBottom: 16 }}
           >
             <Text style={{ fontSize: 12, paddingVertical: 20 }}>
@@ -121,6 +113,7 @@ class ApprovalForm extends React.Component {
           </TouchableOpacity>
 
           <TouchableOpacity
+            onPress={() => navigate("AddFriends")}
             style={{ paddingHorizontal: 16, paddingBottom: 16 }}
           >
             <Text style={{ fontSize: 12, paddingVertical: 20 }}>Endorser</Text>
@@ -132,6 +125,7 @@ class ApprovalForm extends React.Component {
           </TouchableOpacity>
 
           <TouchableOpacity
+            onPress={() => navigate("AddFriends")}
             style={{ paddingHorizontal: 16, paddingBottom: 16 }}
           >
             <Text style={{ fontSize: 12, paddingVertical: 20 }}>Approver</Text>
@@ -142,34 +136,6 @@ class ApprovalForm extends React.Component {
             </View>
           </TouchableOpacity>
         </ScrollView>
-
-        <View
-          style={{
-            flexDirection: "row",
-            paddingVertical: 4,
-            justifyContent: "center"
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => goBack()}
-            style={{
-              alignItems: "center",
-              marginRight: 16,
-              borderRadius: 100
-            }}
-          >
-            <Icon name="chevron-left" size={32} color="#000000" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigate("SubmitForm")}
-            style={{
-              alignItems: "center",
-              borderRadius: 100
-            }}
-          >
-            <Icon name="chevron-right" size={32} color="#000000" />
-          </TouchableOpacity>
-        </View>
       </KeyboardAvoidingView>
     );
   }

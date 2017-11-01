@@ -22,7 +22,7 @@ class TravelForm extends React.Component {
     this.state = { date: "01-11-2017" };
   }
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigate, state } = this.props.navigation;
     const { goBack } = this.props.navigation;
     let data = [
       {
@@ -44,6 +44,7 @@ class TravelForm extends React.Component {
         value: "Sales visit"
       }
     ];
+
     return (
       <KeyboardAvoidingView
         behavior="padding"
@@ -188,33 +189,35 @@ class TravelForm extends React.Component {
           </View>
         </ScrollView>
 
-        <View
-          style={{
-            flexDirection: "row",
-            paddingVertical: 4,
-            justifyContent: "center"
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => goBack()}
+        {state.params.reedit == 1 ? null : (
+          <View
             style={{
-              alignItems: "center",
-              marginRight: 16,
-              borderRadius: 100
+              flexDirection: "row",
+              paddingVertical: 4,
+              justifyContent: "center"
             }}
           >
-            <Icon name="chevron-left" size={32} color="#000000" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigate("CostForm")}
-            style={{
-              alignItems: "center",
-              borderRadius: 100
-            }}
-          >
-            <Icon name="chevron-right" size={32} color="#000000" />
-          </TouchableOpacity>
-        </View>
+            <TouchableOpacity
+              onPress={() => goBack()}
+              style={{
+                alignItems: "center",
+                marginRight: 16,
+                borderRadius: 100
+              }}
+            >
+              <Icon name="chevron-left" size={32} color="#000000" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigate("CostForm")}
+              style={{
+                alignItems: "center",
+                borderRadius: 100
+              }}
+            >
+              <Icon name="chevron-right" size={32} color="#000000" />
+            </TouchableOpacity>
+          </View>
+        )}
       </KeyboardAvoidingView>
     );
   }

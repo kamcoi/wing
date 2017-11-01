@@ -40,19 +40,8 @@ class CostForm extends React.Component {
           style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
           title={{ title: "New Request" }}
           leftButton={{
-            title: "Exit",
-            handler: () =>
-              Alert.alert("confirm to Exit without submitting?", "Lala", [
-                {
-                  text: "No",
-                  style: "destructive"
-                },
-                {
-                  text: "Yes",
-                  onPress: () => navigate("Request"),
-                  style: "default"
-                }
-              ])
+            title: "Back",
+            handler: () => goBack()
           }}
         />
 
@@ -155,38 +144,14 @@ class CostForm extends React.Component {
                 onChangeText={() =>
                   this.setState({ data: "External Sponsorship" })}
               />
-              {this.state.data === "External Sponsorship" && <Text>Hi</Text>}
+              {this.state.data === "External Sponsorship" && (
+                <Text style={{ fontSize: 12, color: "red" }}>
+                  Required EEUI Approval
+                </Text>
+              )}
             </View>
           </View>
         </ScrollView>
-
-        <View
-          style={{
-            flexDirection: "row",
-            paddingVertical: 4,
-            justifyContent: "center"
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => goBack()}
-            style={{
-              alignItems: "center",
-              marginRight: 16,
-              borderRadius: 100
-            }}
-          >
-            <Icon name="chevron-left" size={32} color="#000000" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigate("ApprovalForm")}
-            style={{
-              alignItems: "center",
-              borderRadius: 100
-            }}
-          >
-            <Icon name="chevron-right" size={32} color="#000000" />
-          </TouchableOpacity>
-        </View>
       </KeyboardAvoidingView>
     );
   }

@@ -50,7 +50,70 @@ class ProfileForm extends React.Component {
         <FormBar />
 
         <ScrollView>
-          <ProfileQuestion />
+          <View style={{ flex: 1 }}>
+            <View
+              style={{
+                paddingHorizontal: 16,
+                paddingBottom: 16,
+                paddingTop: 24
+              }}
+            >
+              <Text style={{ fontSize: 12, paddingBottom: 16 }}>Name</Text>
+              <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+                <TextInput
+                  style={{
+                    color: "#ee7202",
+                    fontSize: 16,
+                    paddingBottom: 8,
+                    alignItems: "flex-end"
+                  }}
+                  placeholder="Full Name"
+                  clearButtonMode="always"
+                  underlineColorAndroid="rgba(0,0,0,0)"
+                />
+              </View>
+            </View>
+
+            <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
+              <Text style={{ fontSize: 12, paddingVertical: 16 }}>
+                Division
+              </Text>
+              <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+                <TextInput
+                  style={{
+                    color: "#ee7202",
+                    fontSize: 16,
+                    paddingBottom: 8,
+                    alignItems: "flex-end"
+                  }}
+                  placeholder="e.g. Group Finance"
+                  clearButtonMode="always"
+                  underlineColorAndroid="rgba(0,0,0,0)"
+                />
+              </View>
+            </View>
+
+            <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
+              <Text style={{ fontSize: 12, paddingVertical: 16 }}>
+                Additional Travellers
+              </Text>
+              <View>
+                <TouchableOpacity
+                  onPress={() => navigate("AddFriends", { reedit: 0 })}
+                >
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      paddingVertical: 4,
+                      color: "#f44242"
+                    }}
+                  >
+                    + Add Friends
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
         </ScrollView>
 
         <View
@@ -70,7 +133,7 @@ class ProfileForm extends React.Component {
             <Icon name="chevron-left" size={32} color="#000000" />
           </View>
           <TouchableOpacity
-            onPress={() => navigate("TravelForm")}
+            onPress={() => navigate("TravelForm", { reedit: 0 })}
             style={{
               alignItems: "center",
               borderRadius: 100
@@ -157,63 +220,6 @@ const FormBar = () => (
       </View>
       <View style={{ justifyContent: "center" }}>
         <Text style={{ fontSize: 12 }}>Four</Text>
-      </View>
-    </View>
-  </View>
-);
-
-const ProfileQuestion = () => (
-  <View style={{ flex: 1 }}>
-    <View style={{ paddingHorizontal: 16, paddingBottom: 16, paddingTop: 24 }}>
-      <Text style={{ fontSize: 12, paddingBottom: 16 }}>Name</Text>
-      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-        <TextInput
-          style={{
-            color: "#ee7202",
-            fontSize: 16,
-            paddingBottom: 8,
-            alignItems: "flex-end"
-          }}
-          placeholder="Full Name"
-          clearButtonMode="always"
-          underlineColorAndroid="rgba(0,0,0,0)"
-        />
-      </View>
-    </View>
-
-    <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-      <Text style={{ fontSize: 12, paddingVertical: 16 }}>Division</Text>
-      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-        <TextInput
-          style={{
-            color: "#ee7202",
-            fontSize: 16,
-            paddingBottom: 8,
-            alignItems: "flex-end"
-          }}
-          placeholder="e.g. Group Finance"
-          clearButtonMode="always"
-          underlineColorAndroid="rgba(0,0,0,0)"
-        />
-      </View>
-    </View>
-
-    <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-      <Text style={{ fontSize: 12, paddingVertical: 16 }}>
-        Additional Travellers
-      </Text>
-      <View>
-        <TouchableOpacity onPress={() => null}>
-          <Text
-            style={{
-              fontSize: 16,
-              paddingVertical: 4,
-              color: "#f44242"
-            }}
-          >
-            + Add Travellers
-          </Text>
-        </TouchableOpacity>
       </View>
     </View>
   </View>

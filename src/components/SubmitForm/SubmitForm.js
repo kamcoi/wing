@@ -86,7 +86,7 @@ class SubmitForm extends React.Component {
                 Travel Details
               </Text>
               <TouchableOpacity
-                onPress={() => navigate("TravelForm")}
+                onPress={() => navigate("TravelForm", { reedit: 1 })}
                 style={{ paddingBottom: 8 }}
               >
                 <Text style={{ fontSize: 12, color: "green" }}>Edit</Text>
@@ -123,7 +123,7 @@ class SubmitForm extends React.Component {
                 Profile Details
               </Text>
               <TouchableOpacity
-                onPress={() => navigate("RequestForm")}
+                onPress={() => navigate("ProfileFormEdit")}
                 style={{ paddingBottom: 8 }}
               >
                 <Text style={{ fontSize: 12, color: "green" }}>Edit</Text>
@@ -191,7 +191,7 @@ class SubmitForm extends React.Component {
                 Approvers Details
               </Text>
               <TouchableOpacity
-                onPress={() => navigate("ApprovalForm")}
+                onPress={() => navigate("ApprovalFormEdit")}
                 style={{ paddingBottom: 8 }}
               >
                 <Text style={{ fontSize: 12, color: "green" }}>Edit</Text>
@@ -227,7 +227,7 @@ class SubmitForm extends React.Component {
                 Cost Details
               </Text>
               <TouchableOpacity
-                onPress={() => navigate("CostForm")}
+                onPress={() => navigate("CostFormEdit")}
                 style={{ paddingBottom: 8 }}
               >
                 <Text style={{ fontSize: 12, color: "green" }}>Edit</Text>

@@ -2,115 +2,113 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  View,
   TextInput,
-  TouchableOpacity
+  View,
+  ScrollView,
+  TouchableOpacity,
+  FlatList
 } from "react-native";
-import Next from "react-native-vector-icons/Entypo";
+import Send from "react-native-vector-icons/MaterialIcons";
+import NavigationBar from "react-native-navbar";
 
-class AddFriends extends React.Component {
+const profiles = [
+  {
+    id: 1,
+    staffName: "Ali Muhd Wasil bin Ali Absar",
+    staffDivision: "Group Digital Centre"
+  },
+  {
+    id: 2,
+    staffName: "Mohammad Hafiz bin Burhan",
+    staffDivision: "Group Procurement"
+  }
+];
+
+const ListSingle = ({ staffName, staffDivision }) => (
+  <TouchableOpacity
+    onPress={() => null}
+    style={{
+      paddingHorizontal: 16,
+      paddingVertical: 16,
+      borderBottomWidth: 1,
+      borderColor: "#c4c4c4"
+    }}
+  >
+    <Text style={{ paddingBottom: 4, fontSize: 16, fontWeight: "bold" }}>
+      {staffName}
+    </Text>
+    <Text>{staffDivision}</Text>
+  </TouchableOpacity>
+);
+
+class AddPerson extends React.Component {
   render() {
+    const { goBack } = this.props.navigation;
+    const { add } = this.props;
     return (
-      <View
-        style={{
-          shadowOpacity: 0.7,
-          height: "100%",
-          width: "90%",
-          paddingHorizontal: 8,
-          paddingVertical: 16,
-          marginBottom: 16,
-          justifyContent: "flex-start",
-          backgroundColor: "#ffffff",
-          borderRadius: 20
-        }}
-      >
-        <Text
+      <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
+        <NavigationBar
+          statusBar={{ showAnimation: "fade" }}
+          style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
+          title={{ title: "Add Friends" }}
+          leftButton={{
+            title: "Back",
+            handler: () => goBack()
+          }}
+        />
+
+        <View
           style={{
-            paddingHorizontal: 8,
-            paddingTop: 8,
-            paddingBottom: 8,
-            fontSize: 24,
-            fontWeight: "bold"
+            flexDirection: "row",
+            borderWidth: 1,
+            borderColor: "#c4c4c4",
+            paddingVertical: 8,
+            marginHorizontal: 16,
+            borderRadius: 100,
+            marginVertical: 16
           }}
         >
-          Add Travellers
-        </Text>
-
-        <View style={{ flex: 1 }}>
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 14, paddingVertical: 16 }}>Name</Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <TextInput
-                style={{
-                  color: "#ee7202",
-                  fontSize: 16,
-                  paddingBottom: 8,
-                  alignItems: "flex-end"
-                }}
-                placeholder="Full Name"
-                clearButtonMode="always"
-                underlineColorAndroid="rgba(0,0,0,0)"
-              />
-            </View>
-          </View>
-
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 14, paddingVertical: 16 }}>Division</Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <TextInput
-                style={{
-                  color: "#ee7202",
-                  fontSize: 16,
-                  paddingBottom: 8,
-                  alignItems: "flex-end"
-                }}
-                placeholder="e.g. Group Finance"
-                clearButtonMode="always"
-                underlineColorAndroid="rgba(0,0,0,0)"
-              />
-            </View>
-          </View>
-
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 14, paddingVertical: 16 }}>
-              Additional Travellers
-            </Text>
-            <View>
-              <TouchableOpacity>
-                <Text
-                  style={{
-                    fontSize: 18,
-                    paddingVertical: 4,
-                    color: "#f44242"
-                  }}
-                >
-                  + Add Travellers
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-
-        <View style={{ flexDirection: "row", justifyContent: "center" }}>
-          <TouchableOpacity
-            onPress={() => this.setState({ page: "cost" })}
+          <View
             style={{
               flex: 0.1,
-              alignItems: "center",
-              padding: 16,
-              marginLeft: 8,
-              marginVertical: 16,
-              borderRadius: 100,
-              backgroundColor: "#ffffff",
-              borderWidth: 0.5
+              justifyContent: "center",
+              alignItems: "flex-end"
             }}
           >
-            <Next name="chevron-thin-right" size={22} color="#000000" />
-          </TouchableOpacity>
+            <Send name="search" size={24} color="#000000" />
+          </View>
+          <TextInput
+            style={{
+              flex: 0.9,
+              paddingHorizontal: 8,
+              fontSize: 14,
+              color: "#000000"
+            }}
+            placeholder="Type name here.."
+            clearButtonMode="always"
+          />
         </View>
+
+        <ScrollView
+          style={{
+            flex: 1,
+            marginHorizontal: 8
+          }}
+        >
+          <FlatList
+            data={add}
+            keyExtractor={(item, index) => item.id}
+            renderItem={({ item }) => (
+              <ListSingle
+                staffName={item.staffName}
+                staffDivision={item.staffDivision}
+              />
+            )}
+          />
+        </ScrollView>
       </View>
     );
   }
 }
 
-export default AddFriends;
+export default AddPerson;

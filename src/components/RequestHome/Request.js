@@ -27,8 +27,7 @@ class Request extends React.Component {
             flexDirection: "row",
             backgroundColor: "#ffffff",
             justifyContent: "space-between",
-            paddingTop: 32,
-            paddingBottom: 8
+            paddingTop: 32
           }}
         >
           <TouchableOpacity
@@ -45,7 +44,7 @@ class Request extends React.Component {
           </View>
         </View>
 
-        <View style={{ flex: 1, paddingHorizontal: 8 }}>
+        <ScrollView style={{ flex: 1, paddingHorizontal: 8, paddingTop: 8 }}>
           <FlatList
             data={request1}
             keyExtractor={(item, index) => item.id}
@@ -61,7 +60,7 @@ class Request extends React.Component {
               />
             )}
           />
-        </View>
+        </ScrollView>
 
         <ActionButton
           buttonColor="#333333"
@@ -90,7 +89,7 @@ const ApplicationSingle = ({
       marginBottom: 16,
       justifyContent: "flex-start",
       backgroundColor: "#ffffff",
-      borderRadius: 10
+      borderRadius: 8
     }}
   >
     <View>

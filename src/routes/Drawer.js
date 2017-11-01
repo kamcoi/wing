@@ -3,7 +3,7 @@ import { Image, Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { DrawerNavigator } from "react-navigation";
 import Tabs from "./Tabs";
 import GuidelineHome from "../components/Guideline/GuidelineHome";
-import ActivityLog from "../components/Activity/ActivityLog";
+import ActivityLog from "../components/Activity";
 
 class Home extends React.Component {
   static navigationOptions = {

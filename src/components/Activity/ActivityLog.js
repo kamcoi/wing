@@ -4,101 +4,55 @@ import {
   Text,
   View,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  FlatList
 } from "react-native";
 import Menu from "react-native-vector-icons/Ionicons";
 
-const activities = [
-  {
-    date: "19 October 2017",
-    data: [
-      {
-        id: 1,
-        name: "You",
-        action: "have send a",
-        document: "Travel Request",
-        time: "2.30pm"
-      },
-      {
-        id: 2,
-        name: "Hasniza",
-        action: "have posted a",
-        document: "Comment",
-        time: "2.30pm"
-      },
-      {
-        id: 3,
-        name: "Ahmad",
-        action: "have rejected your",
-        document: "Travel Request",
-        time: "2.30pm"
-      }
-    ]
-  },
-  {
-    date: "20 October 2017",
-    data: [
-      {
-        id: 4,
-        name: "You",
-        action: "have send a",
-        document: "Travel Request",
-        time: "2.30pm"
-      },
-      {
-        id: 5,
-        name: "Hasniza",
-        action: "have posted a",
-        document: "Comment",
-        time: "2.30pm"
-      }
-    ]
-  }
-];
-
-const LogSingle = ({ data, date }) => (
+const LogSingle = ({ data, activityDate }) => (
   <View style={{ backgroundColor: "#c4c4c4", marginTop: 24 }}>
     <Text
       style={{ paddingVertical: 16, paddingHorizontal: 8, fontWeight: "bold" }}
     >
-      {date}
+      {activityDate}
     </Text>
-    {data.map(activitySingle => (
-      <ActivitySingle
-        key={activitySingle.id}
-        name={activitySingle.name}
-        action={activitySingle.action}
-        document={activitySingle.document}
-        time={activitySingle.time}
-      />
-    ))}
+    <FlatList
+      data={data}
+      keyExtractor={(item, index) => item.id}
+      renderItem={({ item }) => (
+        <ActivitySingle
+          key={item.id}
+          requestorName={item.requestorName}
+          action={item.action}
+          doc={item.doc}
+          time={item.time}
+        />
+      )}
+    />
   </View>
 );
 
-const ActivitySingle = ({ name, action, document, time }) => (
+const ActivitySingle = ({ requestorName, action, doc, time }) => (
   <View
     style={{
-      flexDirection: "row",
+      flex: 1,
       justifyContent: "space-between",
-      paddingVertical: 8,
-      paddingHorizontal: 8,
+      paddingVertical: 16,
+      paddingHorizontal: 16,
       borderTopWidth: 1,
       borderColor: "#f9f9f9"
     }}
   >
-    <View style={{ flexDirection: "row" }}>
-      <Text style={{ paddingRight: 4 }}>{name}</Text>
-      <Text style={{ paddingRight: 4 }}>{action}</Text>
-      <Text style={{ paddingRight: 4, fontWeight: "bold" }}>{document}</Text>
-    </View>
-    <View>
-      <Text style={{ fontSize: 10 }}>{time}</Text>
-    </View>
+    <Text style={{ paddingBottom: 8, lineHeight: 20 }}>
+      {requestorName} {action} {doc}
+    </Text>
+    <Text style={{ fontSize: 10 }}>{time}</Text>
   </View>
 );
 
 class ActivityLog extends React.Component {
   render() {
+    const { activity } = this.props;
     return (
       <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
         <View
@@ -124,9 +78,13 @@ class ActivityLog extends React.Component {
         </View>
 
         <ScrollView style={{ flex: 1, paddingHorizontal: 8 }}>
-          {activities.map(activity => (
-            <LogSingle date={activity.date} data={activity.data} />
-          ))}
+          <FlatList
+            data={activity}
+            keyExtractor={(item, index) => item.id}
+            renderItem={({ item }) => (
+              <LogSingle activityDate={item.activityDate} data={item.data} />
+            )}
+          />
         </ScrollView>
       </View>
     );

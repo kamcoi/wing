@@ -22,8 +22,7 @@ class Task extends React.Component {
             flexDirection: "row",
             backgroundColor: "#ffffff",
             justifyContent: "space-between",
-            paddingTop: 32,
-            paddingBottom: 8
+            paddingTop: 32
           }}
         >
           <TouchableOpacity
@@ -40,7 +39,7 @@ class Task extends React.Component {
           </View>
         </View>
 
-        <View style={{ flex: 1, paddingHorizontal: 8 }}>
+        <View style={{ flex: 1, paddingHorizontal: 8, paddingTop: 8 }}>
           <FlatList
             data={task}
             keyExtractor={(item, index) => item.id}
