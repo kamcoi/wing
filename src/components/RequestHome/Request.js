@@ -64,7 +64,7 @@ class Request extends React.Component {
 
         <ActionButton
           buttonColor="#333333"
-          onPress={() => navigate("ProfileForm")}
+          onPress={() => navigate("ProfileForm", { reddit: 0 })}
         />
       </View>
     );

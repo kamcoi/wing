@@ -3,7 +3,7 @@ import SubmitForm from "./SubmitForm";
 
 const mapStateToProps = state => {
   return {
-    submit: state.submitForm
+    submit: state.requestForm
   };
 };
 

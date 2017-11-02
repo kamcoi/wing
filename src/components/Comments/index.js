@@ -3,8 +3,8 @@ import Comments from "./Comments";
 
 const mapStateToProps = state => {
   return {
-    comment1: state.commentDetails,
-    comment2: state.comments
+    comment1: state.comments,
+    comment2: state.comments.commentData
   };
 };
 

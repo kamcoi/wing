@@ -1,8 +1,8 @@
 const initialState = {
-  cost: "RM 12000.00",
-  budget: "RM 34000.00",
-  costCategory: "EEIU",
-  costCentre: "BMCE02"
+  requestorName: "Mohammad Hafiz bin Burhan",
+  staffID: "TM35438",
+  requestorDivision: "Group Digital Centre",
+  authentication: "true"
 };
 
 export default (state = initialState, action) => {

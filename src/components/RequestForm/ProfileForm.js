@@ -14,39 +14,51 @@ import NavigationBar from "react-native-navbar";
 
 class ProfileForm extends React.Component {
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigate, state } = this.props.navigation;
     const { goBack } = this.props.navigation;
     return (
       <KeyboardAvoidingView
         behavior="padding"
         style={{ flex: 1, backgroundColor: "#ffffff" }}
       >
-        <NavigationBar
-          style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
-          title={{ title: "New Request" }}
-          leftButton={{
-            title: "Exit",
-            handler: () =>
-              Alert.alert("confirm to Exit without submitting?", "Lala", [
-                {
-                  text: "No",
-                  style: "destructive"
-                },
-                {
-                  text: "Yes",
-                  onPress: () => navigate("Request"),
-                  style: "default"
-                }
-              ])
-          }}
-        />
+        {state.params.reedit == 1 ? (
+          <NavigationBar
+            style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
+            title={{ title: "New Request" }}
+            leftButton={{
+              title: "Back",
+              handler: () => goBack()
+            }}
+          />
+        ) : (
+          <NavigationBar
+            style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
+            title={{ title: "New Request" }}
+            leftButton={{
+              title: "Exit",
+              handler: () =>
+                Alert.alert("confirm to Exit without submitting?", "Lala", [
+                  {
+                    text: "No",
+                    style: "destructive"
+                  },
+                  {
+                    text: "Yes",
+                    onPress: () => navigate("Request"),
+                    style: "default"
+                  }
+                ])
+            }}
+          />
+        )}
 
-        <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
-          <Text style={{ fontSize: 14, fontWeight: "bold" }}>
-            Step 1: Profile Information
-          </Text>
-        </View>
-
+        {state.params.reedit == 1 ? null : (
+          <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
+            <Text style={{ fontSize: 14, fontWeight: "bold" }}>
+              Step 1: Profile Information
+            </Text>
+          </View>
+        )}
         <FormBar />
 
         <ScrollView>
@@ -116,32 +128,34 @@ class ProfileForm extends React.Component {
           </View>
         </ScrollView>
 
-        <View
-          style={{
-            flexDirection: "row",
-            paddingVertical: 4,
-            justifyContent: "center"
-          }}
-        >
+        {state.params.reedit == 1 ? null : (
           <View
             style={{
-              alignItems: "center",
-              marginRight: 16,
-              borderRadius: 100
+              flexDirection: "row",
+              paddingVertical: 4,
+              justifyContent: "center"
             }}
           >
-            <Icon name="chevron-left" size={32} color="#000000" />
+            <View
+              style={{
+                alignItems: "center",
+                marginRight: 16,
+                borderRadius: 100
+              }}
+            >
+              <Icon name="chevron-left" size={32} color="#000000" />
+            </View>
+            <TouchableOpacity
+              onPress={() => navigate("TravelForm", { reedit: 0 })}
+              style={{
+                alignItems: "center",
+                borderRadius: 100
+              }}
+            >
+              <Icon name="chevron-right" size={32} color="#000000" />
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity
-            onPress={() => navigate("TravelForm", { reedit: 0 })}
-            style={{
-              alignItems: "center",
-              borderRadius: 100
-            }}
-          >
-            <Icon name="chevron-right" size={32} color="#000000" />
-          </TouchableOpacity>
-        </View>
+        )}
       </KeyboardAvoidingView>
     );
   }

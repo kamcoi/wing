@@ -20,7 +20,7 @@ class CostForm extends React.Component {
     this.state = { data: null };
   }
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigate, state } = this.props.navigation;
     const { goBack } = this.props.navigation;
     let data = [
       {
@@ -36,21 +36,43 @@ class CostForm extends React.Component {
         behavior="padding"
         style={{ flex: 1, backgroundColor: "#ffffff" }}
       >
-        <NavigationBar
-          style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
-          title={{ title: "New Request" }}
-          leftButton={{
-            title: "Back",
-            handler: () => goBack()
-          }}
-        />
-
-        <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
-          <Text style={{ fontSize: 14, fontWeight: "bold" }}>
-            Step 3: Cost Information
-          </Text>
-        </View>
-
+        {state.params.reedit == 1 ? (
+          <NavigationBar
+            style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
+            title={{ title: "New Request" }}
+            leftButton={{
+              title: "Back",
+              handler: () => goBack()
+            }}
+          />
+        ) : (
+          <NavigationBar
+            style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
+            title={{ title: "New Request" }}
+            leftButton={{
+              title: "Exit",
+              handler: () =>
+                Alert.alert("confirm to Exit without submitting?", "Lala", [
+                  {
+                    text: "No",
+                    style: "destructive"
+                  },
+                  {
+                    text: "Yes",
+                    onPress: () => navigate("Request"),
+                    style: "default"
+                  }
+                ])
+            }}
+          />
+        )}
+        {state.params.reedit == 1 ? null : (
+          <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
+            <Text style={{ fontSize: 14, fontWeight: "bold" }}>
+              Step 3: Cost Information
+            </Text>
+          </View>
+        )}
         <FormBar />
 
         <ScrollView style={{ flex: 1 }}>
@@ -152,6 +174,36 @@ class CostForm extends React.Component {
             </View>
           </View>
         </ScrollView>
+
+        {state.params.reedit == 1 ? null : (
+          <View
+            style={{
+              flexDirection: "row",
+              paddingVertical: 4,
+              justifyContent: "center"
+            }}
+          >
+            <TouchableOpacity
+              onPress={() => goBack()}
+              style={{
+                alignItems: "center",
+                marginRight: 16,
+                borderRadius: 100
+              }}
+            >
+              <Icon name="chevron-left" size={32} color="#000000" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigate("ApprovalForm", { reedit: 0 })}
+              style={{
+                alignItems: "center",
+                borderRadius: 100
+              }}
+            >
+              <Icon name="chevron-right" size={32} color="#000000" />
+            </TouchableOpacity>
+          </View>
+        )}
       </KeyboardAvoidingView>
     );
   }
