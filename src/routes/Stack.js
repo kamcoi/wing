@@ -3,7 +3,7 @@ import { Image, Text, View, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import Drawer from "./Drawer";
 
-import ProfileForm from "../components/RequestForm/ProfileForm";
+import ProfileForm from "../components/RequestForm";
 import TravelForm from "../components/RequestForm/TravelForm";
 import CostForm from "../components/RequestForm/CostForm";
 import ApprovalForm from "../components/RequestForm/ApprovalForm";

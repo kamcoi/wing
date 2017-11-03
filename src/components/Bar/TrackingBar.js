@@ -4,6 +4,7 @@ import Circle from "react-native-vector-icons/Entypo";
 
 class TrackingBar extends React.Component {
   render() {
+    const { status } = this.props;
     return (
       <View>
         <View
@@ -13,12 +14,21 @@ class TrackingBar extends React.Component {
             paddingVertical: 8
           }}
         >
-          <Circle
-            name="circle"
-            size={24}
-            color="#000000"
-            style={{ paddingHorizontal: 4 }}
-          />
+          {status === "Submit" || status === "Nominate" ? (
+            <Circle
+              name="circle"
+              size={24}
+              color="#f27178"
+              style={{ paddingHorizontal: 4 }}
+            />
+          ) : (
+            <Circle
+              name="circle"
+              size={24}
+              color="#000000"
+              style={{ paddingHorizontal: 4 }}
+            />
+          )}
           <View style={{ flex: 0.25 }}>
             <View
               style={{
@@ -34,12 +44,21 @@ class TrackingBar extends React.Component {
               }}
             />
           </View>
-          <Circle
-            name="circle"
-            size={24}
-            color="#000000"
-            style={{ paddingHorizontal: 4 }}
-          />
+          {status === "Nominate" ? (
+            <Circle
+              name="circle"
+              size={24}
+              color="#f27178"
+              style={{ paddingHorizontal: 4 }}
+            />
+          ) : (
+            <Circle
+              name="circle"
+              size={24}
+              color="#000000"
+              style={{ paddingHorizontal: 4 }}
+            />
+          )}
           <View style={{ flex: 0.25 }}>
             <View
               style={{

@@ -16,6 +16,7 @@ class ProfileForm extends React.Component {
   render() {
     const { navigate, state } = this.props.navigation;
     const { goBack } = this.props.navigation;
+    const { user } = this.props;
     return (
       <KeyboardAvoidingView
         behavior="padding"
@@ -37,17 +38,21 @@ class ProfileForm extends React.Component {
             leftButton={{
               title: "Exit",
               handler: () =>
-                Alert.alert("confirm to Exit without submitting?", "Lala", [
-                  {
-                    text: "No",
-                    style: "destructive"
-                  },
-                  {
-                    text: "Yes",
-                    onPress: () => navigate("Request"),
-                    style: "default"
-                  }
-                ])
+                Alert.alert(
+                  "Confirm exit without submitting?",
+                  "All changes will be lost",
+                  [
+                    {
+                      text: "No",
+                      style: "destructive"
+                    },
+                    {
+                      text: "Yes",
+                      onPress: () => navigate("Request"),
+                      style: "default"
+                    }
+                  ]
+                )
             }}
           />
         )}
@@ -79,9 +84,10 @@ class ProfileForm extends React.Component {
                     paddingBottom: 8,
                     alignItems: "flex-end"
                   }}
-                  placeholder="Full Name"
+                  placeholder={user.name}
                   clearButtonMode="always"
                   underlineColorAndroid="rgba(0,0,0,0)"
+                  value={user.name}
                 />
               </View>
             </View>
@@ -101,6 +107,7 @@ class ProfileForm extends React.Component {
                   placeholder="e.g. Group Finance"
                   clearButtonMode="always"
                   underlineColorAndroid="rgba(0,0,0,0)"
+                  value={user.division}
                 />
               </View>
             </View>

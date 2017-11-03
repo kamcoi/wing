@@ -16,9 +16,9 @@ import TrackingBar from "../Bar/TrackingBar";
 
 class RequestStatus extends React.Component {
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigate, state } = this.props.navigation;
     const { goBack } = this.props.navigation;
-    const { reqStatus } = this.props;
+    const { request1 } = this.props;
     return (
       <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
         <NavigationBar
@@ -34,7 +34,7 @@ class RequestStatus extends React.Component {
           }}
         />
 
-        <TrackingBar />
+        <TrackingBar status={request1.status} />
 
         <ScrollView style={{ flex: 1, paddingHorizontal: 8 }}>
           <View
@@ -63,9 +63,8 @@ class RequestStatus extends React.Component {
               </Text>
             </View>
             <View style={{ paddingHorizontal: 8, justifyContent: "center" }}>
-              <Text style={{ fontSize: 12 }}>{reqStatus.ref}</Text>
-              <Text style={{ fontSize: 12 }}>{reqStatus.applyDate}</Text>
-              <Text style={{ fontSize: 12 }}>{reqStatus.applyTime}</Text>
+              <Text style={{ fontSize: 12 }}>{request1.ref}</Text>
+              <Text style={{ fontSize: 12 }}>{request1.timeStamp}</Text>
             </View>
           </View>
 
@@ -76,10 +75,10 @@ class RequestStatus extends React.Component {
             <Text
               style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}
             >
-              {reqStatus.destination}
+              {request1.destination}
             </Text>
             <Text style={{ fontSize: 14, paddingBottom: 4 }}>
-              {reqStatus.travelFrom} to {reqStatus.travelUntil} 2016
+              {request1.travelFrom} to {request1.travelUntil} 2016
             </Text>
             <Text style={{ fontSize: 14, paddingBottom: 4 }}>Site Survey</Text>
             <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
@@ -88,7 +87,7 @@ class RequestStatus extends React.Component {
             <Text
               style={{ fontSize: 12, lineHeight: 18, textAlign: "justify" }}
             >
-              {reqStatus.justificationText}
+              {request1.justificationText}
             </Text>
           </View>
 
@@ -99,10 +98,10 @@ class RequestStatus extends React.Component {
             <Text
               style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}
             >
-              {reqStatus.requestorName}
+              {request1.requestorName}
             </Text>
             <Text style={{ fontSize: 12, paddingBottom: 16 }}>
-              {reqStatus.requestorDivision}
+              {request1.requestorDivision}
             </Text>
             <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
               Additional Travellers
@@ -115,10 +114,10 @@ class RequestStatus extends React.Component {
                 fontWeight: "bold"
               }}
             >
-              {reqStatus.additionalTravellerName1}
+              {request1.additionalTravellerName1}
             </Text>
             <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-              {reqStatus.additionalTravellerDivision1}
+              {request1.additionalTravellerDivision1}
             </Text>
             <Text
               style={{
@@ -128,10 +127,10 @@ class RequestStatus extends React.Component {
                 fontWeight: "bold"
               }}
             >
-              {reqStatus.additionalTravellerName2}
+              {request1.additionalTravellerName2}
             </Text>
             <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-              {reqStatus.additionalTravellerDivision2}
+              {request1.additionalTravellerDivision2}
             </Text>
             <Text
               style={{
@@ -141,10 +140,10 @@ class RequestStatus extends React.Component {
                 fontWeight: "bold"
               }}
             >
-              {reqStatus.additionalTravellerName3}
+              {request1.additionalTravellerName3}
             </Text>
             <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-              {reqStatus.additionalTravellerDivision3}
+              {request1.additionalTravellerDivision3}
             </Text>
           </View>
 
@@ -155,19 +154,19 @@ class RequestStatus extends React.Component {
             <Text
               style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}
             >
-              {reqStatus.endorserName}
+              {request1.endorserName}
             </Text>
             <Text style={{ fontSize: 12, paddingBottom: 12 }}>Nominator</Text>
             <Text
               style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}
             >
-              {reqStatus.nominatorName}
+              {request1.nominatorName}
             </Text>
             <Text style={{ fontSize: 12, paddingBottom: 12 }}>Endorser</Text>
             <Text
               style={{ fontSize: 14, paddingBottom: 4, fontWeight: "bold" }}
             >
-              {reqStatus.approverName}
+              {request1.approverName}
             </Text>
             <Text style={{ fontSize: 12, paddingBottom: 12 }}>Approver</Text>
           </View>
@@ -186,10 +185,10 @@ class RequestStatus extends React.Component {
               }}
             >
               <Text style={{ color: "grey" }}>
-                Budget {reqStatus.costCentre}
+                Budget {request1.costCentre}
               </Text>
               <Text style={{ paddingRight: 8, color: "grey" }}>
-                RM{reqStatus.budget}
+                RM{request1.budget}
               </Text>
             </View>
             <View
@@ -203,7 +202,7 @@ class RequestStatus extends React.Component {
               <Text
                 style={{ paddingRight: 8, fontSize: 18, fontWeight: "bold" }}
               >
-                RM{reqStatus.cost}
+                RM{request1.cost}
               </Text>
             </View>
           </View>
@@ -230,9 +229,9 @@ class RequestStatus extends React.Component {
               style={{ flex: 1, paddingVertical: 8, paddingHorizontal: 16 }}
             >
               <Text style={{ fontWeight: "bold", paddingBottom: 2 }}>
-                {reqStatus.approverName}
+                {request1.approverName}
               </Text>
-              <Text>{reqStatus.commentText}</Text>
+              <Text>{request1.commentTextLatest}</Text>
             </TouchableOpacity>
 
             <View

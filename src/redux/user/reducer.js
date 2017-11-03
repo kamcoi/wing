@@ -1,7 +1,7 @@
 const initialState = {
-  requestorName: "Mohammad Hafiz bin Burhan",
+  name: "Mohammad Hafiz bin Burhan",
   staffID: "TM35438",
-  requestorDivision: "Group Digital Centre",
+  division: "Group Digital Centre",
   authentication: "true"
 };
 

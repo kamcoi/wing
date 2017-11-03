@@ -3,7 +3,7 @@ import RequestStatus from "./RequestStatus";
 
 const mapStateToProps = state => {
   return {
-    reqStatus: state.requestStatus
+    request1: state.request[0]
   };
 };
 

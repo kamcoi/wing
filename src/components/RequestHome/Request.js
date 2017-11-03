@@ -19,7 +19,7 @@ import TrackingBar from "../Bar/TrackingBar";
 class Request extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
-    const { request1 } = this.props;
+    const { requestHome } = this.props;
     return (
       <View style={{ flex: 1 }}>
         <View
@@ -46,17 +46,18 @@ class Request extends React.Component {
 
         <ScrollView style={{ flex: 1, paddingHorizontal: 8, paddingTop: 8 }}>
           <FlatList
-            data={request1}
+            data={requestHome}
             keyExtractor={(item, index) => item.id}
             renderItem={({ item }) => (
               <ApplicationSingle
-                id={item.id}
+                id={item.ref}
                 navigate={navigate}
                 destination={item.destination}
                 travelFrom={item.travelFrom}
                 travelUntil={item.travelUntil}
                 travelType={item.travelType}
                 dialogBox={item.dialogBox}
+                status={item.status}
               />
             )}
           />
@@ -80,7 +81,8 @@ const ApplicationSingle = ({
   travelUntil,
   travelType,
   dialogBox,
-  navigate
+  navigate,
+  status
 }) => (
   <View
     style={{
@@ -113,7 +115,7 @@ const ApplicationSingle = ({
           </Text>
         </View>
 
-        <TrackingBar />
+        <TrackingBar status={status} />
 
         <View
           style={{

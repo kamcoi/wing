@@ -50,13 +50,13 @@ class Comments extends React.Component {
           <View style={{ flexDirection: "row", paddingBottom: 4 }}>
             <Text style={{ fontSize: 14 }}>By:</Text>
             <Text style={{ paddingLeft: 8, fontSize: 14, color: "green" }}>
-              {comment1.name}
+              {comment1.requestorName}
             </Text>
           </View>
           <View style={{ flexDirection: "row" }}>
             <Text style={{ fontSize: 14 }}>Status:</Text>
             <Text style={{ paddingLeft: 8, fontSize: 14, color: "#f27178" }}>
-              {comment1.statusText}
+              {comment1.status}
             </Text>
           </View>
         </View>
@@ -68,10 +68,9 @@ class Comments extends React.Component {
             renderItem={({ item }) => (
               <ChatSingle
                 id={item.id}
-                requestorName={item.requestorName}
+                senderName={item.senderName}
                 commentText={item.commentText}
-                submitDate={item.submitDate}
-                submitTime={item.submitTime}
+                timeStamp={item.timeStamp}
               />
             )}
           />
@@ -113,13 +112,7 @@ class Comments extends React.Component {
 
 export default Comments;
 
-const ChatSingle = ({
-  id,
-  requestorName,
-  commentText,
-  submitDate,
-  submitTime
-}) => (
+const ChatSingle = ({ id, senderName, commentText, timeStamp }) => (
   <View
     style={{
       paddingHorizontal: 16,
@@ -129,12 +122,8 @@ const ChatSingle = ({
       marginHorizontal: 8
     }}
   >
-    <Text style={{ fontWeight: "bold", paddingBottom: 4 }}>
-      {requestorName}
-    </Text>
+    <Text style={{ fontWeight: "bold", paddingBottom: 4 }}>{senderName}</Text>
     <Text style={{ paddingBottom: 4, lineHeight: 18 }}>{commentText}</Text>
-    <Text style={{ fontSize: 12, color: "#c4c4c4" }}>
-      {submitDate}, {submitTime}
-    </Text>
+    <Text style={{ fontSize: 12, color: "#c4c4c4" }}>{timeStamp}</Text>
   </View>
 );

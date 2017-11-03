@@ -14,7 +14,7 @@ import Menu from "react-native-vector-icons/Ionicons";
 class Task extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
-    const { task } = this.props;
+    const { taskHome } = this.props;
     return (
       <View style={{ flex: 1 }}>
         <View
@@ -41,7 +41,7 @@ class Task extends React.Component {
 
         <View style={{ flex: 1, paddingHorizontal: 8, paddingTop: 8 }}>
           <FlatList
-            data={task}
+            data={taskHome}
             keyExtractor={(item, index) => item.id}
             renderItem={({ item }) => (
               <ApplicationSingle

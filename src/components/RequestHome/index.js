@@ -3,7 +3,7 @@ import Request from "./Request";
 
 const mapStateToProps = state => {
   return {
-    request1: state.requestHome
+    requestHome: state.request
   };
 };
 
