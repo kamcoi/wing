@@ -85,7 +85,6 @@ class ProfileForm extends React.Component {
                     alignItems: "flex-end"
                   }}
                   placeholder={user.name}
-                  clearButtonMode="always"
                   underlineColorAndroid="rgba(0,0,0,0)"
                   value={user.name}
                 />
@@ -105,7 +104,6 @@ class ProfileForm extends React.Component {
                     alignItems: "flex-end"
                   }}
                   placeholder="e.g. Group Finance"
-                  clearButtonMode="always"
                   underlineColorAndroid="rgba(0,0,0,0)"
                   value={user.division}
                 />

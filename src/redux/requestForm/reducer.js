@@ -33,6 +33,17 @@ export default (state = initialState, action) => {
       return {
         ...state
       };
+    case "SET_DESTINATION":
+      return {
+        ...state,
+        destination: action.data
+      };
+
+    case "SET_COST":
+      return {
+        ...state,
+        cost: action.data
+      };
     default:
       return state;
   }

@@ -32,12 +32,25 @@ class TaskStatus extends React.Component {
           }}
         />
 
-        <ScrollView style={{ flex: 1, paddingHorizontal: 8 }}>
+        <ScrollView style={{ flex: 1 }}>
+          <View
+            style={{
+              paddingVertical: 24,
+              paddingHorizontal: 8,
+              alignItems: "center",
+              backgroundColor: "grey"
+            }}
+          >
+            <Text style={{ fontWeight: "bold" }}>
+              Request Form below is pending for approval
+            </Text>
+          </View>
           <View
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              marginTop: 32
+              marginVertical: 32,
+              paddingHorizontal: 8
             }}
           >
             <View
@@ -60,137 +73,15 @@ class TaskStatus extends React.Component {
             </View>
             <View style={{ paddingHorizontal: 8, justifyContent: "center" }}>
               <Text style={{ fontSize: 12 }}>{status.ref}</Text>
-              <Text style={{ fontSize: 12 }}>{status.applyDate}</Text>
-              <Text style={{ fontSize: 12 }}>{status.applyTime}</Text>
+              <Text style={{ fontSize: 12 }}>{status.timeStamp}</Text>
             </View>
           </View>
 
-          <View
-            style={{
-              paddingVertical: 32,
-              paddingHorizontal: 8,
-              alignItems: "center"
-            }}
-          >
-            <Text style={{ fontWeight: "bold" }}>
-              Request Form below is pending your approval
-            </Text>
-          </View>
+          <ProfileDetails status={status} />
 
-          <View style={{ paddingHorizontal: 8, paddingBottom: 32 }}>
-            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
-              Profile Details
-            </Text>
-            <Text
-              style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}
-            >
-              {status.requestorName}
-            </Text>
-            <Text style={{ fontSize: 12, paddingBottom: 16 }}>
-              {status.requestorDivision}
-            </Text>
-            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
-              Additional Travellers
-            </Text>
-            <Text
-              style={{
-                paddingLeft: 8,
-                fontSize: 14,
-                paddingBottom: 4,
-                fontWeight: "bold"
-              }}
-            >
-              {status.additionalTravellerName1}
-            </Text>
-            <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-              {status.additionalTravellerDivision1}
-            </Text>
-            <Text
-              style={{
-                paddingLeft: 8,
-                fontSize: 14,
-                paddingBottom: 4,
-                fontWeight: "bold"
-              }}
-            >
-              {status.additionalTravellerName2}
-            </Text>
-            <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-              {status.additionalTravellerDivision2}
-            </Text>
-            <Text
-              style={{
-                paddingLeft: 8,
-                fontSize: 14,
-                paddingBottom: 4,
-                fontWeight: "bold"
-              }}
-            >
-              {status.additionalTravellerName3}
-            </Text>
-            <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
-              {status.additionalTravellerDivision3}
-            </Text>
-          </View>
+          <TravelDetails status={status} />
 
-          <View style={{ paddingHorizontal: 8, paddingBottom: 40 }}>
-            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
-              Travel Details
-            </Text>
-            <Text
-              style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}
-            >
-              {status.destination}
-            </Text>
-            <Text style={{ fontSize: 14, paddingBottom: 4 }}>
-              {status.travelFrom} to {status.travelUntil} 2016
-            </Text>
-            <Text style={{ fontSize: 14, paddingBottom: 4 }}>Site Survey</Text>
-            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
-              Description
-            </Text>
-            <Text
-              style={{ fontSize: 12, lineHeight: 18, textAlign: "justify" }}
-            >
-              {status.justificationText}
-            </Text>
-          </View>
-
-          <View style={{ paddingBottom: 40, paddingHorizontal: 8 }}>
-            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
-              Cost Details
-            </Text>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                paddingBottom: 8,
-                borderBottomWidth: 0.5,
-                borderColor: "#c4c4c4"
-              }}
-            >
-              <Text style={{ color: "grey" }}>Budget {status.costCentre}</Text>
-              <Text style={{ paddingRight: 8, color: "grey" }}>
-                RM{status.budget}
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                paddingVertical: 8
-              }}
-            >
-              <Text style={{ fontSize: 18 }}>TOTAL</Text>
-              <Text
-                style={{ paddingRight: 8, fontSize: 18, fontWeight: "bold" }}
-              >
-                RM{status.cost}
-              </Text>
-            </View>
-          </View>
-
-          <CalltoAction />
+          <CostDetails status={status} />
 
           <View
             style={{
@@ -215,11 +106,10 @@ class TaskStatus extends React.Component {
             <Text style={{ fontWeight: "bold", paddingBottom: 2 }}>
               {status.endorserName}
             </Text>
-            <Text>{status.commentText}</Text>
+            <Text>{status.commentTextLatest}</Text>
           </TouchableOpacity>
 
           <View
-            behavior="padding"
             style={{
               flexDirection: "row",
               borderTopWidth: 1,
@@ -228,7 +118,10 @@ class TaskStatus extends React.Component {
               justifyContent: "space-around"
             }}
           >
-            <TouchableOpacity onPress={() => null} style={{ flex: 0.9 }}>
+            <TouchableOpacity
+              onPress={() => navigate("Comments")}
+              style={{ flex: 0.9 }}
+            >
               <Text
                 style={{
                   padding: 8,
@@ -247,6 +140,8 @@ class TaskStatus extends React.Component {
             </TouchableOpacity>
           </View>
         </ScrollView>
+
+        <CalltoAction navigate={navigate} />
       </View>
     );
   }
@@ -254,8 +149,119 @@ class TaskStatus extends React.Component {
 
 export default TaskStatus;
 
-const CalltoAction = () => (
-  <View style={{ paddingBottom: 40 }}>
+const TravelDetails = ({ status }) => (
+  <View style={{ paddingHorizontal: 16, paddingBottom: 40 }}>
+    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
+      Travel Details
+    </Text>
+    <Text style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}>
+      {status.destination}
+    </Text>
+    <Text style={{ fontSize: 14, paddingBottom: 4 }}>
+      {status.travelFrom} to {status.travelUntil} 2016
+    </Text>
+    <Text style={{ fontSize: 14, paddingBottom: 4 }}>Site Survey</Text>
+    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
+      Description
+    </Text>
+    <Text style={{ fontSize: 12, lineHeight: 18, textAlign: "justify" }}>
+      {status.justificationText}
+    </Text>
+  </View>
+);
+
+const ProfileDetails = ({ status }) => (
+  <View style={{ paddingHorizontal: 16, paddingBottom: 32 }}>
+    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
+      Profile Details
+    </Text>
+    <Text style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}>
+      {status.requestorName}
+    </Text>
+    <Text style={{ fontSize: 12, paddingBottom: 16 }}>
+      {status.requestorDivision}
+    </Text>
+    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
+      Additional Travellers
+    </Text>
+    <Text
+      style={{
+        paddingLeft: 8,
+        fontSize: 14,
+        paddingBottom: 4,
+        fontWeight: "bold"
+      }}
+    >
+      {status.additionalTravellerName1}
+    </Text>
+    <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
+      {status.additionalTravellerDivision1}
+    </Text>
+    <Text
+      style={{
+        paddingLeft: 8,
+        fontSize: 14,
+        paddingBottom: 4,
+        fontWeight: "bold"
+      }}
+    >
+      {status.additionalTravellerName2}
+    </Text>
+    <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
+      {status.additionalTravellerDivision2}
+    </Text>
+    <Text
+      style={{
+        paddingLeft: 8,
+        fontSize: 14,
+        paddingBottom: 4,
+        fontWeight: "bold"
+      }}
+    >
+      {status.additionalTravellerName3}
+    </Text>
+    <Text style={{ paddingLeft: 8, fontSize: 12, paddingBottom: 12 }}>
+      {status.additionalTravellerDivision3}
+    </Text>
+  </View>
+);
+
+const CostDetails = ({ status }) => (
+  <View style={{ paddingBottom: 40, paddingHorizontal: 16 }}>
+    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
+      Cost Details
+    </Text>
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        paddingBottom: 8,
+        borderBottomWidth: 0.5,
+        borderColor: "#c4c4c4"
+      }}
+    >
+      <Text style={{ color: "grey" }}>Budget {status.costCentre}</Text>
+      <Text style={{ paddingRight: 8, color: "grey" }}>RM{status.budget}</Text>
+    </View>
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        paddingVertical: 8
+      }}
+    >
+      <Text style={{ fontSize: 18 }}>TOTAL</Text>
+      <Text style={{ paddingRight: 8, fontSize: 18, fontWeight: "bold" }}>
+        RM{status.cost}
+      </Text>
+    </View>
+  </View>
+);
+
+const CalltoAction = ({ navigate }) => (
+  <View
+    style={{ paddingVertical: 16, borderTopWidth: 2, borderColor: "#c4c4c4" }}
+  >
     <View
       style={{
         flexDirection: "row",
@@ -276,7 +282,7 @@ const CalltoAction = () => (
                 },
                 {
                   text: "Confirm",
-                  onPress: () => navigate("Main"),
+                  onPress: () => navigate("Task"),
                   style: "default"
                 }
               ]
@@ -286,9 +292,9 @@ const CalltoAction = () => (
             borderColor: "grey"
           }}
         >
-          <Icon name="check" size={40} color="#000000" />
+          <Icon name="check" size={40} color="green" />
         </TouchableOpacity>
-        <Text style={{ fontSize: 12 }}>Approve</Text>
+        <Text style={{ fontSize: 12, color: "green" }}>Approve</Text>
       </View>
       <View style={{ alignItems: "center" }}>
         <TouchableOpacity
@@ -301,7 +307,7 @@ const CalltoAction = () => (
               },
               {
                 text: "Confirm",
-                onPress: () => navigate("Main"),
+                onPress: () => navigate("Task"),
                 style: "default"
               }
             ])}
@@ -310,9 +316,9 @@ const CalltoAction = () => (
             borderColor: "grey"
           }}
         >
-          <Icon name="close-o" size={40} color="#000000" />
+          <Icon name="close-o" size={40} color="red" />
         </TouchableOpacity>
-        <Text style={{ fontSize: 12 }}>Reject</Text>
+        <Text style={{ fontSize: 12, color: "red" }}>Reject</Text>
       </View>
     </View>
   </View>

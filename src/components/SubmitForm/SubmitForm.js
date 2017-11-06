@@ -303,29 +303,3 @@ class SubmitForm extends React.Component {
 }
 
 export default SubmitForm;
-
-// const applications = {
-//   ref: "XSAW-532C",
-//   applyDate: "12 Sept 2017",
-//   applyTime: "10.20am",
-//   destination: "Monte Carlo, Monaco",
-//   travelFrom: "21 Oct",
-//   travelUntil: "10 Nov",
-//   travelType: "Site Survey",
-//   justificationText:
-//     "I would like to Experience the ka-cing ka-cing while experiencing the magnificent of Alain Ducasse Le Louis XV Dinner",
-//   requestorName: "Ali Muhd Wasil bin Ali Absar",
-//   requestorDivision: "Group Brand and Communication",
-//   additionalTravellerName1: "Abu bin Ah Beng",
-//   additionalTravellerDivision1: "IT&NT",
-//   additionalTravellerName2: "Abu bin Ah Ngah",
-//   additionalTravellerDivision2: "IT&NT",
-//   additionalTravellerName3: "Abu bin Ah Teng",
-//   additionalTravellerDivision3: "IT&NT",
-//   nominatorName: "Jusoh bin Ali",
-//   endorserName: "Ali bin Awang",
-//   approverName: "Kabil bin Ali",
-//   cost: "RM 12000.00",
-//   budget: "RM 34000.00",
-//   costCategory: "EEIU"
-// };

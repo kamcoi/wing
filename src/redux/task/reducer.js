@@ -1,6 +1,7 @@
 const initialState = [
   {
     status: "Nomination",
+    notification: "new",
     ref: "1001",
     timeStamp: "1 Jan 2017, 8.00am",
     destination: "Monte Carlo, Monaco",
@@ -27,6 +28,7 @@ const initialState = [
     costCentre: "BMCE02",
     requestorDesignation: "Big Bawwsss",
     commentTextLatest: "Ali, What is your name?",
+
     comments: [
       {
         senderId: "1",

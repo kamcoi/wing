@@ -11,6 +11,7 @@ import Icon from "react-native-vector-icons/EvilIcons";
 import Cancel from "react-native-vector-icons/MaterialIcons";
 import Menu from "react-native-vector-icons/Ionicons";
 import ActionButton from "react-native-action-button";
+import Circle from "react-native-vector-icons/FontAwesome";
 // import ActionButton from "react-native-action-button";
 // import ActionButtonIcon from "react-native-action-button/SimpleLineIcons";
 
@@ -58,6 +59,7 @@ class Request extends React.Component {
                 travelType={item.travelType}
                 dialogBox={item.dialogBox}
                 status={item.status}
+                notification={item.notification}
               />
             )}
           />
@@ -82,35 +84,37 @@ const ApplicationSingle = ({
   travelType,
   dialogBox,
   navigate,
-  status
+  status,
+  notification
 }) => (
   <View
     style={{
-      shadowOpacity: 0.3,
-      flex: 1,
+      shadowOpacity: 0.1,
       marginBottom: 16,
       justifyContent: "flex-start",
-      backgroundColor: "#ffffff",
       borderRadius: 8
     }}
   >
-    <View>
-      <TouchableOpacity onPress={() => navigate("RequestStatus")}>
+    {status === "Draft" ? (
+      <TouchableOpacity
+        onPress={() => navigate("SubmitForm")}
+        style={{ backgroundColor: "#a9a9a9", borderRadius: 8 }}
+      >
         <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
           <Text
             style={{
-              fontSize: 22,
+              fontSize: 16,
               paddingBottom: 4,
-              color: "black",
+              color: "#f8f8ff",
               fontWeight: "bold"
             }}
           >
-            {travelType}
+            [Draft] {travelType}
           </Text>
-          <Text style={{ fontSize: 16, paddingBottom: 4, color: "black" }}>
+          <Text style={{ fontSize: 16, paddingBottom: 4, color: "#f8f8ff" }}>
             {destination}
           </Text>
-          <Text style={{ fontSize: 14, paddingBottom: 4, color: "#c4c4c4" }}>
+          <Text style={{ fontSize: 14, paddingBottom: 4, color: "#f8f8ff" }}>
             {travelFrom} until {travelUntil} 2017
           </Text>
         </View>
@@ -129,6 +133,93 @@ const ApplicationSingle = ({
           <Text style={{ fontWeight: "bold" }}>{dialogBox}</Text>
         </View>
       </TouchableOpacity>
-    </View>
+    ) : (
+      <TouchableOpacity
+        onPress={() => navigate("RequestStatus")}
+        style={{ backgroundColor: "white", borderRadius: 8 }}
+      >
+        {notification === "new" ? (
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              paddingVertical: 16,
+              paddingHorizontal: 16
+            }}
+          >
+            <View>
+              <Text
+                style={{
+                  fontSize: 16,
+                  paddingBottom: 4,
+                  color: "black",
+                  fontWeight: "bold"
+                }}
+              >
+                {travelType}
+              </Text>
+              <Text style={{ fontSize: 16, paddingBottom: 4, color: "black" }}>
+                {destination}
+              </Text>
+              <Text style={{ fontSize: 14, paddingBottom: 4, color: "black" }}>
+                {travelFrom} until {travelUntil} 2017
+              </Text>
+            </View>
+            <View>
+              <Circle name="circle" size={16} color="#f27178" />
+            </View>
+          </View>
+        ) : (
+          <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
+            <Text
+              style={{
+                fontSize: 16,
+                paddingBottom: 4,
+                color: "black",
+                fontWeight: "bold"
+              }}
+            >
+              {travelType}
+            </Text>
+            <Text style={{ fontSize: 16, paddingBottom: 4, color: "#c4c4c4" }}>
+              {destination}
+            </Text>
+            <Text style={{ fontSize: 14, paddingBottom: 4, color: "#c4c4c4" }}>
+              {travelFrom} until {travelUntil} 2017
+            </Text>
+          </View>
+        )}
+
+        {status === "eeiu" ? (
+          <View
+            style={{
+              justifyContent: "center",
+              backgroundColor: "blue",
+              marginHorizontal: 16,
+              marginBottom: 16,
+              paddingTop: 16,
+              paddingBottom: 16,
+              alignItems: "center"
+            }}
+          >
+            <Text>Pending EEIU Approval</Text>
+          </View>
+        ) : (
+          <TrackingBar status={status} />
+        )}
+
+        <View
+          style={{
+            backgroundColor: "#f47178",
+            paddingVertical: 16,
+            paddingHorizontal: 16,
+            borderBottomLeftRadius: 10,
+            borderBottomRightRadius: 10
+          }}
+        >
+          <Text style={{ fontWeight: "bold" }}>{dialogBox}</Text>
+        </View>
+      </TouchableOpacity>
+    )}
   </View>
 );

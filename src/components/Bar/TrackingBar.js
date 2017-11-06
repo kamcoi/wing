@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Circle from "react-native-vector-icons/Entypo";
+import Check from "react-native-vector-icons/MaterialCommunityIcons";
 
 class TrackingBar extends React.Component {
   render() {
@@ -14,29 +15,47 @@ class TrackingBar extends React.Component {
             paddingVertical: 8
           }}
         >
-          {status === "Submit" || status === "Nominate" ? (
-            <Circle
-              name="circle"
+          {status === "Submit" ||
+          status === "Nominate" ||
+          status === "Endorsement" ||
+          status === "Approval" ? (
+            <Check
+              name="check-circle"
               size={24}
-              color="#f27178"
+              color="green"
               style={{ paddingHorizontal: 4 }}
             />
           ) : (
             <Circle
               name="circle"
               size={24}
-              color="#000000"
+              color="grey"
               style={{ paddingHorizontal: 4 }}
             />
           )}
+
           <View style={{ flex: 0.25 }}>
-            <View
-              style={{
-                alignItems: "center",
-                flex: 0.5,
-                borderBottomWidth: 2
-              }}
-            />
+            {status === "Nominate" ||
+            status === "Endorsement" ||
+            status === "Approval" ? (
+              <View
+                style={{
+                  alignItems: "center",
+                  flex: 0.5,
+                  borderColor: "green",
+                  borderBottomWidth: 2
+                }}
+              />
+            ) : (
+              <View
+                style={{
+                  alignItems: "center",
+                  flex: 0.5,
+                  borderColor: "grey",
+                  borderBottomWidth: 2
+                }}
+              />
+            )}
             <View
               style={{
                 alignItems: "center",
@@ -44,29 +63,44 @@ class TrackingBar extends React.Component {
               }}
             />
           </View>
-          {status === "Nominate" ? (
-            <Circle
-              name="circle"
+
+          {status === "Nominate" ||
+          status === "Endorsement" ||
+          status === "Approval" ? (
+            <Check
+              name="check-circle"
               size={24}
-              color="#f27178"
+              color="green"
               style={{ paddingHorizontal: 4 }}
             />
           ) : (
             <Circle
               name="circle"
               size={24}
-              color="#000000"
+              color="grey"
               style={{ paddingHorizontal: 4 }}
             />
           )}
           <View style={{ flex: 0.25 }}>
-            <View
-              style={{
-                alignItems: "center",
-                flex: 0.5,
-                borderBottomWidth: 2
-              }}
-            />
+            {status === "Endorsement" || status === "Approval" ? (
+              <View
+                style={{
+                  alignItems: "center",
+                  flex: 0.5,
+                  borderColor: "green",
+                  borderBottomWidth: 2
+                }}
+              />
+            ) : (
+              <View
+                style={{
+                  alignItems: "center",
+                  flex: 0.5,
+                  borderColor: "grey",
+                  borderBottomWidth: 2
+                }}
+              />
+            )}
             <View
               style={{
                 alignItems: "center",
@@ -74,20 +108,43 @@ class TrackingBar extends React.Component {
               }}
             />
           </View>
-          <Circle
-            name="circle"
-            size={24}
-            color="#000000"
-            style={{ paddingHorizontal: 4 }}
-          />
+
+          {status === "Endorsement" || status === "Approval" ? (
+            <Check
+              name="check-circle"
+              size={24}
+              color="green"
+              style={{ paddingHorizontal: 4 }}
+            />
+          ) : (
+            <Circle
+              name="circle"
+              size={24}
+              color="grey"
+              style={{ paddingHorizontal: 4 }}
+            />
+          )}
+
           <View style={{ flex: 0.25 }}>
-            <View
-              style={{
-                alignItems: "center",
-                flex: 0.5,
-                borderBottomWidth: 2
-              }}
-            />
+            {status === "Approval" ? (
+              <View
+                style={{
+                  alignItems: "center",
+                  flex: 0.5,
+                  borderColor: "green",
+                  borderBottomWidth: 2
+                }}
+              />
+            ) : (
+              <View
+                style={{
+                  alignItems: "center",
+                  flex: 0.5,
+                  borderColor: "grey",
+                  borderBottomWidth: 2
+                }}
+              />
+            )}
             <View
               style={{
                 alignItems: "center",
@@ -95,12 +152,22 @@ class TrackingBar extends React.Component {
               }}
             />
           </View>
-          <Circle
-            name="circle"
-            size={24}
-            color="#000000"
-            style={{ paddingHorizontal: 4 }}
-          />
+
+          {status === "Approval" ? (
+            <Check
+              name="check-circle"
+              size={24}
+              color="green"
+              style={{ paddingHorizontal: 4 }}
+            />
+          ) : (
+            <Circle
+              name="circle"
+              size={24}
+              color="grey"
+              style={{ paddingHorizontal: 4 }}
+            />
+          )}
         </View>
 
         <View
@@ -110,10 +177,31 @@ class TrackingBar extends React.Component {
             paddingBottom: 16
           }}
         >
-          <Text style={{ fontSize: 10 }}>Submission</Text>
-          <Text style={{ fontSize: 10 }}>Nomination</Text>
-          <Text style={{ fontSize: 10 }}>Endorsement</Text>
-          <Text style={{ fontSize: 10 }}>Approval</Text>
+          {status === "Submit" ||
+          status === "Nominate" ||
+          status === "Endorsement" ||
+          status === "Approval" ? (
+            <Text style={{ fontSize: 10, color: "green" }}>Submission</Text>
+          ) : (
+            <Text style={{ fontSize: 10, color: "grey" }}>Submission</Text>
+          )}
+          {status === "Nominate" ||
+          status === "Endorsement" ||
+          status === "Approval" ? (
+            <Text style={{ fontSize: 10, color: "green" }}>Nomination</Text>
+          ) : (
+            <Text style={{ fontSize: 10, color: "grey" }}>Nomination</Text>
+          )}
+          {status === "Endorsement" || status === "Approval" ? (
+            <Text style={{ fontSize: 10, color: "green" }}>Endorsement</Text>
+          ) : (
+            <Text style={{ fontSize: 10, color: "grey" }}>Endorsement</Text>
+          )}
+          {status === "Approval" ? (
+            <Text style={{ fontSize: 10, color: "green" }}>Approval</Text>
+          ) : (
+            <Text style={{ fontSize: 10, color: "grey" }}>Approval</Text>
+          )}
         </View>
       </View>
     );

@@ -4,14 +4,24 @@ import ApprovalForm from "./ApprovalForm";
 import CostForm from "./CostForm";
 import TravelForm from "./TravelForm";
 
+import { setDestination } from "../../redux/requestForm/action";
+
 const mapStateToProps = state => {
   return {
-    reqDetails: state.requestForm,
+    requestForm: state.requestForm,
     user: state.user
   };
 };
 
-export default connect(mapStateToProps)(
+const mapDispatchToProps = dispatch => {
+  return {
+    setDestination: t => {
+      dispatch(setDestination(t));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(
   ProfileForm,
   ApprovalForm,
   CostForm,

@@ -12,16 +12,18 @@ import {
 import Next from "react-native-vector-icons/Entypo";
 import { Dropdown } from "react-native-material-dropdown";
 import DatePicker from "react-native-datepicker";
+import { connect } from "react-redux";
 import Icon from "react-native-vector-icons/EvilIcons";
 import { AutoGrowingTextInput } from "react-native-autogrow-textinput";
 import NavigationBar from "react-native-navbar";
 
+import { setDestination } from "../../redux/requestForm/action";
+
 class TravelForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { date: "01-11-2017" };
-  }
+  state = { date: "01-11-2017" };
+
   render() {
+    // alert(0.1 + 0.1 + 0.1);
     const { navigate, state } = this.props.navigation;
     const { goBack } = this.props.navigation;
     let data = [
@@ -44,7 +46,6 @@ class TravelForm extends React.Component {
         value: "Sales visit"
       }
     ];
-
     return (
       <KeyboardAvoidingView
         behavior="padding"
@@ -103,6 +104,8 @@ class TravelForm extends React.Component {
                   alignItems: "flex-end"
                 }}
                 placeholder="e.g. Seremban, Negeri Sembilan"
+                value={this.props.requestForm.destination}
+                onChangeText={text => this.props.setDestination(text)}
                 clearButtonMode="always"
                 underlineColorAndroid="rgba(0,0,0,0)"
               />
@@ -233,7 +236,22 @@ class TravelForm extends React.Component {
   }
 }
 
-export default TravelForm;
+const mapStateToProps = state => {
+  return {
+    requestForm: state.requestForm
+    // user: state.user
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setDestination: t => {
+      dispatch(setDestination(t));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TravelForm);
 
 const FormBar = () => (
   <View

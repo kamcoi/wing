@@ -10,6 +10,7 @@ import {
 import Icon from "react-native-vector-icons/EvilIcons";
 import Cancel from "react-native-vector-icons/MaterialIcons";
 import Menu from "react-native-vector-icons/Ionicons";
+import Circle from "react-native-vector-icons/FontAwesome";
 
 class Task extends React.Component {
   render() {
@@ -51,6 +52,7 @@ class Task extends React.Component {
                 destination={item.destination}
                 travelType={item.travelType}
                 cost={item.cost}
+                notification={item.notification}
               />
             )}
           />
@@ -68,44 +70,79 @@ const ApplicationSingle = ({
   destination,
   travelType,
   navigate,
-  cost
+  cost,
+  notification
 }) => (
   <View
     style={{
-      shadowOpacity: 0.3,
-      flex: 0.3,
+      shadowOpacity: 0.1,
       marginBottom: 16,
       justifyContent: "flex-start",
       backgroundColor: "#ffffff",
       borderRadius: 10
     }}
   >
-    <TouchableOpacity
-      onPress={() => navigate("TaskStatus")}
-      style={{
-        paddingHorizontal: 8,
-        paddingVertical: 16
-      }}
-    >
-      <View style={{ width: "100%", paddingHorizontal: 8 }}>
-        <Text
+    <TouchableOpacity onPress={() => navigate("TaskStatus")}>
+      {notification === "new" ? (
+        <View
           style={{
-            fontSize: 22,
-            paddingBottom: 4,
-            color: "#000000",
-            fontWeight: "bold"
+            flexDirection: "row",
+            justifyContent: "space-between",
+            paddingVertical: 16,
+            paddingHorizontal: 16
           }}
         >
-          {requestorName}
-        </Text>
-        <Text style={{ fontSize: 16, paddingBottom: 4, color: "#000000" }}>
-          {destination}
-        </Text>
-        <Text style={{ fontSize: 14, color: "#000000", paddingBottom: 4 }}>
-          {travelType}
-        </Text>
-        <Text style={{ fontSize: 16, color: "#000000" }}>RM {cost}</Text>
-      </View>
+          <View>
+            <Text
+              style={{
+                fontSize: 16,
+                paddingBottom: 4,
+                color: "#000000",
+                fontWeight: "bold"
+              }}
+            >
+              {requestorName}
+            </Text>
+            <Text style={{ fontSize: 16, paddingBottom: 4, color: "#000000" }}>
+              {destination}
+            </Text>
+            <Text style={{ fontSize: 14, color: "#000000", paddingBottom: 4 }}>
+              {travelType}
+            </Text>
+            <Text style={{ fontSize: 16, color: "#000000" }}>RM {cost}</Text>
+          </View>
+          <View>
+            <Circle name="circle" size={16} color="#f27178" />
+          </View>
+        </View>
+      ) : (
+        <View
+          style={{
+            width: "100%",
+            paddingHorizontal: 8,
+            paddingVertical: 16,
+            paddingHorizontal: 16
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 16,
+              paddingBottom: 4,
+              color: "#000000",
+              fontWeight: "bold"
+            }}
+          >
+            {requestorName}
+          </Text>
+          <Text style={{ fontSize: 16, paddingBottom: 4, color: "#000000" }}>
+            {destination}
+          </Text>
+          <Text style={{ fontSize: 14, color: "#000000", paddingBottom: 4 }}>
+            {travelType}
+          </Text>
+          <Text style={{ fontSize: 16, color: "#000000" }}>RM {cost}</Text>
+        </View>
+      )}
     </TouchableOpacity>
   </View>
 );

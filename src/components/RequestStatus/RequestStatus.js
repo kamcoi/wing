@@ -5,9 +5,11 @@ import {
   TextInput,
   View,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from "react-native";
 import Emoji from "react-native-vector-icons/Entypo";
+import Delete from "react-native-vector-icons/MaterialCommunityIcons";
 import Send from "react-native-vector-icons/MaterialIcons";
 import Icon from "react-native-vector-icons/EvilIcons";
 import NavigationBar from "react-native-navbar";
@@ -34,7 +36,22 @@ class RequestStatus extends React.Component {
           }}
         />
 
-        <TrackingBar status={request1.status} />
+        {request1.status === "eeiu" ? (
+          <View
+            style={{
+              justifyContent: "center",
+              backgroundColor: "blue",
+              marginHorizontal: 16,
+              paddingTop: 16,
+              paddingBottom: 16,
+              alignItems: "center"
+            }}
+          >
+            <Text>Pending EEIU Approval</Text>
+          </View>
+        ) : (
+          <TrackingBar status={request1.status} />
+        )}
 
         <ScrollView style={{ flex: 1, paddingHorizontal: 8 }}>
           <View
@@ -263,6 +280,29 @@ class RequestStatus extends React.Component {
               </TouchableOpacity>
             </View>
           </View>
+
+          <TouchableOpacity
+            style={{ paddingVertical: 40 }}
+            onPress={() =>
+              Alert.alert("Warning", "Confirm to delete?", [
+                {
+                  text: "No"
+                },
+                {
+                  text: "Yes",
+                  style: "destructive",
+                  onPress: () => goBack()
+                }
+              ])}
+            style={{
+              paddingVertical: 16,
+
+              alignItems: "center"
+            }}
+          >
+            <Delete name="delete-circle" size={40} color="#c4c4c4" />
+            <Text style={{ fontSize: 12, color: "#c4c4c4" }}>Delete</Text>
+          </TouchableOpacity>
         </ScrollView>
       </View>
     );
