@@ -7,35 +7,13 @@ import {
   TouchableOpacity
 } from "react-native";
 import Icon from "react-native-vector-icons/EvilIcons";
-import Menu from "react-native-vector-icons/Ionicons";
+import Menu from "react-native-vector-icons/Entypo";
 import Dot from "react-native-vector-icons/Entypo";
 
 class GuidelineHome extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            paddingTop: 32,
-            paddingBottom: 8
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("DrawerOpen")}
-            style={{ flex: 0.15, alignItems: "center" }}
-          >
-            <Menu name="ios-menu" size={24} color="#000000" />
-          </TouchableOpacity>
-          <View style={{ flex: 0.5, alignItems: "center" }}>
-            <Text style={{ fontSize: 16 }}>Guideline</Text>
-          </View>
-          <View style={{ flex: 0.15 }}>
-            <Text />
-          </View>
-        </View>
-
         <ScrollView style={{ flex: 1 }}>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("GuidelineContent")}

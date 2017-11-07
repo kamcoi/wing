@@ -19,7 +19,7 @@ class TaskStatus extends React.Component {
     const { goBack } = this.props.navigation;
     const { status } = this.props;
     return (
-      <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
+      <View style={{ flex: 1 }}>
         <NavigationBar
           style={{
             borderColor: "#f27178",
@@ -32,7 +32,7 @@ class TaskStatus extends React.Component {
           }}
         />
 
-        <ScrollView style={{ flex: 1 }}>
+        <ScrollView style={{ flex: 1, backgroundColor: "#ffffff" }}>
           <View
             style={{
               paddingVertical: 24,

@@ -20,7 +20,7 @@ import NavigationBar from "react-native-navbar";
 import { setDestination } from "../../redux/requestForm/action";
 
 class TravelForm extends React.Component {
-  state = { date: "01-11-2017" };
+  state = { date: "01-11-2017", date2: "01-11-2018" };
 
   render() {
     // alert(0.1 + 0.1 + 0.1);
@@ -159,7 +159,7 @@ class TravelForm extends React.Component {
             <View style={{ borderColor: "#c4c4c4" }}>
               <DatePicker
                 style={{ width: 200 }}
-                date={this.state.date}
+                date={this.state.date2}
                 mode="date"
                 format="DD-MM-YYYY"
                 minDate="01-01-1990"
@@ -178,7 +178,7 @@ class TravelForm extends React.Component {
                   // ... You can check the source to find the other keys.
                 }}
                 onDateChange={date => {
-                  this.setState({ date: date });
+                  this.setState({ date2: date });
                 }}
               />
             </View>

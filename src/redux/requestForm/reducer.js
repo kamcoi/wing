@@ -1,7 +1,6 @@
 const initialState = {
   ref: "1234-ABCD",
-  applyDate: "1 Jan 2017",
-  applyTime: "8.00am",
+  timeStamp: "1 Jan 2017, 8.00am",
   destination: "Monte Carlo, Monaco",
   travelFrom: "21 Oct",
   travelUntil: "10 Nov",

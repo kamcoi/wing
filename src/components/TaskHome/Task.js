@@ -10,6 +10,7 @@ import {
 import Icon from "react-native-vector-icons/EvilIcons";
 import Cancel from "react-native-vector-icons/MaterialIcons";
 import Menu from "react-native-vector-icons/Ionicons";
+import Price from "react-native-vector-icons/FontAwesome";
 import Circle from "react-native-vector-icons/FontAwesome";
 
 class Task extends React.Component {
@@ -18,28 +19,6 @@ class Task extends React.Component {
     const { taskHome } = this.props;
     return (
       <View style={{ flex: 1 }}>
-        <View
-          style={{
-            flexDirection: "row",
-            backgroundColor: "#ffffff",
-            justifyContent: "space-between",
-            paddingTop: 32
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("DrawerOpen")}
-            style={{ flex: 0.1, alignItems: "center" }}
-          >
-            <Menu name="ios-menu" size={24} color="#000000" />
-          </TouchableOpacity>
-          <View style={{ flex: 0.15, alignItems: "center" }}>
-            <Text style={{ fontSize: 16 }}>Home</Text>
-          </View>
-          <View style={{ flex: 0.15 }}>
-            <Text />
-          </View>
-        </View>
-
         <View style={{ flex: 1, paddingHorizontal: 8, paddingTop: 8 }}>
           <FlatList
             data={taskHome}
@@ -87,6 +66,7 @@ const ApplicationSingle = ({
         <View
           style={{
             flexDirection: "row",
+            width: "90%",
             justifyContent: "space-between",
             paddingVertical: 16,
             paddingHorizontal: 16
@@ -109,7 +89,6 @@ const ApplicationSingle = ({
             <Text style={{ fontSize: 14, color: "#000000", paddingBottom: 4 }}>
               {travelType}
             </Text>
-            <Text style={{ fontSize: 16, color: "#000000" }}>RM {cost}</Text>
           </View>
           <View>
             <Circle name="circle" size={16} color="#f27178" />
@@ -118,7 +97,7 @@ const ApplicationSingle = ({
       ) : (
         <View
           style={{
-            width: "100%",
+            width: "90%",
             paddingHorizontal: 8,
             paddingVertical: 16,
             paddingHorizontal: 16
@@ -128,21 +107,36 @@ const ApplicationSingle = ({
             style={{
               fontSize: 16,
               paddingBottom: 4,
+              lineHeight: 22,
               color: "#000000",
               fontWeight: "bold"
             }}
           >
             {requestorName}
           </Text>
-          <Text style={{ fontSize: 16, paddingBottom: 4, color: "#000000" }}>
+          <Text style={{ fontSize: 14, paddingBottom: 4, color: "#a9a9a9" }}>
             {destination}
           </Text>
-          <Text style={{ fontSize: 14, color: "#000000", paddingBottom: 4 }}>
-            {travelType}
-          </Text>
-          <Text style={{ fontSize: 16, color: "#000000" }}>RM {cost}</Text>
+          <Text style={{ fontSize: 14, color: "#a9a9a9" }}>{travelType}</Text>
         </View>
       )}
+      <View
+        style={{
+          flexDirection: "row",
+          backgroundColor: "#ee7202",
+          justifyContent: "space-between",
+          paddingVertical: 8,
+          borderBottomRightRadius: 4,
+          borderBottomLeftRadius: 4
+        }}
+      >
+        <View style={{ paddingHorizontal: 16 }}>
+          <Price name="credit-card" size={24} color="a9a9a9" />
+        </View>
+        <Text style={{ paddingHorizontal: 16, fontSize: 18, color: "#000000" }}>
+          RM {cost}
+        </Text>
+      </View>
     </TouchableOpacity>
   </View>
 );

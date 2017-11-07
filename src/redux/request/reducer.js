@@ -1,6 +1,6 @@
 const initialState = [
   {
-    status: "eeiu",
+    status: "Nominate",
     notification: "new",
     ref: "1001",
     timeStamp: "1 Jan 2017, 8.00am",
@@ -26,6 +26,7 @@ const initialState = [
     budget: "34000",
     costCategory: "EEIU",
     costCentre: "BMCE02",
+    dialogBox: "Hi",
     requestorDesignation: "Big Bawwsss",
     commentTextLatest: "Ali, What is your name?",
     comments: [
@@ -53,7 +54,8 @@ const initialState = [
     ]
   },
   {
-    status: "Submit",
+    reject: "false",
+    status: "eeiu",
     ref: "2",
     timeStamp: "1 Jan 2017, 8.00am",
     destination: "Santa Cruz, Peru",
@@ -102,6 +104,7 @@ const initialState = [
     ]
   },
   {
+    reject: "false",
     status: "Draft",
     ref: "3",
     timeStamp: "17 Jan 2018, 10.13am",
@@ -151,6 +154,7 @@ const initialState = [
     ]
   },
   {
+    reject: "false",
     status: "Endorsement",
     ref: "4",
     timeStamp: "17 Jan 2018, 10.13am",
@@ -200,6 +204,7 @@ const initialState = [
     ]
   },
   {
+    reject: "false",
     status: "Nominate",
     ref: "5",
     timeStamp: "17 Jan 2018, 10.13am",
@@ -249,6 +254,7 @@ const initialState = [
     ]
   },
   {
+    reject: "false",
     status: "Approval",
     notification: "new",
     ref: "6",

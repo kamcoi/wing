@@ -4,7 +4,7 @@ import { compose, createStore, applyMiddleware } from "redux";
 import { persistStore, autoRehydrate } from "redux-persist";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
-import Stack from "./routes/Stack";
+import Drawer from "./routes/Drawer";
 
 import reducers from "./redux/reducers";
 const store = createStore(reducers, undefined, compose(applyMiddleware(thunk)));
@@ -25,7 +25,7 @@ export default class wing extends Component {
       <Provider store={store}>
         <View style={styles.container}>
           <StatusBar backgroundColor="blue" showHiddenTransition="fade" />
-          <Stack />
+          <Drawer />
         </View>
       </Provider>
     );

@@ -55,28 +55,6 @@ class ActivityLog extends React.Component {
     const { activity } = this.props;
     return (
       <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            paddingTop: 32,
-            paddingBottom: 8
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("DrawerOpen")}
-            style={{ flex: 0.15, alignItems: "center" }}
-          >
-            <Menu name="ios-menu" size={24} color="#000000" />
-          </TouchableOpacity>
-          <View style={{ flex: 0.5, alignItems: "center" }}>
-            <Text style={{ fontSize: 16 }}>Activity Log</Text>
-          </View>
-          <View style={{ flex: 0.15 }}>
-            <Text />
-          </View>
-        </View>
-
         <ScrollView style={{ flex: 1, paddingHorizontal: 8 }}>
           <FlatList
             data={activity}

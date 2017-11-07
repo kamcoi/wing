@@ -9,6 +9,7 @@ import {
   StatusBar
 } from "react-native";
 import NavigationBar from "react-native-navbar";
+import Send from "react-native-vector-icons/Ionicons";
 
 class SubmitForm extends React.Component {
   render() {
@@ -71,47 +72,11 @@ class SubmitForm extends React.Component {
             </View>
             <View style={{ paddingHorizontal: 8, justifyContent: "center" }}>
               <Text style={{ fontSize: 12 }}>{submit.ref}</Text>
-              <Text style={{ fontSize: 12 }}>{submit.applyDate}</Text>
-              <Text style={{ fontSize: 12 }}>{submit.applyTime}</Text>
+              <Text style={{ fontSize: 12 }}>{submit.timeStamp}</Text>
             </View>
           </View>
 
-          <View style={{ paddingHorizontal: 8, paddingBottom: 40 }}>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <Text
-                style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}
-              >
-                Travel Details
-              </Text>
-              <TouchableOpacity
-                onPress={() => navigate("TravelForm", { reedit: 1 })}
-                style={{ paddingBottom: 8 }}
-              >
-                <Text style={{ fontSize: 12, color: "green" }}>Edit</Text>
-              </TouchableOpacity>
-            </View>
-            <Text
-              style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}
-            >
-              {submit.destination}
-            </Text>
-            <Text style={{ fontSize: 14, paddingBottom: 4 }}>
-              {submit.travelFrom} to {submit.travelUntil} 2016
-            </Text>
-            <Text style={{ fontSize: 14, paddingBottom: 4 }}>
-              {submit.travelType}
-            </Text>
-            <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
-              Description
-            </Text>
-            <Text
-              style={{ fontSize: 12, lineHeight: 18, textAlign: "justify" }}
-            >
-              {submit.justificationText}
-            </Text>
-          </View>
+          <TravelDetails submit={submit} />
 
           <View style={{ paddingHorizontal: 8, paddingBottom: 32 }}>
             <View
@@ -285,15 +250,12 @@ class SubmitForm extends React.Component {
                 }
               ])}
             style={{
-              borderWidth: 1,
               paddingVertical: 8,
               marginHorizontal: 16,
-              alignItems: "center",
-              borderRadius: 100,
-              backgroundColor:
-                "hsl(194, 100%, 100%) && hsla(194, 100%, 80%, 1.0)"
+              alignItems: "center"
             }}
           >
+            <Send name="md-send" size={40} color="#000000" />
             <Text>Submit</Text>
           </TouchableOpacity>
         </View>
@@ -303,3 +265,32 @@ class SubmitForm extends React.Component {
 }
 
 export default SubmitForm;
+
+const TravelDetails = ({ submit }) => (
+  <View style={{ paddingHorizontal: 8, paddingBottom: 40 }}>
+    <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+      <Text style={{ fontSize: 12, paddingBottom: 12, color: "#f27178" }}>
+        Travel Details
+      </Text>
+      <TouchableOpacity
+        onPress={() => navigate("TravelForm", { reedit: 1 })}
+        style={{ paddingBottom: 8 }}
+      >
+        <Text style={{ fontSize: 12, color: "green" }}>Edit</Text>
+      </TouchableOpacity>
+    </View>
+    <Text style={{ fontSize: 16, paddingBottom: 8, fontWeight: "bold" }}>
+      {submit.destination}
+    </Text>
+    <Text style={{ fontSize: 14, paddingBottom: 8 }}>
+      {submit.travelFrom} until {submit.travelUntil} 2016
+    </Text>
+    <Text style={{ fontSize: 14, paddingBottom: 8 }}>{submit.travelType}</Text>
+    <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
+      Description
+    </Text>
+    <Text style={{ fontSize: 14, lineHeight: 24, textAlign: "justify" }}>
+      {submit.justificationText}
+    </Text>
+  </View>
+);

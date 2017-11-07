@@ -7,13 +7,13 @@ import {
   TouchableOpacity,
   FlatList
 } from "react-native";
+import NavBar, { NavButton, NavButtonText, NavTitle } from "react-native-nav";
+
 import Icon from "react-native-vector-icons/EvilIcons";
 import Cancel from "react-native-vector-icons/MaterialIcons";
 import Menu from "react-native-vector-icons/Ionicons";
 import ActionButton from "react-native-action-button";
 import Circle from "react-native-vector-icons/FontAwesome";
-// import ActionButton from "react-native-action-button";
-// import ActionButtonIcon from "react-native-action-button/SimpleLineIcons";
 
 import TrackingBar from "../Bar/TrackingBar";
 
@@ -23,28 +23,6 @@ class Request extends React.Component {
     const { requestHome } = this.props;
     return (
       <View style={{ flex: 1 }}>
-        <View
-          style={{
-            flexDirection: "row",
-            backgroundColor: "#ffffff",
-            justifyContent: "space-between",
-            paddingTop: 32
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("DrawerOpen")}
-            style={{ flex: 0.1, alignItems: "center" }}
-          >
-            <Menu name="ios-menu" size={24} color="#000000" />
-          </TouchableOpacity>
-          <View style={{ flex: 0.15, alignItems: "center" }}>
-            <Text style={{ fontSize: 16 }}>Home</Text>
-          </View>
-          <View style={{ flex: 0.15 }}>
-            <Text />
-          </View>
-        </View>
-
         <ScrollView style={{ flex: 1, paddingHorizontal: 8, paddingTop: 8 }}>
           <FlatList
             data={requestHome}
@@ -59,6 +37,7 @@ class Request extends React.Component {
                 travelType={item.travelType}
                 dialogBox={item.dialogBox}
                 status={item.status}
+                reject={item.reject}
                 notification={item.notification}
               />
             )}
@@ -85,20 +64,20 @@ const ApplicationSingle = ({
   dialogBox,
   navigate,
   status,
-  notification
+  notification,
+  reject
 }) => (
   <View
     style={{
-      shadowOpacity: 0.1,
       marginBottom: 16,
       justifyContent: "flex-start",
-      borderRadius: 8
+      shadowOpacity: 0.2
     }}
   >
     {status === "Draft" ? (
       <TouchableOpacity
         onPress={() => navigate("SubmitForm")}
-        style={{ backgroundColor: "#a9a9a9", borderRadius: 8 }}
+        style={{ backgroundColor: "#a9a9a9", borderRadius: 4 }}
       >
         <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
           <Text
@@ -109,25 +88,32 @@ const ApplicationSingle = ({
               fontWeight: "bold"
             }}
           >
-            [Draft] {travelType}
-          </Text>
-          <Text style={{ fontSize: 16, paddingBottom: 4, color: "#f8f8ff" }}>
             {destination}
           </Text>
+          <Text
+            style={{
+              fontSize: 16,
+              paddingBottom: 4,
+              color: "#f8f8ff"
+            }}
+          >
+            [Draft] {travelType}
+          </Text>
+
           <Text style={{ fontSize: 14, paddingBottom: 4, color: "#f8f8ff" }}>
             {travelFrom} until {travelUntil} 2017
           </Text>
         </View>
 
-        <TrackingBar status={status} />
+        <TrackingBar status={status} reject={reject} />
 
         <View
           style={{
             backgroundColor: "#f47178",
             paddingVertical: 16,
             paddingHorizontal: 16,
-            borderBottomLeftRadius: 10,
-            borderBottomRightRadius: 10
+            borderBottomLeftRadius: 4,
+            borderBottomRightRadius: 4
           }}
         >
           <Text style={{ fontWeight: "bold" }}>{dialogBox}</Text>
@@ -136,7 +122,7 @@ const ApplicationSingle = ({
     ) : (
       <TouchableOpacity
         onPress={() => navigate("RequestStatus")}
-        style={{ backgroundColor: "white", borderRadius: 8 }}
+        style={{ backgroundColor: "white", borderRadius: 4 }}
       >
         {notification === "new" ? (
           <View
@@ -152,16 +138,26 @@ const ApplicationSingle = ({
                 style={{
                   fontSize: 16,
                   paddingBottom: 4,
-                  color: "black",
+                  color: "#cf0832",
                   fontWeight: "bold"
+                }}
+              >
+                {destination}
+              </Text>
+
+              <Text
+                style={{
+                  fontSize: 16,
+                  paddingBottom: 4,
+                  color: "#cf0832"
                 }}
               >
                 {travelType}
               </Text>
-              <Text style={{ fontSize: 16, paddingBottom: 4, color: "black" }}>
-                {destination}
-              </Text>
-              <Text style={{ fontSize: 14, paddingBottom: 4, color: "black" }}>
+
+              <Text
+                style={{ fontSize: 14, paddingBottom: 4, color: "#cf0832" }}
+              >
                 {travelFrom} until {travelUntil} 2017
               </Text>
             </View>
@@ -174,17 +170,24 @@ const ApplicationSingle = ({
             <Text
               style={{
                 fontSize: 16,
-                paddingBottom: 4,
-                color: "black",
+                paddingBottom: 6,
+                color: "#000000",
                 fontWeight: "bold"
+              }}
+            >
+              {destination}
+            </Text>
+            <Text
+              style={{
+                fontSize: 16,
+                paddingBottom: 4,
+                color: "#a9a9a9"
               }}
             >
               {travelType}
             </Text>
-            <Text style={{ fontSize: 16, paddingBottom: 4, color: "#c4c4c4" }}>
-              {destination}
-            </Text>
-            <Text style={{ fontSize: 14, paddingBottom: 4, color: "#c4c4c4" }}>
+
+            <Text style={{ fontSize: 16, paddingBottom: 4, color: "#a9a9a9" }}>
               {travelFrom} until {travelUntil} 2017
             </Text>
           </View>
@@ -205,16 +208,16 @@ const ApplicationSingle = ({
             <Text>Pending EEIU Approval</Text>
           </View>
         ) : (
-          <TrackingBar status={status} />
+          <TrackingBar status={status} reject={reject} />
         )}
 
         <View
           style={{
-            backgroundColor: "#f47178",
+            backgroundColor: "#d3d3d3",
             paddingVertical: 16,
             paddingHorizontal: 16,
-            borderBottomLeftRadius: 10,
-            borderBottomRightRadius: 10
+            borderBottomLeftRadius: 4,
+            borderBottomRightRadius: 4
           }}
         >
           <Text style={{ fontWeight: "bold" }}>{dialogBox}</Text>
@@ -223,3 +226,25 @@ const ApplicationSingle = ({
     )}
   </View>
 );
+
+// <View
+//   style={{
+//     flexDirection: "row",
+//     backgroundColor: "#ffffff",
+//     justifyContent: "space-between",
+//     paddingTop: 32
+//   }}
+// >
+//   <TouchableOpacity
+//     onPress={() => this.props.navigation.navigate("DrawerOpen")}
+//     style={{ flex: 0.1, alignItems: "center" }}
+//   >
+//     <Menu name="ios-menu" size={24} color="#000000" />
+//   </TouchableOpacity>
+//   <View style={{ flex: 0.15, alignItems: "center" }}>
+//     <Text style={{ fontSize: 16 }}>Home</Text>
+//   </View>
+//   <View style={{ flex: 0.15 }}>
+//     <Text />
+//   </View>
+// </View>
