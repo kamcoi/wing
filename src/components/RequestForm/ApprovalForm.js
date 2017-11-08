@@ -13,12 +13,32 @@ import Next from "react-native-vector-icons/Entypo";
 import { Dropdown } from "react-native-material-dropdown";
 import Icon from "react-native-vector-icons/EvilIcons";
 import NavigationBar from "react-native-navbar";
+import DisplayedPage from "./DisplayedPage";
 
 class ApprovalForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { data: null };
+  }
   render() {
     const { navigate, state } = this.props.navigation;
     const { goBack } = this.props.navigation;
     const { approver } = this.props;
+    let displayedPage;
+    switch (this.state.data) {
+      case "AGM and below":
+        displayedPage = <AgmBelow navigate={navigate} />;
+        break;
+      case "GLT Members":
+        displayedPage = <GltMembers navigate={navigate} />;
+        break;
+      case "Direct report to GLT Members":
+        displayedPage = <DirectReport navigate={navigate} />;
+        break;
+      case "Head of Finance/Business Controllers":
+        displayedPage = <HeadFinance navigate={navigate} />;
+        break;
+    }
     let data = [
       {
         value: "AGM and below"
@@ -42,7 +62,7 @@ class ApprovalForm extends React.Component {
         value: "CFO(Subsidiaries)"
       },
       {
-        value: "Head of Finance/Business Contoller"
+        value: "Head of Finance/Business Controllers"
       }
     ];
     return (
@@ -103,61 +123,13 @@ class ApprovalForm extends React.Component {
                 labelHeight={0}
                 label=""
                 data={data}
+                onChangeText={value => {
+                  this.setState({ data: value });
+                }}
               />
             </View>
           </View>
-
-          <TouchableOpacity
-            onPress={() => navigate("AddFriends")}
-            style={{ paddingHorizontal: 16, paddingBottom: 16 }}
-          >
-            <Text style={{ fontSize: 12, paddingVertical: 20 }}>
-              Nominator 1
-            </Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <Text style={{ color: "grey", paddingBottom: 8 }}>
-                Direct Report to a GLT Member
-              </Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => navigate("AddFriends")}
-            style={{ paddingHorizontal: 16, paddingBottom: 16 }}
-          >
-            <Text style={{ fontSize: 12, paddingVertical: 20 }}>
-              Nominator 2
-            </Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <Text style={{ color: "grey", paddingBottom: 8 }}>
-                Immediate Superior
-              </Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => navigate("AddFriends")}
-            style={{ paddingHorizontal: 16, paddingBottom: 16 }}
-          >
-            <Text style={{ fontSize: 12, paddingVertical: 20 }}>Endorser</Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <Text style={{ color: "grey", paddingBottom: 8 }}>
-                Head of Finance/Business Contollers
-              </Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => navigate("AddFriends")}
-            style={{ paddingHorizontal: 16, paddingBottom: 16 }}
-          >
-            <Text style={{ fontSize: 12, paddingVertical: 20 }}>Approver</Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <Text style={{ color: "grey", paddingBottom: 8 }}>
-                GLT Member
-              </Text>
-            </View>
-          </TouchableOpacity>
+          <DisplayedPage navigate={navigate} page={this.state.data} />
         </ScrollView>
 
         {state.params.reedit == 1 ? null : (
@@ -269,5 +241,150 @@ const FormBar = () => (
         <Text style={{ fontSize: 12, color: "#f27178" }}>Four</Text>
       </View>
     </View>
+  </View>
+);
+
+const AgmBelow = ({ navigate }) => (
+  <View>
+    <TouchableOpacity
+      onPress={() => navigate("AddFriends")}
+      style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+    >
+      <Text style={{ fontSize: 12, paddingVertical: 20 }}>Nominator</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <Text style={{ color: "grey", paddingBottom: 8 }}>GLT Members</Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigate("AddFriends")}
+      style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+    >
+      <Text style={{ fontSize: 12, paddingVertical: 20 }}>Endorser</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <Text style={{ color: "grey", paddingBottom: 8 }}>
+          Head of Finance/Business Contollers
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigate("AddFriends")}
+      style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+    >
+      <Text style={{ fontSize: 12, paddingVertical: 20 }}>Approver</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <Text style={{ color: "grey", paddingBottom: 8 }}>GLT Member</Text>
+      </View>
+    </TouchableOpacity>
+  </View>
+);
+
+const GltMembers = ({ navigate }) => (
+  <View>
+    <TouchableOpacity
+      onPress={() => navigate("AddFriends")}
+      style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+    >
+      <Text style={{ fontSize: 12, paddingVertical: 20 }}>Nominator</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <Text style={{ color: "grey", paddingBottom: 8 }}>GLT Members</Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigate("AddFriends")}
+      style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+    >
+      <Text style={{ fontSize: 12, paddingVertical: 20 }}>Endorser</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <Text style={{ color: "grey", paddingBottom: 8 }}>GCFO</Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigate("AddFriends")}
+      style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+    >
+      <Text style={{ fontSize: 12, paddingVertical: 20 }}>Approver</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <Text style={{ color: "grey", paddingBottom: 8 }}>GCEO</Text>
+      </View>
+    </TouchableOpacity>
+  </View>
+);
+
+const DirectReport = ({ navigate }) => (
+  <View>
+    <TouchableOpacity
+      onPress={() => navigate("AddFriends")}
+      style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+    >
+      <Text style={{ fontSize: 12, paddingVertical: 20 }}>Nominator</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <Text style={{ color: "grey", paddingBottom: 8 }}>GLT Member</Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigate("AddFriends")}
+      style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+    >
+      <Text style={{ fontSize: 12, paddingVertical: 20 }}>Endorser</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <Text style={{ color: "grey", paddingBottom: 8 }}>
+          Head of Finance/ Business Controllers
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigate("AddFriends")}
+      style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+    >
+      <Text style={{ fontSize: 12, paddingVertical: 20 }}>Approver</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <Text style={{ color: "grey", paddingBottom: 8 }}>
+          (VP:GCEO), (GM and Below: GCFO)
+        </Text>
+      </View>
+    </TouchableOpacity>
+  </View>
+);
+
+const HeadFinance = ({ navigate }) => (
+  <View>
+    <TouchableOpacity
+      onPress={() => navigate("AddFriends")}
+      style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+    >
+      <Text style={{ fontSize: 12, paddingVertical: 20 }}>Nominator 1</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <Text style={{ color: "grey", paddingBottom: 8 }}>GLT Member</Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigate("AddFriends")}
+      style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+    >
+      <Text style={{ fontSize: 12, paddingVertical: 20 }}>Nominator 2</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <Text style={{ color: "grey", paddingBottom: 8 }}>
+          Immediate Superior
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigate("AddFriends")}
+      style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+    >
+      <Text style={{ fontSize: 12, paddingVertical: 20 }}>Endorser</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <Text style={{ color: "grey", paddingBottom: 8 }}>VP FCD</Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigate("AddFriends")}
+      style={{ paddingHorizontal: 16, paddingBottom: 16 }}
+    >
+      <Text style={{ fontSize: 12, paddingVertical: 20 }}>Approver</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <Text style={{ color: "grey", paddingBottom: 8 }}>GCFO</Text>
+      </View>
+    </TouchableOpacity>
   </View>
 );

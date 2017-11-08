@@ -71,13 +71,14 @@ const ApplicationSingle = ({
     style={{
       marginBottom: 16,
       justifyContent: "flex-start",
-      shadowOpacity: 0.2
+      shadowOpacity: 0.2,
+      borderRadius: 8
     }}
   >
     {status === "Draft" ? (
       <TouchableOpacity
         onPress={() => navigate("SubmitForm")}
-        style={{ backgroundColor: "#a9a9a9", borderRadius: 4 }}
+        style={{ backgroundColor: "#a9a9a9", borderRadius: 8 }}
       >
         <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
           <Text
@@ -100,7 +101,7 @@ const ApplicationSingle = ({
             [Draft] {travelType}
           </Text>
 
-          <Text style={{ fontSize: 14, paddingBottom: 4, color: "#f8f8ff" }}>
+          <Text style={{ fontSize: 16, paddingBottom: 4, color: "#f8f8ff" }}>
             {travelFrom} until {travelUntil} 2017
           </Text>
         </View>
@@ -112,8 +113,8 @@ const ApplicationSingle = ({
             backgroundColor: "#f47178",
             paddingVertical: 16,
             paddingHorizontal: 16,
-            borderBottomLeftRadius: 4,
-            borderBottomRightRadius: 4
+            borderBottomLeftRadius: 8,
+            borderBottomRightRadius: 8
           }}
         >
           <Text style={{ fontWeight: "bold" }}>{dialogBox}</Text>
@@ -122,7 +123,7 @@ const ApplicationSingle = ({
     ) : (
       <TouchableOpacity
         onPress={() => navigate("RequestStatus")}
-        style={{ backgroundColor: "white", borderRadius: 4 }}
+        style={{ backgroundColor: "white", borderRadius: 8 }}
       >
         {notification === "new" ? (
           <View
@@ -156,7 +157,7 @@ const ApplicationSingle = ({
               </Text>
 
               <Text
-                style={{ fontSize: 14, paddingBottom: 4, color: "#cf0832" }}
+                style={{ fontSize: 16, paddingBottom: 4, color: "#cf0832" }}
               >
                 {travelFrom} until {travelUntil} 2017
               </Text>
@@ -213,11 +214,11 @@ const ApplicationSingle = ({
 
         <View
           style={{
-            backgroundColor: "#d3d3d3",
+            backgroundColor: "#cf0832",
             paddingVertical: 16,
             paddingHorizontal: 16,
-            borderBottomLeftRadius: 4,
-            borderBottomRightRadius: 4
+            borderBottomLeftRadius: 8,
+            borderBottomRightRadius: 8
           }}
         >
           <Text style={{ fontWeight: "bold" }}>{dialogBox}</Text>
@@ -226,25 +227,3 @@ const ApplicationSingle = ({
     )}
   </View>
 );
-
-// <View
-//   style={{
-//     flexDirection: "row",
-//     backgroundColor: "#ffffff",
-//     justifyContent: "space-between",
-//     paddingTop: 32
-//   }}
-// >
-//   <TouchableOpacity
-//     onPress={() => this.props.navigation.navigate("DrawerOpen")}
-//     style={{ flex: 0.1, alignItems: "center" }}
-//   >
-//     <Menu name="ios-menu" size={24} color="#000000" />
-//   </TouchableOpacity>
-//   <View style={{ flex: 0.15, alignItems: "center" }}>
-//     <Text style={{ fontSize: 16 }}>Home</Text>
-//   </View>
-//   <View style={{ flex: 0.15 }}>
-//     <Text />
-//   </View>
-// </View>

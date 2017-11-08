@@ -63,7 +63,7 @@ const initialState = [
     travelType: "Site Survey",
     justificationText:
       "I would like to Experience the ka-cing ka-cing while experiencing the magnificent of Alain Ducasse Le Louis XV Dinner",
-    requestorName: "Ali Muhd Wasil bin Ali Absar bin Al Amin",
+    requestorName: "Mohammad Hafiz bin Burhan",
     requestorDivision: "Group Brand and Communication",
     additionalTravellerName1: "Abu bin Ah Beng",
     additionalTravellerDivision1: "IT&NT",

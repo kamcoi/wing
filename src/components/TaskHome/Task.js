@@ -30,6 +30,8 @@ class Task extends React.Component {
                 requestorName={item.requestorName}
                 destination={item.destination}
                 travelType={item.travelType}
+                travelFrom={item.travelFrom}
+                travelUntil={item.travelUntil}
                 cost={item.cost}
                 notification={item.notification}
               />
@@ -48,6 +50,8 @@ const ApplicationSingle = ({
   requestorName,
   destination,
   travelType,
+  travelFrom,
+  travelUntil,
   navigate,
   cost,
   notification
@@ -58,7 +62,7 @@ const ApplicationSingle = ({
       marginBottom: 16,
       justifyContent: "flex-start",
       backgroundColor: "#ffffff",
-      borderRadius: 10
+      borderRadius: 8
     }}
   >
     <TouchableOpacity onPress={() => navigate("TaskStatus")}>
@@ -76,21 +80,25 @@ const ApplicationSingle = ({
             <Text
               style={{
                 fontSize: 16,
+                lineHeight: 22,
                 paddingBottom: 4,
-                color: "#000000",
+                color: "#ee7202",
                 fontWeight: "bold"
               }}
             >
               {requestorName}
             </Text>
-            <Text style={{ fontSize: 16, paddingBottom: 4, color: "#000000" }}>
+            <Text style={{ fontSize: 16, paddingBottom: 4, color: "#ee7202" }}>
               {destination}
             </Text>
-            <Text style={{ fontSize: 14, color: "#000000", paddingBottom: 4 }}>
+            <Text style={{ fontSize: 16, color: "#ee7202", paddingBottom: 4 }}>
               {travelType}
             </Text>
+            <Text style={{ fontSize: 16, color: "#ee7202", paddingBottom: 4 }}>
+              {travelFrom} until {travelUntil} 2017
+            </Text>
           </View>
-          <View>
+          <View style={{ width: "20%", alignItems: "flex-end" }}>
             <Circle name="circle" size={16} color="#f27178" />
           </View>
         </View>
@@ -106,6 +114,7 @@ const ApplicationSingle = ({
           <Text
             style={{
               fontSize: 16,
+              lineHeight: 22,
               paddingBottom: 4,
               lineHeight: 22,
               color: "#000000",
@@ -114,10 +123,15 @@ const ApplicationSingle = ({
           >
             {requestorName}
           </Text>
-          <Text style={{ fontSize: 14, paddingBottom: 4, color: "#a9a9a9" }}>
+          <Text style={{ fontSize: 16, paddingBottom: 4, color: "#a9a9a9" }}>
             {destination}
           </Text>
-          <Text style={{ fontSize: 14, color: "#a9a9a9" }}>{travelType}</Text>
+          <Text style={{ fontSize: 16, paddingBottom: 4, color: "#a9a9a9" }}>
+            {travelType}
+          </Text>
+          <Text style={{ fontSize: 16, color: "#a9a9a9" }}>
+            {travelFrom} until {travelUntil} 2017
+          </Text>
         </View>
       )}
       <View
@@ -125,9 +139,9 @@ const ApplicationSingle = ({
           flexDirection: "row",
           backgroundColor: "#ee7202",
           justifyContent: "space-between",
-          paddingVertical: 8,
-          borderBottomRightRadius: 4,
-          borderBottomLeftRadius: 4
+          paddingVertical: 16,
+          borderBottomRightRadius: 8,
+          borderBottomLeftRadius: 8
         }}
       >
         <View style={{ paddingHorizontal: 16 }}>

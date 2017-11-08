@@ -30,7 +30,7 @@ class CostForm extends React.Component {
         value: "External Sponsorship"
       }
     ];
-
+    console.log(this.state.data);
     return (
       <KeyboardAvoidingView
         behavior="padding"
@@ -135,6 +135,27 @@ class CostForm extends React.Component {
               />
             </View>
           </View>
+
+          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
+            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
+              Cost Category
+            </Text>
+            <View style={{ borderColor: "#c4c4c4" }}>
+              <Dropdown
+                placeholder="e.g. TM Sponsorship"
+                labelHeight={0}
+                label=""
+                data={data}
+                onChangeText={value => this.setState({ data: value })}
+              />
+              {this.state.data === "External Sponsorship" && (
+                <Text style={{ fontSize: 12, color: "red" }}>
+                  Required EEUI Approval
+                </Text>
+              )}
+            </View>
+          </View>
+
           <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
             <Text style={{ fontSize: 12, paddingVertical: 16 }}>
               Cost Centre
@@ -151,26 +172,6 @@ class CostForm extends React.Component {
                 clearButtonMode="always"
                 underlineColorAndroid="rgba(0,0,0,0)"
               />
-            </View>
-          </View>
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
-              Cost Category
-            </Text>
-            <View style={{ borderColor: "#c4c4c4" }}>
-              <Dropdown
-                placeholder="e.g. TM Sponsorship"
-                labelHeight={0}
-                label=""
-                data={data}
-                onChangeText={() =>
-                  this.setState({ data: "External Sponsorship" })}
-              />
-              {this.state.data === "External Sponsorship" && (
-                <Text style={{ fontSize: 12, color: "red" }}>
-                  Required EEUI Approval
-                </Text>
-              )}
             </View>
           </View>
         </ScrollView>
