@@ -24,7 +24,7 @@ export default class wing extends Component {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <StatusBar backgroundColor="blue" showHiddenTransition="fade" />
+          <StatusBar showHiddenTransition="fade" />
           <Drawer />
         </View>
       </Provider>

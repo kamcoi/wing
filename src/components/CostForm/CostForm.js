@@ -2,50 +2,35 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  View,
-  KeyboardAvoidingView,
   TextInput,
+  View,
   TouchableOpacity,
   ScrollView,
+  KeyboardAvoidingView,
   Alert
 } from "react-native";
 import Next from "react-native-vector-icons/Entypo";
 import { Dropdown } from "react-native-material-dropdown";
-import DatePicker from "react-native-datepicker";
-import { connect } from "react-redux";
 import Icon from "react-native-vector-icons/EvilIcons";
-import { AutoGrowingTextInput } from "react-native-autogrow-textinput";
 import NavigationBar from "react-native-navbar";
 
-import { setDestination } from "../../redux/requestForm/action";
-
-class TravelForm extends React.Component {
-  state = { date: "01-11-2017", date2: "01-11-2018" };
-
+class CostForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { data: null };
+  }
   render() {
-    // alert(0.1 + 0.1 + 0.1);
     const { navigate, state } = this.props.navigation;
     const { goBack } = this.props.navigation;
     let data = [
       {
-        value: "Training"
+        value: "TM Sponsorship"
       },
       {
-        value: "Market Research"
-      },
-      {
-        value: "Meetings"
-      },
-      {
-        value: "Conference"
-      },
-      {
-        value: "Site visit"
-      },
-      {
-        value: "Sales visit"
+        value: "External Sponsorship"
       }
     ];
+
     return (
       <KeyboardAvoidingView
         behavior="padding"
@@ -84,17 +69,97 @@ class TravelForm extends React.Component {
         {state.params.reedit == 1 ? null : (
           <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
             <Text style={{ fontSize: 14, fontWeight: "bold" }}>
-              Step 2: Travel Information
+              Step 3: Cost Information
             </Text>
           </View>
         )}
-
         <FormBar />
+
         <ScrollView style={{ flex: 1 }}>
           <View
             style={{ paddingHorizontal: 16, paddingBottom: 16, paddingTop: 24 }}
           >
-            <Text style={{ fontSize: 12, paddingBottom: 16 }}>Destination</Text>
+            <Text style={{ fontSize: 12, paddingBottom: 16 }}>Cost</Text>
+            <View
+              style={{
+                flexDirection: "row",
+                borderColor: "#c4c4c4",
+                borderBottomWidth: 1
+              }}
+            >
+              <View style={{ justifyContent: "center" }}>
+                <Text style={{ fontSize: 16, paddingBottom: 8 }}>RM</Text>
+              </View>
+              <TextInput
+                style={{
+                  flex: 1,
+                  color: "#ee7202",
+                  fontSize: 16,
+                  paddingLeft: 8,
+                  paddingBottom: 8,
+                  alignItems: "flex-end",
+                  justifyContent: "center"
+                }}
+                placeholder="State your cost.."
+                clearButtonMode="always"
+                underlineColorAndroid="rgba(0,0,0,0)"
+                keyboardType="numeric"
+              />
+            </View>
+          </View>
+          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
+            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Budget</Text>
+            <View
+              style={{
+                flexDirection: "row",
+                borderColor: "#c4c4c4",
+                borderBottomWidth: 1
+              }}
+            >
+              <View style={{ justifyContent: "center" }}>
+                <Text style={{ fontSize: 16, paddingBottom: 8 }}>RM</Text>
+              </View>
+              <TextInput
+                style={{
+                  flex: 1,
+                  color: "#ee7202",
+                  fontSize: 16,
+                  paddingBottom: 8,
+                  paddingLeft: 8,
+                  alignItems: "flex-end"
+                }}
+                placeholder="State your budget.."
+                clearButtonMode="always"
+                underlineColorAndroid="rgba(0,0,0,0)"
+                keyboardType="numeric"
+              />
+            </View>
+          </View>
+
+          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
+            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
+              Cost Category
+            </Text>
+            <View style={{ borderColor: "#c4c4c4" }}>
+              <Dropdown
+                placeholder="e.g. TM Sponsorship"
+                labelHeight={0}
+                label=""
+                data={data}
+                onChangeText={value => this.setState({ data: value })}
+              />
+              {this.state.data === "External Sponsorship" && (
+                <Text style={{ fontSize: 12, color: "red" }}>
+                  Required EEUI Approval
+                </Text>
+              )}
+            </View>
+          </View>
+
+          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
+            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
+              Cost Centre
+            </Text>
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
               <TextInput
                 style={{
@@ -103,105 +168,14 @@ class TravelForm extends React.Component {
                   paddingBottom: 8,
                   alignItems: "flex-end"
                 }}
-                placeholder="e.g. Seremban, Negeri Sembilan"
-                value={this.props.requestForm.destination}
-                onChangeText={text => this.props.setDestination(text)}
+                placeholder="e.g. BMCE02"
                 clearButtonMode="always"
                 underlineColorAndroid="rgba(0,0,0,0)"
               />
             </View>
           </View>
-
-          <View style={{ paddingHorizontal: 16, paddingBottom: 8 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 8 }}>Type</Text>
-            <View style={{ borderColor: "#c4c4c4" }}>
-              <Dropdown
-                placeholder="e.g. Training"
-                labelHeight={0}
-                label=""
-                data={data}
-              />
-            </View>
-          </View>
-
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>From</Text>
-            <View style={{ borderColor: "#c4c4c4" }}>
-              <DatePicker
-                style={{ width: 200 }}
-                date={this.state.date}
-                mode="date"
-                format="DD-MM-YYYY"
-                minDate="01-01-1990"
-                confirmBtnText="Confirm"
-                cancelBtnText="Cancel"
-                customStyles={{
-                  dateIcon: {
-                    position: "absolute",
-                    left: 0,
-                    top: 4,
-                    marginLeft: 0
-                  },
-                  dateInput: {
-                    marginLeft: 36
-                  }
-                  // ... You can check the source to find the other keys.
-                }}
-                onDateChange={date => {
-                  this.setState({ date: date });
-                }}
-              />
-            </View>
-          </View>
-
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Until</Text>
-            <View style={{ borderColor: "#c4c4c4" }}>
-              <DatePicker
-                style={{ width: 200 }}
-                date={this.state.date2}
-                mode="date"
-                format="DD-MM-YYYY"
-                minDate="01-01-1990"
-                confirmBtnText="Confirm"
-                cancelBtnText="Cancel"
-                customStyles={{
-                  dateIcon: {
-                    position: "absolute",
-                    left: 0,
-                    top: 4,
-                    marginLeft: 0
-                  },
-                  dateInput: {
-                    marginLeft: 36
-                  }
-                  // ... You can check the source to find the other keys.
-                }}
-                onDateChange={date => {
-                  this.setState({ date2: date });
-                }}
-              />
-            </View>
-          </View>
-
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
-              Justification for Travelling
-            </Text>
-            <View>
-              <AutoGrowingTextInput
-                style={{
-                  borderBottomWidth: 1,
-                  borderColor: "#c4c4c4",
-                  fontSize: 16,
-                  paddingVertical: 8
-                }}
-                placeholder="Provide justification for your travel..."
-                underlineColorAndroid="rgba(0,0,0,0)"
-              />
-            </View>
-          </View>
         </ScrollView>
+
         {state.params.reedit == 1 ? null : (
           <View
             style={{
@@ -221,7 +195,7 @@ class TravelForm extends React.Component {
               <Icon name="chevron-left" size={32} color="#000000" />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigate("CostForm", { reedit: 0 })}
+              onPress={() => navigate("ApprovalForm", { reedit: 0 })}
               style={{
                 alignItems: "center",
                 borderRadius: 100
@@ -236,22 +210,7 @@ class TravelForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    requestForm: state.requestForm
-    // user: state.user
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setDestination: t => {
-      dispatch(setDestination(t));
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TravelForm);
+export default CostForm;
 
 const FormBar = () => (
   <View
@@ -282,18 +241,16 @@ const FormBar = () => (
     <View
       style={{
         flexDirection: "row",
-        borderBottomWidth: 2,
-        borderColor: "#f27178",
         paddingBottom: 4,
         flex: 0.2,
         justifyContent: "center"
       }}
     >
       <View style={{ justifyContent: "center", paddingHorizontal: 2 }}>
-        <Icon name="location" size={24} color="#f27178" />
+        <Icon name="location" size={24} color="#000000" />
       </View>
       <View style={{ justifyContent: "center" }}>
-        <Text style={{ fontSize: 12, color: "#f27178" }}>Two</Text>
+        <Text style={{ fontSize: 12 }}>Two</Text>
       </View>
     </View>
     <View
@@ -301,14 +258,21 @@ const FormBar = () => (
         flexDirection: "row",
         paddingBottom: 4,
         flex: 0.2,
-        justifyContent: "center"
+        justifyContent: "center",
+        borderBottomWidth: 2,
+        borderColor: "#f27178"
       }}
     >
-      <View style={{ justifyContent: "center", paddingHorizontal: 2 }}>
-        <Icon name="credit-card" size={24} color="#000000" />
+      <View
+        style={{
+          justifyContent: "center",
+          paddingHorizontal: 2
+        }}
+      >
+        <Icon name="credit-card" size={24} color="#f27178" />
       </View>
       <View style={{ justifyContent: "center" }}>
-        <Text style={{ fontSize: 12 }}>Three</Text>
+        <Text style={{ fontSize: 12, color: "#f27178" }}>Three</Text>
       </View>
     </View>
     <View

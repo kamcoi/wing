@@ -4,7 +4,7 @@ const initialState = [
     notification: "new",
     ref: "1001",
     timeStamp: "1 Jan 2017, 8.00am",
-    destination: "Monte Carlo, Monaco",
+    destination: "Singapore",
     travelFrom: "21 Oct",
     travelUntil: "10 Nov",
     travelType: "Site Survey",
@@ -308,6 +308,17 @@ const initialState = [
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case "SET_DESTINATION":
+      return {
+        ...state,
+        destination: action.data
+      };
+
+    case "SET_TRAVEL_TYPE":
+      return {
+        ...state,
+        travelType: action.data
+      };
     default:
       return state;
   }

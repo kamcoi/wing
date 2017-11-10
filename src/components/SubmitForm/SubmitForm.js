@@ -15,7 +15,7 @@ class SubmitForm extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     const { goBack } = this.props.navigation;
-    const { submit } = this.props;
+    const { submit, user } = this.props;
     return (
       <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
         <StatusBar
@@ -29,7 +29,7 @@ class SubmitForm extends React.Component {
           leftButton={{
             title: "Exit",
             handler: () =>
-              Alert.alert("confirm to Exit without submitting?", "Lala", [
+              Alert.alert("Warning", "Lala", [
                 {
                   text: "No",
                   style: "destructive"
@@ -76,7 +76,7 @@ class SubmitForm extends React.Component {
             </View>
           </View>
 
-          <TravelDetails submit={submit} />
+          <TravelDetails submit={submit} navigate={navigate} />
 
           <View style={{ paddingHorizontal: 8, paddingBottom: 32 }}>
             <View
@@ -97,10 +97,10 @@ class SubmitForm extends React.Component {
             <Text
               style={{ fontSize: 20, paddingBottom: 4, fontWeight: "bold" }}
             >
-              {submit.requestorName}
+              {user.name}
             </Text>
             <Text style={{ fontSize: 12, paddingBottom: 16 }}>
-              {submit.requestorDivision}
+              {user.division}
             </Text>
             <Text style={{ fontSize: 12, paddingBottom: 8, color: "#c4c4c4" }}>
               Additional Travellers
@@ -233,12 +233,15 @@ class SubmitForm extends React.Component {
 
         <View
           style={{
-            paddingVertical: 16
+            paddingVertical: 8,
+            backgroundColor: "green",
+            marginHorizontal: 114,
+            marginVertical: 8
           }}
         >
           <TouchableOpacity
             onPress={() =>
-              Alert.alert("Submit travel request?", "Action cannot be undo", [
+              Alert.alert("Attention!", "Ready to Submit?", [
                 {
                   text: "No",
                   style: "destructive"
@@ -255,7 +258,6 @@ class SubmitForm extends React.Component {
               alignItems: "center"
             }}
           >
-            <Send name="md-send" size={40} color="#000000" />
             <Text>Submit</Text>
           </TouchableOpacity>
         </View>
@@ -266,7 +268,7 @@ class SubmitForm extends React.Component {
 
 export default SubmitForm;
 
-const TravelDetails = ({ submit }) => (
+const TravelDetails = ({ submit, navigate }) => (
   <View style={{ paddingHorizontal: 8, paddingBottom: 40 }}>
     <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
       <Text style={{ fontSize: 12, paddingBottom: 12, color: "#f27178" }}>

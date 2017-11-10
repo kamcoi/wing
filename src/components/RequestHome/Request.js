@@ -22,7 +22,7 @@ class Request extends React.Component {
     const { navigate } = this.props.navigation;
     const { requestHome } = this.props;
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: "#f3f3f3" }}>
         <ScrollView style={{ flex: 1, paddingHorizontal: 8, paddingTop: 8 }}>
           <FlatList
             data={requestHome}
@@ -71,37 +71,37 @@ const ApplicationSingle = ({
     style={{
       marginBottom: 16,
       justifyContent: "flex-start",
-      shadowOpacity: 0.2,
+      shadowOpacity: 0.4,
       borderRadius: 8
     }}
   >
     {status === "Draft" ? (
       <TouchableOpacity
         onPress={() => navigate("SubmitForm")}
-        style={{ backgroundColor: "#a9a9a9", borderRadius: 8 }}
+        style={{ backgroundColor: "#dcdcdc", borderRadius: 8 }}
       >
         <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
           <Text
             style={{
               fontSize: 16,
               paddingBottom: 4,
-              color: "#f8f8ff",
+              color: "#000000",
               fontWeight: "bold"
             }}
           >
-            {destination}
+            [Draft] {destination}
           </Text>
           <Text
             style={{
               fontSize: 16,
               paddingBottom: 4,
-              color: "#f8f8ff"
+              color: "#000000"
             }}
           >
-            [Draft] {travelType}
+            {travelType}
           </Text>
 
-          <Text style={{ fontSize: 16, paddingBottom: 4, color: "#f8f8ff" }}>
+          <Text style={{ fontSize: 16, paddingBottom: 4, color: "#000000" }}>
             {travelFrom} until {travelUntil} 2017
           </Text>
         </View>
@@ -110,20 +110,24 @@ const ApplicationSingle = ({
 
         <View
           style={{
-            backgroundColor: "#f47178",
+            flexDirection: "row",
+            backgroundColor: "rgba(255, 149, 79, 0.8)",
             paddingVertical: 16,
             paddingHorizontal: 16,
             borderBottomLeftRadius: 8,
             borderBottomRightRadius: 8
           }}
         >
-          <Text style={{ fontWeight: "bold" }}>{dialogBox}</Text>
+          <Icon name="comment" size={24} color="#000000" />
+          <Text style={{ paddingLeft: 8, fontSize: 16, fontWeight: "bold" }}>
+            {dialogBox}
+          </Text>
         </View>
       </TouchableOpacity>
     ) : (
       <TouchableOpacity
         onPress={() => navigate("RequestStatus")}
-        style={{ backgroundColor: "white", borderRadius: 8 }}
+        style={{ backgroundColor: "#ffffff", borderRadius: 8 }}
       >
         {notification === "new" ? (
           <View
@@ -198,15 +202,16 @@ const ApplicationSingle = ({
           <View
             style={{
               justifyContent: "center",
-              backgroundColor: "blue",
-              marginHorizontal: 16,
+              backgroundColor: "#5ac8fa",
               marginBottom: 16,
+              marginHorizontal: 32,
+              borderRadius: 100,
               paddingTop: 16,
               paddingBottom: 16,
               alignItems: "center"
             }}
           >
-            <Text>Pending EEIU Approval</Text>
+            <Text style={{ color: "white" }}>Pending EEIU Approval</Text>
           </View>
         ) : (
           <TrackingBar status={status} reject={reject} />
@@ -214,14 +219,18 @@ const ApplicationSingle = ({
 
         <View
           style={{
-            backgroundColor: "#cf0832",
+            flexDirection: "row",
+            backgroundColor: "#007aff",
             paddingVertical: 16,
             paddingHorizontal: 16,
             borderBottomLeftRadius: 8,
             borderBottomRightRadius: 8
           }}
         >
-          <Text style={{ fontWeight: "bold" }}>{dialogBox}</Text>
+          <Icon name="comment" size={24} color="#000000" />
+          <Text style={{ paddingLeft: 8, fontSize: 16, fontWeight: "bold" }}>
+            {dialogBox}
+          </Text>
         </View>
       </TouchableOpacity>
     )}

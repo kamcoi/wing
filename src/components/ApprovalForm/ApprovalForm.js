@@ -2,8 +2,8 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  TextInput,
   View,
+  TextInput,
   TouchableOpacity,
   ScrollView,
   KeyboardAvoidingView,
@@ -13,8 +13,9 @@ import Next from "react-native-vector-icons/Entypo";
 import { Dropdown } from "react-native-material-dropdown";
 import Icon from "react-native-vector-icons/EvilIcons";
 import NavigationBar from "react-native-navbar";
+import DisplayedPage from "./DisplayedPage";
 
-class CostForm extends React.Component {
+class ApprovalForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { data: null };
@@ -22,15 +23,33 @@ class CostForm extends React.Component {
   render() {
     const { navigate, state } = this.props.navigation;
     const { goBack } = this.props.navigation;
+    const { approver } = this.props;
     let data = [
       {
-        value: "TM Sponsorship"
+        value: "AGM and below"
       },
       {
-        value: "External Sponsorship"
+        value: "GLT Members"
+      },
+      {
+        value: "Direct report to GLT Members"
+      },
+      {
+        value: "CEO/President(Subsidiaries)"
+      },
+      {
+        value: "GM/ VP(Subsidiaries)"
+      },
+      {
+        value: "AGM/ AVP/ Senior Manager & Below(Subsidiaries)"
+      },
+      {
+        value: "CFO(Subsidiaries)"
+      },
+      {
+        value: "Head of Finance/ Business Controllers"
       }
     ];
-    console.log(this.state.data);
     return (
       <KeyboardAvoidingView
         behavior="padding"
@@ -66,10 +85,11 @@ class CostForm extends React.Component {
             }}
           />
         )}
+
         {state.params.reedit == 1 ? null : (
           <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
             <Text style={{ fontSize: 14, fontWeight: "bold" }}>
-              Step 3: Cost Information
+              Step 4: Approver Information
             </Text>
           </View>
         )}
@@ -79,101 +99,22 @@ class CostForm extends React.Component {
           <View
             style={{ paddingHorizontal: 16, paddingBottom: 16, paddingTop: 24 }}
           >
-            <Text style={{ fontSize: 12, paddingBottom: 16 }}>Cost</Text>
-            <View
-              style={{
-                flexDirection: "row",
-                borderColor: "#c4c4c4",
-                borderBottomWidth: 1
-              }}
-            >
-              <View style={{ justifyContent: "center" }}>
-                <Text style={{ fontSize: 16, paddingBottom: 8 }}>RM</Text>
-              </View>
-              <TextInput
-                style={{
-                  flex: 1,
-                  color: "#ee7202",
-                  fontSize: 16,
-                  paddingLeft: 8,
-                  paddingBottom: 8,
-                  alignItems: "flex-end",
-                  justifyContent: "center"
-                }}
-                placeholder="State your cost.."
-                clearButtonMode="always"
-                underlineColorAndroid="rgba(0,0,0,0)"
-                keyboardType="numeric"
-              />
-            </View>
-          </View>
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>Budget</Text>
-            <View
-              style={{
-                flexDirection: "row",
-                borderColor: "#c4c4c4",
-                borderBottomWidth: 1
-              }}
-            >
-              <View style={{ justifyContent: "center" }}>
-                <Text style={{ fontSize: 16, paddingBottom: 8 }}>RM</Text>
-              </View>
-              <TextInput
-                style={{
-                  flex: 1,
-                  color: "#ee7202",
-                  fontSize: 16,
-                  paddingBottom: 8,
-                  paddingLeft: 8,
-                  alignItems: "flex-end"
-                }}
-                placeholder="State your budget.."
-                clearButtonMode="always"
-                underlineColorAndroid="rgba(0,0,0,0)"
-                keyboardType="numeric"
-              />
-            </View>
-          </View>
-
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
-              Cost Category
+            <Text style={{ fontSize: 12, paddingBottom: 16 }}>
+              Your Designation
             </Text>
             <View style={{ borderColor: "#c4c4c4" }}>
               <Dropdown
-                placeholder="e.g. TM Sponsorship"
+                placeholder="e.g. AGM and below"
                 labelHeight={0}
                 label=""
                 data={data}
-                onChangeText={value => this.setState({ data: value })}
-              />
-              {this.state.data === "External Sponsorship" && (
-                <Text style={{ fontSize: 12, color: "red" }}>
-                  Required EEUI Approval
-                </Text>
-              )}
-            </View>
-          </View>
-
-          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
-              Cost Centre
-            </Text>
-            <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-              <TextInput
-                style={{
-                  color: "#ee7202",
-                  fontSize: 16,
-                  paddingBottom: 8,
-                  alignItems: "flex-end"
+                onChangeText={value => {
+                  this.setState({ data: value });
                 }}
-                placeholder="e.g. BMCE02"
-                clearButtonMode="always"
-                underlineColorAndroid="rgba(0,0,0,0)"
               />
             </View>
           </View>
+          <DisplayedPage navigate={navigate} page={this.state.data} />
         </ScrollView>
 
         {state.params.reedit == 1 ? null : (
@@ -195,7 +136,7 @@ class CostForm extends React.Component {
               <Icon name="chevron-left" size={32} color="#000000" />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigate("ApprovalForm", { reedit: 0 })}
+              onPress={() => navigate("SubmitForm", { reedit: 0 })}
               style={{
                 alignItems: "center",
                 borderRadius: 100
@@ -210,7 +151,7 @@ class CostForm extends React.Component {
   }
 }
 
-export default CostForm;
+export default ApprovalForm;
 
 const FormBar = () => (
   <View
@@ -258,36 +199,31 @@ const FormBar = () => (
         flexDirection: "row",
         paddingBottom: 4,
         flex: 0.2,
-        justifyContent: "center",
-        borderBottomWidth: 2,
-        borderColor: "#f27178"
+        justifyContent: "center"
       }}
     >
-      <View
-        style={{
-          justifyContent: "center",
-          paddingHorizontal: 2
-        }}
-      >
-        <Icon name="credit-card" size={24} color="#f27178" />
+      <View style={{ justifyContent: "center", paddingHorizontal: 2 }}>
+        <Icon name="credit-card" size={24} color="#000000" />
       </View>
       <View style={{ justifyContent: "center" }}>
-        <Text style={{ fontSize: 12, color: "#f27178" }}>Three</Text>
+        <Text style={{ fontSize: 12 }}>Three</Text>
       </View>
     </View>
     <View
       style={{
         flexDirection: "row",
         paddingBottom: 4,
+        borderBottomWidth: 2,
+        borderColor: "#f27178",
         flex: 0.2,
         justifyContent: "center"
       }}
     >
       <View style={{ justifyContent: "center", paddingHorizontal: 2 }}>
-        <Icon name="check" size={24} color="#000000" />
+        <Icon name="check" size={24} color="#f27178" />
       </View>
       <View style={{ justifyContent: "center" }}>
-        <Text style={{ fontSize: 12 }}>Four</Text>
+        <Text style={{ fontSize: 12, color: "#f27178" }}>Four</Text>
       </View>
     </View>
   </View>

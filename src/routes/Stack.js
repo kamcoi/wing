@@ -4,10 +4,10 @@ import { StackNavigator } from "react-navigation";
 import Tabs from "./Tabs";
 import Menu from "react-native-vector-icons/Ionicons";
 
-import ProfileForm from "../components/RequestForm";
-import TravelForm from "../components/RequestForm/TravelForm";
-import CostForm from "../components/RequestForm/CostForm";
-import ApprovalForm from "../components/RequestForm/ApprovalForm";
+import ProfileForm from "../components/ProfileForm";
+import TravelForm from "../components/TravelForm";
+import CostForm from "../components/CostForm/CostForm";
+import ApprovalForm from "../components/ApprovalForm/ApprovalForm";
 import SubmitForm from "../components/SubmitForm";
 import AddFriends from "../components/AddFriends";
 import TaskStatus from "../components/TaskStatus";
@@ -21,7 +21,13 @@ const Stack = StackNavigator({
   Tabs: {
     screen: Tabs,
     navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: "#ff954f"
+      },
       headerTitle: "Home",
+      headerTitleStyle: {
+        color: "white"
+      },
       headerLeft: (
         <TouchableOpacity
           onPress={() => navigation.navigate("DrawerToggle")}

@@ -27,9 +27,11 @@ const Tabs = TabNavigator(
     swipeEnabled: true,
     tabBarOptions: {
       style: {
-        backgroundColor: "white"
+        borderTopWidth: 0.5,
+        borderTopColor: "white",
+        backgroundColor: "#ff954f"
       },
-      activeTintColor: "#f27178",
+      activeTintColor: "#ffffff",
       showLabel: false
     }
   }

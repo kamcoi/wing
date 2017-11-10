@@ -30,14 +30,7 @@ class Comments extends React.Component {
           }}
         />
 
-        <View
-          style={{
-            marginHorizontal: 8,
-            paddingHorizontal: 8,
-            paddingVertical: 16,
-            borderBottomWidth: 1
-          }}
-        >
+        <View style={styles.travelDetailsContainer}>
           <Text style={{ paddingBottom: 4, fontSize: 24, fontWeight: "bold" }}>
             {comment1.destination}
           </Text>
@@ -78,22 +71,9 @@ class Comments extends React.Component {
 
         <KeyboardAvoidingView
           behavior="padding"
-          style={{
-            flexDirection: "row",
-            borderTopWidth: 1,
-            borderColor: "#c4c4c4",
-            paddingVertical: 8,
-            justifyContent: "space-around"
-          }}
+          style={styles.typeCommentContainer}
         >
-          <View
-            style={{
-              flex: 0.9,
-              borderWidth: 1,
-              borderRadius: 8,
-              marginBottom: 8
-            }}
-          >
+          <View style={styles.textInputBox}>
             <TextInput
               style={{ padding: 8, fontSize: 14 }}
               placeholder="Type your comment here.."
@@ -127,3 +107,25 @@ const ChatSingle = ({ id, senderName, commentText, timeStamp }) => (
     <Text style={{ fontSize: 12, color: "#c4c4c4" }}>{timeStamp}</Text>
   </View>
 );
+
+const styles = StyleSheet.create({
+  travelDetailsContainer: {
+    marginHorizontal: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 16,
+    borderBottomWidth: 1
+  },
+  typeCommentContainer: {
+    flexDirection: "row",
+    borderTopWidth: 1,
+    borderColor: "#c4c4c4",
+    paddingVertical: 8,
+    justifyContent: "space-around"
+  },
+  textInputBox: {
+    flex: 0.9,
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 8
+  }
+});
