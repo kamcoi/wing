@@ -27,12 +27,12 @@ const Tabs = TabNavigator(
     swipeEnabled: true,
     tabBarOptions: {
       style: {
-        borderTopWidth: 0.5,
-        borderTopColor: "white",
-        backgroundColor: "#ff954f"
+        // borderTopWidth: 0.5,
+        // borderTopColor: "white",
+        // backgroundColor: "#ff954f"
       },
-      activeTintColor: "#ffffff",
-      showLabel: false
+      activeTintColor: "#ff954f",
+      showLabel: true
     }
   }
 );

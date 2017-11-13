@@ -28,7 +28,6 @@ const initialState = [
     costCentre: "BMCE02",
     requestorDesignation: "Big Bawwsss",
     commentTextLatest: "Ali, What is your name?",
-
     comments: [
       {
         senderId: "1",
@@ -85,7 +84,8 @@ const initialState = [
       {
         senderId: "1",
         senderName: "Ali Muhd Wasil bin Ali Absar",
-        commentText: "I like it aha aha",
+        commentText:
+          "Hafiz, where can we have all beautiful shawties around that area? I want them like right now!",
         timeStamp: "13 September 2017, 3.20pm"
       },
       {

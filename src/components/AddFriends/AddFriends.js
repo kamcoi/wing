@@ -79,7 +79,7 @@ class AddPerson extends React.Component {
 
 export default AddPerson;
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   searchBarContainer: {
     flexDirection: "row",
     borderWidth: 1,

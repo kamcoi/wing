@@ -9,62 +9,6 @@ import {
 import Check from "react-native-vector-icons/EvilIcons";
 import Icon from "react-native-vector-icons/Entypo";
 
-//
-// class GuidelineContent extends React.Component {
-//   render() {
-//     return (
-//       <View style={{ flex: 1 }}>
-//         <View
-//           style={{
-//             flexDirection: "row",
-//             justifyContent: "space-between",
-//             paddingTop: 32,
-//             paddingBottom: 8,
-//             marginBottom: 16
-//           }}
-//         >
-//           <TouchableOpacity
-//             onPress={() => this.props.navigation.goBack()}
-//             style={{ flex: 0.15, alignItems: "center" }}
-//           >
-//             <Icon name="chevron-left" size={24} color="#000000" />
-//           </TouchableOpacity>
-//         </View>
-//
-//         <ScrollView style={{ flex: 1 }}>
-//           <Text
-//             style={{
-//               fontSize: 16,
-//               fontWeight: "bold",
-//               paddingHorizontal: 24,
-//               paddingBottom: 24
-//             }}
-//           >
-//             Hi
-//           </Text>
-//           <View
-//             style={{
-//               flexDirection: "row",
-//               paddingBottom: 24,
-//               paddingHorizontal: 24
-//             }}
-//           >
-//             <Check
-//               style={{ paddingRight: 8, paddingTop: 2 }}
-//               name="check"
-//               size={32}
-//               color="#c4c4c4"
-//             />
-//             <Text style={{ fontSize: 16, paddingBottom: 8, lineHeight: 24 }}>
-//               What is your name?
-//             </Text>
-//           </View>
-//         </ScrollView>
-//       </View>
-//     );
-//   }
-// }
-
 const contents = [
   {
     header: "Applicability",
@@ -116,11 +60,7 @@ class GuidelineContent extends React.Component {
       <View style={{ flex: 1 }}>
         <TouchableOpacity
           onPress={() => this.props.navigation.goBack()}
-          style={{
-            flex: 0.1,
-            justifyContent: "flex-end",
-            paddingHorizontal: 16
-          }}
+          style={styles.navigationContainer}
         >
           <Icon name="chevron-left" size={24} color="#000000" />
         </TouchableOpacity>
@@ -136,3 +76,11 @@ class GuidelineContent extends React.Component {
 }
 
 export default GuidelineContent;
+
+const styles = StyleSheet.create({
+  navigationContainer: {
+    flex: 0.1,
+    justifyContent: "flex-end",
+    paddingHorizontal: 16
+  }
+});

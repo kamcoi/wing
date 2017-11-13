@@ -18,12 +18,9 @@ class TaskStatus extends React.Component {
     const { goBack } = this.props.navigation;
     const { status } = this.props;
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: "#f3f3f3" }}>
         <NavigationBar
-          style={{
-            borderColor: "#f27178",
-            borderBottomWidth: 1
-          }}
+          style={{ borderBottomWidth: 1, borderColor: "#c4c4c4" }}
           title={{ title: "Task Status" }}
           leftButton={{
             title: "Back",
@@ -32,51 +29,16 @@ class TaskStatus extends React.Component {
         />
 
         <ScrollView style={{ flex: 1, backgroundColor: "#ffffff" }}>
-          <View
-            style={{
-              paddingVertical: 24,
-              paddingHorizontal: 8,
-              alignItems: "center",
-              backgroundColor: "grey"
-            }}
-          >
+          <View style={styles.captionContainer}>
             <Text style={{ fontWeight: "bold" }}>
               Request Form is pending for your approval
             </Text>
           </View>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              marginVertical: 32,
-              paddingHorizontal: 8
-            }}
-          >
-            <View
-              style={{
-                backgroundColor: "#f27178",
-                paddingHorizontal: 16,
-                paddingVertical: 16,
-                marginLeft: 8
-              }}
-            >
-              <Text
-                style={{
-                  paddingTop: 8,
-                  fontSize: 18,
-                  fontWeight: "bold"
-                }}
-              >
-                Logo
-              </Text>
+          <View style={styles.headerContainer}>
+            <View style={styles.logoBox}>
+              <Text style={styles.logoText}>Logo</Text>
             </View>
-            <View
-              style={{
-                width: "30%",
-                paddingHorizontal: 8,
-                justifyContent: "center"
-              }}
-            >
+            <View style={styles.requestDetailsBox}>
               <Text style={{ fontSize: 12, textAlign: "right" }}>
                 {status.ref}
               </Text>
@@ -94,12 +56,7 @@ class TaskStatus extends React.Component {
 
           <TouchableOpacity
             onPress={() => navigate("Comments")}
-            style={{
-              flex: 1,
-              flexDirection: "row",
-              paddingVertical: 24,
-              paddingHorizontal: 16
-            }}
+            style={styles.commentContainer}
           >
             <View style={{ justifyContent: "center" }}>
               <Icon name="comment" size={32} color="#000000" />
@@ -286,43 +243,11 @@ const CostDetails = ({ status }) => (
   </View>
 );
 
-// const CostDetails = ({ status }) => (
-//   <View style={{ paddingBottom: 40, paddingHorizontal: 16 }}>
-//     <Text style={{ fontSize: 12, paddingBottom: 8, color: "#f27178" }}>
-//       Cost Details
-//     </Text>
-//     <View
-//       style={{
-//         flexDirection: "row",
-//         justifyContent: "space-between",
-//         paddingBottom: 8,
-//         borderBottomWidth: 0.5,
-//         borderColor: "#c4c4c4"
-//       }}
-//     >
-//       <Text style={{ color: "grey" }}>Budget {status.costCentre}</Text>
-//       <Text style={{ paddingRight: 8, color: "grey" }}>RM{status.budget}</Text>
-//     </View>
-//     <View
-//       style={{
-//         flexDirection: "row",
-//         justifyContent: "space-between",
-//         paddingVertical: 8
-//       }}
-//     >
-//       <Text style={{ fontSize: 18 }}>TOTAL</Text>
-//       <Text style={{ paddingRight: 8, fontSize: 18, fontWeight: "bold" }}>
-//         RM{status.cost}
-//       </Text>
-//     </View>
-//   </View>
-// );
-
 const CalltoAction = ({ navigate, status }) => (
   <View
     style={{
       flexDirection: "row",
-      justifyContent: "space-around",
+      justifyContent: "center",
       paddingVertical: 8
     }}
   >
@@ -345,9 +270,7 @@ const CalltoAction = ({ navigate, status }) => (
         borderColor: "grey"
       }}
     >
-      <Text style={{ fontSize: 16, color: "#a9a9a9", padding: 16 }}>
-        Reject
-      </Text>
+      <Text style={{ fontSize: 16, color: "red", padding: 16 }}>Reject</Text>
     </TouchableOpacity>
     <TouchableOpacity
       onPress={() =>
@@ -369,15 +292,17 @@ const CalltoAction = ({ navigate, status }) => (
         )}
       style={{
         alignItems: "center",
-        borderColor: "grey"
+        borderColor: "grey",
+        backgroundColor: "#4cd964",
+        paddingVertical: 16,
+        paddingHorizontal: 32,
+        borderRadius: 100,
+        marginLeft: 32
       }}
     >
       <Text
         style={{
-          fontSize: 16,
-          color: "green",
-          backgroundColor: "red",
-          padding: 16
+          fontSize: 16
         }}
       >
         Approve
@@ -385,3 +310,40 @@ const CalltoAction = ({ navigate, status }) => (
     </TouchableOpacity>
   </View>
 );
+
+const styles = StyleSheet.create({
+  captionContainer: {
+    paddingVertical: 24,
+    paddingHorizontal: 8,
+    alignItems: "center",
+    backgroundColor: "#c4c4c4"
+  },
+  headerContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginVertical: 32,
+    paddingHorizontal: 8
+  },
+  logoBox: {
+    backgroundColor: "#f27178",
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    marginLeft: 8
+  },
+  logoText: {
+    paddingTop: 8,
+    fontSize: 18,
+    fontWeight: "bold"
+  },
+  requestDetailsBox: {
+    width: "30%",
+    paddingHorizontal: 8,
+    justifyContent: "center"
+  },
+  commentContainer: {
+    flex: 1,
+    flexDirection: "row",
+    paddingVertical: 24,
+    paddingHorizontal: 16
+  }
+});

@@ -89,8 +89,7 @@ class DrawerContainer extends React.Component {
               ])}
             style={{ alignItems: "center" }}
           >
-            <DrawerIcon name="log-out" size={24} color="#c4c4c4" />
-            <Text style={{ paddingTop: 4, color: "#c4c4c4" }}>Log Out</Text>
+            <Text style={{ paddingTop: 4, color: "red" }}>Log Out</Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -67,40 +67,15 @@ const ApplicationSingle = ({
   notification,
   reject
 }) => (
-  <View
-    style={{
-      marginBottom: 16,
-      justifyContent: "flex-start",
-      shadowOpacity: 0.4,
-      borderRadius: 8
-    }}
-  >
+  <View style={styles.applicationCardBox}>
     {status === "Draft" ? (
       <TouchableOpacity
         onPress={() => navigate("SubmitForm")}
         style={{ backgroundColor: "#dcdcdc", borderRadius: 8 }}
       >
         <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
-          <Text
-            style={{
-              fontSize: 16,
-              paddingBottom: 4,
-              color: "#000000",
-              fontWeight: "bold"
-            }}
-          >
-            [Draft] {destination}
-          </Text>
-          <Text
-            style={{
-              fontSize: 16,
-              paddingBottom: 4,
-              color: "#000000"
-            }}
-          >
-            {travelType}
-          </Text>
-
+          <Text style={styles.destinationDraftText}>[Draft] {destination}</Text>
+          <Text style={styles.travelTypeDraftText}>{travelType}</Text>
           <Text style={{ fontSize: 16, paddingBottom: 4, color: "#000000" }}>
             {travelFrom} until {travelUntil} 2017
           </Text>
@@ -108,16 +83,7 @@ const ApplicationSingle = ({
 
         <TrackingBar status={status} reject={reject} />
 
-        <View
-          style={{
-            flexDirection: "row",
-            backgroundColor: "rgba(255, 149, 79, 0.8)",
-            paddingVertical: 16,
-            paddingHorizontal: 16,
-            borderBottomLeftRadius: 8,
-            borderBottomRightRadius: 8
-          }}
-        >
+        <View style={styles.commentBoxDraftContainer}>
           <Icon name="comment" size={24} color="#000000" />
           <Text style={{ paddingLeft: 8, fontSize: 16, fontWeight: "bold" }}>
             {dialogBox}
@@ -130,36 +96,10 @@ const ApplicationSingle = ({
         style={{ backgroundColor: "#ffffff", borderRadius: 8 }}
       >
         {notification === "new" ? (
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              paddingVertical: 16,
-              paddingHorizontal: 16
-            }}
-          >
+          <View style={styles.applicationCardDetailsNewContainer}>
             <View>
-              <Text
-                style={{
-                  fontSize: 16,
-                  paddingBottom: 4,
-                  color: "#cf0832",
-                  fontWeight: "bold"
-                }}
-              >
-                {destination}
-              </Text>
-
-              <Text
-                style={{
-                  fontSize: 16,
-                  paddingBottom: 4,
-                  color: "#cf0832"
-                }}
-              >
-                {travelType}
-              </Text>
-
+              <Text style={styles.destinationNewText}>{destination}</Text>
+              <Text style={styles.travelTypeNewText}>{travelType}</Text>
               <Text
                 style={{ fontSize: 16, paddingBottom: 4, color: "#cf0832" }}
               >
@@ -167,66 +107,28 @@ const ApplicationSingle = ({
               </Text>
             </View>
             <View>
-              <Circle name="circle" size={16} color="#f27178" />
+              <Circle name="circle" size={16} color="#cf0832" />
             </View>
           </View>
         ) : (
           <View style={{ paddingVertical: 16, paddingHorizontal: 16 }}>
-            <Text
-              style={{
-                fontSize: 16,
-                paddingBottom: 6,
-                color: "#000000",
-                fontWeight: "bold"
-              }}
-            >
-              {destination}
-            </Text>
-            <Text
-              style={{
-                fontSize: 16,
-                paddingBottom: 4,
-                color: "#a9a9a9"
-              }}
-            >
-              {travelType}
-            </Text>
-
-            <Text style={{ fontSize: 16, paddingBottom: 4, color: "#a9a9a9" }}>
+            <Text style={styles.destinationText}>{destination}</Text>
+            <Text style={styles.travelTypeText}>{travelType}</Text>
+            <Text style={{ fontSize: 16, paddingBottom: 4, color: "#808080" }}>
               {travelFrom} until {travelUntil} 2017
             </Text>
           </View>
         )}
 
         {status === "eeiu" ? (
-          <View
-            style={{
-              justifyContent: "center",
-              backgroundColor: "#5ac8fa",
-              marginBottom: 16,
-              marginHorizontal: 32,
-              borderRadius: 100,
-              paddingTop: 16,
-              paddingBottom: 16,
-              alignItems: "center"
-            }}
-          >
+          <View style={styles.eeiuTrackingBar}>
             <Text style={{ color: "white" }}>Pending EEIU Approval</Text>
           </View>
         ) : (
-          <TrackingBar status={status} reject={reject} />
+          <TrackingBar status={status} />
         )}
 
-        <View
-          style={{
-            flexDirection: "row",
-            backgroundColor: "#007aff",
-            paddingVertical: 16,
-            paddingHorizontal: 16,
-            borderBottomLeftRadius: 8,
-            borderBottomRightRadius: 8
-          }}
-        >
+        <View style={styles.commentBoxContainer}>
           <Icon name="comment" size={24} color="#000000" />
           <Text style={{ paddingLeft: 8, fontSize: 16, fontWeight: "bold" }}>
             {dialogBox}
@@ -236,3 +138,77 @@ const ApplicationSingle = ({
     )}
   </View>
 );
+
+const styles = StyleSheet.create({
+  applicationCardBox: {
+    marginBottom: 16,
+    justifyContent: "flex-start",
+    shadowOpacity: 0.4,
+    borderRadius: 8
+  },
+  destinationDraftText: {
+    fontSize: 16,
+    paddingBottom: 4,
+    color: "#000000",
+    fontWeight: "bold"
+  },
+  travelTypeDraftText: {
+    fontSize: 16,
+    paddingBottom: 4,
+    color: "#000000"
+  },
+  commentBoxDraftContainer: {
+    flexDirection: "row",
+    backgroundColor: "#c0c0c0",
+    paddingVertical: 16,
+    paddingHorizontal: 16,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8
+  },
+  applicationCardDetailsNewContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 16,
+    paddingHorizontal: 16
+  },
+  destinationNewText: {
+    fontSize: 16,
+    paddingBottom: 4,
+    color: "#cf0832",
+    fontWeight: "bold"
+  },
+  travelTypeNewText: {
+    fontSize: 16,
+    paddingBottom: 4,
+    color: "#cf0832"
+  },
+  destinationText: {
+    fontSize: 16,
+    paddingBottom: 6,
+    color: "#000000",
+    fontWeight: "bold"
+  },
+  travelTypeText: {
+    fontSize: 16,
+    paddingBottom: 4,
+    color: "#808080"
+  },
+  eeiuTrackingBar: {
+    justifyContent: "center",
+    backgroundColor: "#5ac8fa",
+    marginBottom: 16,
+    marginHorizontal: 32,
+    borderRadius: 100,
+    paddingTop: 16,
+    paddingBottom: 16,
+    alignItems: "center"
+  },
+  commentBoxContainer: {
+    flexDirection: "row",
+    backgroundColor: "#ffcc22",
+    paddingVertical: 16,
+    paddingHorizontal: 16,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8
+  }
+});

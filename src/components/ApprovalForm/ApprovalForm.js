@@ -57,7 +57,7 @@ class ApprovalForm extends React.Component {
       >
         {state.params.reedit == 1 ? (
           <NavigationBar
-            style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
+            style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}
             title={{ title: "New Request" }}
             leftButton={{
               title: "Back",
@@ -66,7 +66,7 @@ class ApprovalForm extends React.Component {
           />
         ) : (
           <NavigationBar
-            style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
+            style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}
             title={{ title: "New Request" }}
             leftButton={{
               title: "Exit",

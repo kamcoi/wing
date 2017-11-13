@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   FlatList
 } from "react-native";
+import { AutoGrowingTextInput } from "react-native-autogrow-textinput";
 import Send from "react-native-vector-icons/MaterialIcons";
 import NavigationBar from "react-native-navbar";
 
@@ -20,7 +21,7 @@ class Comments extends React.Component {
       <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
         <NavigationBar
           style={{
-            borderColor: "#f27178",
+            borderColor: "#c4c4c4",
             borderBottomWidth: 1
           }}
           title={{ title: "Comments" }}
@@ -30,29 +31,7 @@ class Comments extends React.Component {
           }}
         />
 
-        <View style={styles.travelDetailsContainer}>
-          <Text style={{ paddingBottom: 4, fontSize: 24, fontWeight: "bold" }}>
-            {comment1.destination}
-          </Text>
-          <Text style={{ paddingBottom: 4, fontSize: 14 }}>
-            {comment1.travelFrom} until {comment1.travelUntil}
-          </Text>
-          <Text style={{ paddingBottom: 4, fontSize: 14 }}>
-            {comment1.travelType}
-          </Text>
-          <View style={{ flexDirection: "row", paddingBottom: 4 }}>
-            <Text style={{ fontSize: 14 }}>By:</Text>
-            <Text style={{ paddingLeft: 8, fontSize: 14, color: "green" }}>
-              {comment1.requestorName}
-            </Text>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text style={{ fontSize: 14 }}>Status:</Text>
-            <Text style={{ paddingLeft: 8, fontSize: 14, color: "#f27178" }}>
-              {comment1.status}
-            </Text>
-          </View>
-        </View>
+        <ChatInfo comment1={comment1} />
 
         <ScrollView style={{ flex: 1 }}>
           <FlatList
@@ -74,7 +53,7 @@ class Comments extends React.Component {
           style={styles.typeCommentContainer}
         >
           <View style={styles.textInputBox}>
-            <TextInput
+            <AutoGrowingTextInput
               style={{ padding: 8, fontSize: 14 }}
               placeholder="Type your comment here.."
             />
@@ -103,8 +82,34 @@ const ChatSingle = ({ id, senderName, commentText, timeStamp }) => (
     }}
   >
     <Text style={{ fontWeight: "bold", paddingBottom: 4 }}>{senderName}</Text>
-    <Text style={{ paddingBottom: 4, lineHeight: 18 }}>{commentText}</Text>
+    <Text style={{ paddingBottom: 4, lineHeight: 24 }}>{commentText}</Text>
     <Text style={{ fontSize: 12, color: "#c4c4c4" }}>{timeStamp}</Text>
+  </View>
+);
+
+const ChatInfo = ({ comment1 }) => (
+  <View style={styles.travelDetailsContainer}>
+    <Text style={{ paddingBottom: 4, fontSize: 16, fontWeight: "bold" }}>
+      {comment1.destination}
+    </Text>
+    <Text style={{ paddingBottom: 4, fontSize: 14, color: "#808080" }}>
+      {comment1.travelFrom} until {comment1.travelUntil}
+    </Text>
+    <Text style={{ paddingBottom: 4, fontSize: 14, color: "#808080" }}>
+      {comment1.travelType}
+    </Text>
+    <View style={{ flexDirection: "row", paddingBottom: 4 }}>
+      <Text style={{ fontSize: 14 }}>By:</Text>
+      <Text style={{ paddingLeft: 8, fontSize: 14, color: "green" }}>
+        {comment1.requestorName}
+      </Text>
+    </View>
+    <View style={{ flexDirection: "row" }}>
+      <Text style={{ fontSize: 14 }}>Status:</Text>
+      <Text style={{ paddingLeft: 8, fontSize: 14, color: "#f27178" }}>
+        {comment1.status}
+      </Text>
+    </View>
   </View>
 );
 
@@ -113,7 +118,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
     paddingHorizontal: 8,
     paddingVertical: 16,
-    borderBottomWidth: 1
+    borderBottomWidth: 0.5,
+    borderColor: "#c4c4c4"
   },
   typeCommentContainer: {
     flexDirection: "row",

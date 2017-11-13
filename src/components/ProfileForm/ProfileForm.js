@@ -7,16 +7,29 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   TouchableOpacity,
-  Alert
+  Alert,
+  FlatList
 } from "react-native";
 import Icon from "react-native-vector-icons/EvilIcons";
 import NavigationBar from "react-native-navbar";
+
+const AdditionalTravellerSingle = ({
+  additionalTravellerName1,
+  additionalTravellerDivision1
+}) => (
+  <View>
+    <Text style={{ fontSize: 16, paddingBottom: 4 }}>
+      {additionalTravellerName1}
+    </Text>
+    <Text style={{ paddingBottom: 8 }}>{additionalTravellerDivision1}</Text>
+  </View>
+);
 
 class ProfileForm extends React.Component {
   render() {
     const { navigate, state } = this.props.navigation;
     const { goBack } = this.props.navigation;
-    const { user } = this.props;
+    const { user, requestForm } = this.props;
     return (
       <KeyboardAvoidingView
         behavior="padding"
@@ -24,7 +37,7 @@ class ProfileForm extends React.Component {
       >
         {state.params.reedit == 1 ? (
           <NavigationBar
-            style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
+            style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}
             title={{ title: "New Request" }}
             leftButton={{
               title: "Back",
@@ -33,7 +46,7 @@ class ProfileForm extends React.Component {
           />
         ) : (
           <NavigationBar
-            style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
+            style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}
             title={{ title: "New Request" }}
             leftButton={{
               title: "Exit",
@@ -66,96 +79,43 @@ class ProfileForm extends React.Component {
         )}
         <FormBar />
 
-        <ScrollView>
-          <View style={{ flex: 1 }}>
-            <View
-              style={{
-                paddingHorizontal: 16,
-                paddingBottom: 16,
-                paddingTop: 24
-              }}
-            >
-              <Text style={{ fontSize: 12, paddingBottom: 16 }}>Name</Text>
-              <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-                <TextInput
-                  style={{
-                    color: "#ee7202",
-                    fontSize: 16,
-                    paddingBottom: 8,
-                    alignItems: "flex-end"
-                  }}
-                  placeholder={user.name}
-                  underlineColorAndroid="rgba(0,0,0,0)"
-                  value={user.name}
-                />
-              </View>
-            </View>
+        <ScrollView style={{ flex: 1 }}>
+          <ProfileDetails user={user} />
 
-            <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-              <Text style={{ fontSize: 12, paddingVertical: 16 }}>
-                Division
-              </Text>
-              <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
-                <TextInput
-                  style={{
-                    color: "#ee7202",
-                    fontSize: 16,
-                    paddingBottom: 8,
-                    alignItems: "flex-end"
-                  }}
-                  placeholder="e.g. Group Finance"
-                  underlineColorAndroid="rgba(0,0,0,0)"
-                  value={user.division}
+          <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
+            <Text style={{ fontSize: 12, paddingVertical: 16 }}>
+              Other Travellers
+            </Text>
+            <View>
+              <TouchableOpacity
+                onPress={() => navigate("AddFriends", { reedit: 0 })}
+              >
+                <FlatList
+                  data={requestForm}
+                  keyExtractor={(item, index) => item.id}
+                  renderItem={({ item }) => (
+                    <AdditionalTravellerSingle
+                      additionalTravellerName1={item.additionalTravellerName1}
+                      additionalTravellerDivision1={
+                        item.additionalTravellerDivision1
+                      }
+                    />
+                  )}
                 />
-              </View>
-            </View>
-
-            <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
-              <Text style={{ fontSize: 12, paddingVertical: 16 }}>
-                Additional Travellers
-              </Text>
-              <View>
-                <TouchableOpacity
-                  onPress={() => navigate("AddFriends", { reedit: 0 })}
-                >
-                  <Text
-                    style={{
-                      fontSize: 16,
-                      paddingVertical: 4,
-                      color: "#f44242"
-                    }}
-                  >
-                    + Add Friends
-                  </Text>
-                </TouchableOpacity>
-              </View>
+                <Text style={styles.addFriendsText}>+ Add Friends</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </ScrollView>
 
         {state.params.reedit == 1 ? null : (
-          <View
-            style={{
-              flexDirection: "row",
-              paddingVertical: 4,
-              justifyContent: "center"
-            }}
-          >
-            <View
-              style={{
-                alignItems: "center",
-                marginRight: 16,
-                borderRadius: 100
-              }}
-            >
+          <View style={styles.navigationContainer}>
+            <View style={styles.leftNavigationBox}>
               <Icon name="chevron-left" size={32} color="#000000" />
             </View>
             <TouchableOpacity
               onPress={() => navigate("TravelForm", { reedit: 0 })}
-              style={{
-                alignItems: "center",
-                borderRadius: 100
-              }}
+              style={styles.rightNavigationBox}
             >
               <Icon name="chevron-right" size={32} color="#000000" />
             </TouchableOpacity>
@@ -169,16 +129,7 @@ class ProfileForm extends React.Component {
 export default ProfileForm;
 
 const FormBar = () => (
-  <View
-    style={{
-      flexDirection: "row",
-      justifyContent: "space-around",
-      paddingTop: 8,
-      borderTopWidth: 1,
-      borderBottomWidth: 1,
-      borderColor: "#c4c4c4"
-    }}
-  >
+  <View style={styles.formBarContainer}>
     <View
       style={{
         flexDirection: "row",
@@ -243,3 +194,75 @@ const FormBar = () => (
     </View>
   </View>
 );
+
+const ProfileDetails = ({ user }) => (
+  <View>
+    <View
+      style={{
+        paddingHorizontal: 16,
+        paddingBottom: 16,
+        paddingTop: 24
+      }}
+    >
+      <Text style={{ fontSize: 12, paddingBottom: 16 }}>Name</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <TextInput
+          style={{
+            fontSize: 16,
+            paddingBottom: 8,
+            alignItems: "flex-end"
+          }}
+          placeholder={user.name}
+          underlineColorAndroid="rgba(0,0,0,0)"
+          value={user.name}
+        />
+      </View>
+    </View>
+
+    <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
+      <Text style={{ fontSize: 12, paddingVertical: 16 }}>Division</Text>
+      <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
+        <TextInput
+          style={{
+            fontSize: 16,
+            paddingBottom: 8,
+            alignItems: "flex-end"
+          }}
+          placeholder="e.g. Group Finance"
+          underlineColorAndroid="rgba(0,0,0,0)"
+          value={user.division}
+        />
+      </View>
+    </View>
+  </View>
+);
+
+const styles = StyleSheet.create({
+  formBarContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: "#c4c4c4"
+  },
+  navigationContainer: {
+    flexDirection: "row",
+    paddingVertical: 4,
+    justifyContent: "center"
+  },
+  leftNavigationBox: {
+    alignItems: "center",
+    marginRight: 16,
+    borderRadius: 100
+  },
+  rightNavigationBox: {
+    alignItems: "center",
+    borderRadius: 100
+  },
+  addFriendsText: {
+    fontSize: 16,
+    paddingVertical: 4,
+    color: "#f44242"
+  }
+});

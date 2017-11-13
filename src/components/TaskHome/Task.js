@@ -58,7 +58,7 @@ const ApplicationSingle = ({
 }) => (
   <View
     style={{
-      shadowOpacity: 0.1,
+      shadowOpacity: 0.4,
       marginBottom: 16,
       justifyContent: "flex-start",
       backgroundColor: "#ffffff",
@@ -123,13 +123,13 @@ const ApplicationSingle = ({
           >
             {requestorName}
           </Text>
-          <Text style={{ fontSize: 16, paddingBottom: 4, color: "#a9a9a9" }}>
+          <Text style={{ fontSize: 16, paddingBottom: 4, color: "#808080" }}>
             {destination}
           </Text>
-          <Text style={{ fontSize: 16, paddingBottom: 4, color: "#a9a9a9" }}>
+          <Text style={{ fontSize: 16, paddingBottom: 4, color: "#808080" }}>
             {travelType}
           </Text>
-          <Text style={{ fontSize: 16, color: "#a9a9a9" }}>
+          <Text style={{ fontSize: 16, color: "#808080" }}>
             {travelFrom} until {travelUntil} 2017
           </Text>
         </View>
@@ -137,7 +137,7 @@ const ApplicationSingle = ({
       <View
         style={{
           flexDirection: "row",
-          backgroundColor: "#ee7202",
+          backgroundColor: "#5856d6",
           justifyContent: "space-between",
           paddingVertical: 16,
           borderBottomRightRadius: 8,
@@ -145,9 +145,16 @@ const ApplicationSingle = ({
         }}
       >
         <View style={{ paddingHorizontal: 16 }}>
-          <Price name="credit-card" size={24} color="a9a9a9" />
+          <Price name="credit-card" size={24} color="#ffffff" />
         </View>
-        <Text style={{ paddingHorizontal: 16, fontSize: 18, color: "#000000" }}>
+        <Text
+          style={{
+            paddingHorizontal: 16,
+            fontSize: 18,
+            color: "#ffffff",
+            textShadowColor: "#c4c4c4"
+          }}
+        >
           RM {cost}
         </Text>
       </View>

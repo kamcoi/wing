@@ -52,7 +52,7 @@ export default class TravelForm extends React.Component {
       >
         {state.params.reedit == 1 ? (
           <NavigationBar
-            style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
+            style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}
             title={{ title: "New Request" }}
             leftButton={{
               title: "Back",
@@ -61,7 +61,7 @@ export default class TravelForm extends React.Component {
           />
         ) : (
           <NavigationBar
-            style={{ borderColor: "#f27178", borderBottomWidth: 1 }}
+            style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}
             title={{ title: "New Request" }}
             leftButton={{
               title: "Exit",
@@ -97,7 +97,6 @@ export default class TravelForm extends React.Component {
             <View style={{ borderColor: "#c4c4c4", borderBottomWidth: 1 }}>
               <TextInput
                 style={{
-                  color: "#ee7202",
                   fontSize: 16,
                   paddingBottom: 8,
                   alignItems: "flex-end"

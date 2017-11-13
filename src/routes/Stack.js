@@ -33,7 +33,7 @@ const Stack = StackNavigator({
           onPress={() => navigation.navigate("DrawerToggle")}
           style={{ paddingLeft: 16 }}
         >
-          <Menu name="ios-menu" size={32} color="#000000" />
+          <Menu name="ios-menu" size={32} color="#ffffff" />
         </TouchableOpacity>
       )
     })
@@ -89,13 +89,19 @@ const Stack = StackNavigator({
   GuidelineHome: {
     screen: GuidelineHome,
     navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: "#ff954f"
+      },
       headerTitle: "Guideline",
+      headerTitleStyle: {
+        color: "white"
+      },
       headerLeft: (
         <TouchableOpacity
           onPress={() => navigation.navigate("DrawerToggle")}
           style={{ paddingLeft: 16 }}
         >
-          <Menu name="ios-menu" size={32} color="#000000" />
+          <Menu name="ios-menu" size={32} color="#ffffff" />
         </TouchableOpacity>
       )
     })
@@ -115,13 +121,19 @@ const Stack = StackNavigator({
   ActivityLog: {
     screen: ActivityLog,
     navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: "#ff954f"
+      },
       headerTitle: "ActivityLog",
+      headerTitleStyle: {
+        color: "white"
+      },
       headerLeft: (
         <TouchableOpacity
           onPress={() => navigation.navigate("DrawerToggle")}
           style={{ paddingLeft: 16 }}
         >
-          <Menu name="ios-menu" size={32} color="#000000" />
+          <Menu name="ios-menu" size={32} color="#ffffff" />
         </TouchableOpacity>
       )
     })

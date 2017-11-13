@@ -25,7 +25,7 @@ class RequestStatus extends React.Component {
       <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
         <NavigationBar
           style={{
-            borderColor: "#f27178",
+            borderColor: "#c4c4c4",
             borderBottomWidth: 1,
             marginBottom: 16
           }}
@@ -37,16 +37,7 @@ class RequestStatus extends React.Component {
         />
 
         {request1.status === "eeiu" ? (
-          <View
-            style={{
-              justifyContent: "center",
-              backgroundColor: "blue",
-              marginHorizontal: 16,
-              paddingTop: 16,
-              paddingBottom: 16,
-              alignItems: "center"
-            }}
-          >
+          <View style={styles.eeiuTrackingBar}>
             <Text>Pending EEIU Approval</Text>
           </View>
         ) : (
@@ -54,31 +45,9 @@ class RequestStatus extends React.Component {
         )}
 
         <ScrollView style={{ flex: 1, paddingHorizontal: 8 }}>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              marginVertical: 32,
-              paddingHorizontal: 8
-            }}
-          >
-            <View
-              style={{
-                backgroundColor: "#f27178",
-                paddingHorizontal: 16,
-                paddingVertical: 16,
-                marginLeft: 8
-              }}
-            >
-              <Text
-                style={{
-                  paddingTop: 8,
-                  fontSize: 18,
-                  fontWeight: "bold"
-                }}
-              >
-                Logo
-              </Text>
+          <View style={styles.headerContainer}>
+            <View style={styles.logoBox}>
+              <Text style={styles.logoText}>Logo</Text>
             </View>
             <View
               style={{
@@ -104,12 +73,7 @@ class RequestStatus extends React.Component {
 
           <TouchableOpacity
             onPress={() => navigate("Comments")}
-            style={{
-              flex: 1,
-              flexDirection: "row",
-              paddingVertical: 24,
-              paddingHorizontal: 16
-            }}
+            style={styles.commentContainer}
           >
             <View style={{ justifyContent: "center" }}>
               <Icon name="comment" size={32} color="#000000" />
@@ -317,3 +281,43 @@ const CostDetails = ({ request1 }) => (
     </View>
   </View>
 );
+
+const styles = StyleSheet.create({
+  eeiuTrackingBar: {
+    justifyContent: "center",
+    backgroundColor: "blue",
+    marginHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 16,
+    alignItems: "center"
+  },
+  headerContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginVertical: 32,
+    paddingHorizontal: 8
+  },
+  logoBox: {
+    backgroundColor: "#f27178",
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    marginLeft: 8
+  },
+  logoText: {
+    paddingTop: 8,
+    fontSize: 18,
+    fontWeight: "bold"
+  },
+  requestDetailsBox: {
+    flex: 1,
+    flexDirection: "row",
+    paddingVertical: 24,
+    paddingHorizontal: 16
+  },
+  commentContainer: {
+    flex: 1,
+    flexDirection: "row",
+    paddingVertical: 24,
+    paddingHorizontal: 16
+  }
+});

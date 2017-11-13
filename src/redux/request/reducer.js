@@ -86,19 +86,20 @@ const initialState = [
       {
         senderId: "1",
         senderName: "Ali Muhd Wasil bin Ali Absar",
-        commentText: "I like it aha aha",
+        commentText:
+          "Hafiz, where can we have all beautiful shawties around that area? I want them like right now!",
         timeStamp: "13 September 2017, 3.20pm"
       },
       {
         senderId: "2",
         senderName: "Mohammad Hafiz bin Burhan",
-        commentText: "Oh yeah!",
+        commentText: "Oh yeah hhahha!",
         timeStamp: "21 September 2017, 11.33pm"
       },
       {
         senderId: "3",
         senderName: "Engku Fariez bin Engku Azahan",
-        commentText: "Aha yeah haaa!",
+        commentText: "Aha yeah hcasvcas!",
         timeStamp: "21 October 2017, 1.51am"
       }
     ]
@@ -310,14 +311,16 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case "SET_DESTINATION":
       return {
-        ...state,
-        destination: action.data
+        [0]: {
+          destination: action.data
+        }
       };
 
     case "SET_TRAVEL_TYPE":
       return {
-        ...state,
-        travelType: action.data
+        [0]: {
+          travelType: action.data
+        }
       };
     default:
       return state;
