@@ -16,10 +16,21 @@ import Circle from "react-native-vector-icons/FontAwesome";
 class Task extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
-    const { taskHome } = this.props;
+    const { taskHome, user } = this.props;
     return (
+<<<<<<< HEAD
       <View style={{ flex: 1 }}>
         <View style={{ flex: 1, paddingHorizontal: 8 }}>
+=======
+      <View style={{ flex: 1, backgroundColor: "#f3f3f3" }}>
+        <View style={{ flex: 1, paddingHorizontal: 8 }}>
+          {user.receiveTask === 'false' ? (
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 24}}>
+              <Text style={{fontWeight: 'bold'}}>Incoming!</Text>
+              <Text style={{textAlign: 'center'}}>Sooner or later, you will need to approve or reject the request!</Text>
+            </View>
+          ) : (
+>>>>>>> 0a6db8bc329750b1e64915484ec961794f135a79
           <FlatList
             data={taskHome}
             keyExtractor={(item, index) => item.id}
@@ -37,6 +48,7 @@ class Task extends React.Component {
               />
             )}
           />
+        )}
         </View>
       </View>
     );
