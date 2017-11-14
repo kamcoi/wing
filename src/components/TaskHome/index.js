@@ -3,7 +3,8 @@ import Task from "./Task";
 
 const mapStateToProps = state => {
   return {
-    taskHome: state.task
+    taskHome: state.task,
+    user: state.user
   };
 };
 

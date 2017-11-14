@@ -10,7 +10,7 @@ import {
 import NavBar, { NavButton, NavButtonText, NavTitle } from "react-native-nav";
 
 import Icon from "react-native-vector-icons/EvilIcons";
-import Cancel from "react-native-vector-icons/MaterialIcons";
+// import Cancel from "react-native-vector-icons/MaterialIcons";
 import Menu from "react-native-vector-icons/Ionicons";
 import ActionButton from "react-native-action-button";
 import Circle from "react-native-vector-icons/FontAwesome";
@@ -20,10 +20,18 @@ import TrackingBar from "../Bar/TrackingBar";
 class Request extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
-    const { requestHome } = this.props;
+    const { requestHome, user } = this.props;
     return (
       <View style={{ flex: 1, backgroundColor: "#f3f3f3" }}>
-        <ScrollView style={{ flex: 1, paddingHorizontal: 8, paddingTop: 8 }}>
+
+        <View style={{ flex: 1, paddingHorizontal: 8}}>
+          {user.receiveRequest === "false" ?
+          (
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <Text style={{fontWeight: 'bold'}}>Let us start!</Text>
+            <Text>Click on the Action Button to Start!</Text>
+            </View>
+          ) : (
           <FlatList
             data={requestHome}
             keyExtractor={(item, index) => item.id}
@@ -42,7 +50,10 @@ class Request extends React.Component {
               />
             )}
           />
-        </ScrollView>
+        )}
+        </View>
+
+
 
         <ActionButton
           buttonColor="#333333"
@@ -65,7 +76,6 @@ const ApplicationSingle = ({
   navigate,
   status,
   notification,
-  reject
 }) => (
   <View style={styles.applicationCardBox}>
     {status === "Draft" ? (
@@ -141,7 +151,7 @@ const ApplicationSingle = ({
 
 const styles = StyleSheet.create({
   applicationCardBox: {
-    marginBottom: 16,
+    marginTop: 16,
     justifyContent: "flex-start",
     shadowOpacity: 0.4,
     borderRadius: 8
