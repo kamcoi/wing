@@ -12,6 +12,7 @@ import Dot from "react-native-vector-icons/Entypo";
 
 class GuidelineHome extends React.Component {
   render() {
+    const { content } = this.props;
     return (
       <View style={{ flex: 1 }}>
         <ScrollView style={{ flex: 1, backgroundColor: "#ffffff" }}>

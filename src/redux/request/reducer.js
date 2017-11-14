@@ -1,6 +1,6 @@
 const initialState = [
   {
-    id: '1',
+    id: "1",
     status: "Nominate",
     notification: "new",
     ref: "1001",
@@ -41,15 +41,12 @@ const initialState = [
     ]
   },
   {
-<<<<<<< HEAD
-    id: '2',
+    id: "2",
     status: "Nominate",
     notification: "new",
     ref: "1001",
-=======
     status: "eeiu",
     ref: "2",
->>>>>>> 07cf80ef6bc01d8bbab3e1b1e50ddbdc7dedd84b
     timeStamp: "1 Jan 2017, 8.00am",
     destination: "Singapore",
     travelFrom: "21 Oct",
@@ -83,7 +80,6 @@ const initialState = [
         commentText:
           "Hafiz, where can we have all beautiful shawties around that area? I want them like right now!",
         timeStamp: "13 September 2017, 3.20pm"
-<<<<<<< HEAD
       },
       {
         senderId: "2",
@@ -102,7 +98,7 @@ const initialState = [
     ]
   },
   {
-    id: '3',
+    id: "3",
     status: "Nominate",
     notification: "new",
     ref: "1001",
@@ -153,11 +149,9 @@ const initialState = [
         commentText:
           "Did you guys forget about me? Ali, Hafiz, spare me a blonde for a night? Or maybe two? Tired of having a brunette",
         timeStamp: "21 October 2017, 1.51am"
-=======
->>>>>>> 07cf80ef6bc01d8bbab3e1b1e50ddbdc7dedd84b
       }
     ]
-  },
+  }
 ];
 
 export default (state = initialState, action) => {
