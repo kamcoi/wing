@@ -37,28 +37,19 @@ const initialState = [
         commentText:
           "Hafiz, where can we have all beautiful shawties around that area? I want them like right now!",
         timeStamp: "13 September 2017, 3.20pm"
-      },
-      {
-        senderId: "2",
-        senderName: "Mohammad Hafiz bin Burhan",
-        commentText:
-          "Hold your horses my comrad, a good man is a man that can hold their lust without giving them up! Conquer your desire and become a great leader like Khairold!",
-        timeStamp: "21 September 2017, 11.33pm"
-      },
-      {
-        senderId: "3",
-        senderName: "Engku Fariez bin Engku Azahan",
-        commentText:
-          "Did you guys forget about me? Ali, Hafiz, spare me a blonde for a night? Or maybe two? Tired of having a brunette",
-        timeStamp: "21 October 2017, 1.51am"
       }
     ]
   },
   {
+<<<<<<< HEAD
     id: '2',
     status: "Nominate",
     notification: "new",
     ref: "1001",
+=======
+    status: "eeiu",
+    ref: "2",
+>>>>>>> 07cf80ef6bc01d8bbab3e1b1e50ddbdc7dedd84b
     timeStamp: "1 Jan 2017, 8.00am",
     destination: "Singapore",
     travelFrom: "21 Oct",
@@ -92,6 +83,7 @@ const initialState = [
         commentText:
           "Hafiz, where can we have all beautiful shawties around that area? I want them like right now!",
         timeStamp: "13 September 2017, 3.20pm"
+<<<<<<< HEAD
       },
       {
         senderId: "2",
@@ -161,6 +153,8 @@ const initialState = [
         commentText:
           "Did you guys forget about me? Ali, Hafiz, spare me a blonde for a night? Or maybe two? Tired of having a brunette",
         timeStamp: "21 October 2017, 1.51am"
+=======
+>>>>>>> 07cf80ef6bc01d8bbab3e1b1e50ddbdc7dedd84b
       }
     ]
   },
