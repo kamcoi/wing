@@ -84,6 +84,8 @@ export default (state = initialState, action) => {
     case "SET_DESTINATION":
       return {
         [0]: {
+          ...state,
+          ...state[0],
           destination: action.data
         }
       };
@@ -91,6 +93,8 @@ export default (state = initialState, action) => {
     case "SET_TRAVEL_TYPE":
       return {
         [0]: {
+          ...state,
+          ...state[0],
           travelType: action.data
         }
       };

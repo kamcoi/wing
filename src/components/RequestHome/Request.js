@@ -23,7 +23,7 @@ class Request extends React.Component {
     const { requestHome } = this.props;
     return (
       <View style={{ flex: 1, backgroundColor: "#f3f3f3" }}>
-        <ScrollView style={{ flex: 1, paddingHorizontal: 8, paddingTop: 8 }}>
+        <ScrollView style={{ flex: 1, paddingHorizontal: 8 }}>
           <FlatList
             data={requestHome}
             keyExtractor={(item, index) => item.id}
@@ -141,7 +141,7 @@ const ApplicationSingle = ({
 
 const styles = StyleSheet.create({
   applicationCardBox: {
-    marginBottom: 16,
+    marginTop: 16,
     justifyContent: "flex-start",
     shadowOpacity: 0.4,
     borderRadius: 8

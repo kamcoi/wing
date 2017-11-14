@@ -19,7 +19,7 @@ class Task extends React.Component {
     const { taskHome } = this.props;
     return (
       <View style={{ flex: 1 }}>
-        <View style={{ flex: 1, paddingHorizontal: 8, paddingTop: 8 }}>
+        <View style={{ flex: 1, paddingHorizontal: 8 }}>
           <FlatList
             data={taskHome}
             keyExtractor={(item, index) => item.id}
@@ -59,7 +59,7 @@ const ApplicationSingle = ({
   <View
     style={{
       shadowOpacity: 0.4,
-      marginBottom: 16,
+      marginTop: 16,
       justifyContent: "flex-start",
       backgroundColor: "#ffffff",
       borderRadius: 8
