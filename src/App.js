@@ -10,13 +10,13 @@ import reducers from "./redux/reducers";
 const store = createStore(reducers, undefined, compose(applyMiddleware(thunk)));
 
 // const store = createStore(
-//   reducer,
+//   reducers,
 //   undefined,
 //   compose(applyMiddleware(thunk), autoRehydrate())
 // );
-//
+
 // persistStore(store, { storage: AsyncStorage });
-// // persistStore(store, { storage: AsyncStorage }).purge();
+// persistStore(store, { storage: AsyncStorage }).purge();
 
 export default class wing extends Component {
   render() {
