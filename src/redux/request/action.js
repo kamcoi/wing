@@ -11,3 +11,10 @@ export const setTravelType = data => {
     data
   };
 };
+
+export const newRequest = data => {
+  return {
+    type: "NEW_REQUEST",
+    data
+  };
+};

@@ -26,7 +26,7 @@ class Request extends React.Component {
         <ScrollView style={{ flex: 1, paddingHorizontal: 8, paddingTop: 8 }}>
           <FlatList
             data={requestHome}
-            keyExtractor={(item, index) => item.id}
+            keyExtractor={(item, index) => item.ref}
             renderItem={({ item }) => (
               <ApplicationSingle
                 id={item.ref}
@@ -46,7 +46,10 @@ class Request extends React.Component {
 
         <ActionButton
           buttonColor="#333333"
-          onPress={() => navigate("ProfileForm", { reddit: 0 })}
+          onPress={() => {
+            navigate("ProfileForm", { reddit: 0 });
+            this.props.newRequest();
+          }}
         />
       </View>
     );

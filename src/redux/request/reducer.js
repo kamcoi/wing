@@ -58,22 +58,11 @@ const initialState = [
 export default (state = initialState, action) => {
   switch (action.type) {
     case "SET_DESTINATION":
-      return {
-        [0]: {
-          ...state,
-          ...state[0],
-          destination: action.data
-        }
-      };
-
+      return [...state, { ref: "1002", destination: action.data }];
     case "SET_TRAVEL_TYPE":
-      return {
-        [0]: {
-          ...state,
-          ...state[0],
-          travelType: action.data
-        }
-      };
+      return [...state, { ref: "1002", travelType: action.data }];
+    case "NEW_REQUEST":
+      return [...state, { ref: "1002", status: "Draft" }];
     default:
       return state;
   }
