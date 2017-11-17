@@ -41,6 +41,7 @@ class Task extends React.Component {
               renderItem={({ item }) => (
                 <ApplicationSingle
                   navigate={navigate}
+                  taskId={item.ticketNumber}
                   id={item.id}
                   requestorName={item.requestorName}
                   destination={item.destination}
@@ -63,6 +64,7 @@ export default Task;
 
 const ApplicationSingle = ({
   id,
+  taskId,
   requestorName,
   destination,
   travelType,
@@ -81,7 +83,7 @@ const ApplicationSingle = ({
       borderRadius: 8
     }}
   >
-    <TouchableOpacity onPress={() => navigate("TaskStatus")}>
+    <TouchableOpacity onPress={() => navigate("TaskStatus", {taskId: `${taskId}`})}>
       {notification === "new" ? (
         <View
           style={{

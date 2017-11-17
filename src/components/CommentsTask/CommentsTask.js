@@ -13,10 +13,10 @@ import { AutoGrowingTextInput } from "react-native-autogrow-textinput";
 import Send from "react-native-vector-icons/MaterialIcons";
 import NavigationBar from "react-native-navbar";
 
-class Comments extends React.Component {
+class CommentsTask extends React.Component {
 	render() {
 		const { goBack } = this.props.navigation;
-		const { requestDetails, commentDetails } = this.props;
+		const { taskInfo, commentDetails } = this.props;
 		return (
 			<View style={{ flex: 1, backgroundColor: "#ffffff" }}>
 				<NavigationBar
@@ -31,7 +31,7 @@ class Comments extends React.Component {
 					}}
 				/>
 
-				<ChatInfo requestDetails={requestDetails} />
+				<ChatInfo taskInfo={taskInfo} />
 
 				<ScrollView style={{ flex: 1 }}>
 					<FlatList
@@ -57,8 +57,6 @@ class Comments extends React.Component {
 							style={{ padding: 8, fontSize: 14 }}
 							placeholder="Type your comment here.."
 							underlineColorAndroid="rgba(0,0,0,0)"
-							autoGrow={false}
-							maxHeight={400}
 						/>
 					</View>
 					<View style={{ justifyContent: "center", marginBottom: 8 }}>
@@ -72,7 +70,7 @@ class Comments extends React.Component {
 	}
 }
 
-export default Comments;
+export default CommentsTask;
 
 const ChatSingle = ({ id, senderName, commentText, timeStamp }) => (
 	<View
@@ -90,27 +88,27 @@ const ChatSingle = ({ id, senderName, commentText, timeStamp }) => (
 	</View>
 );
 
-const ChatInfo = ({ requestDetails }) => (
+const ChatInfo = ({ taskInfo }) => (
 	<View style={styles.travelDetailsContainer}>
 		<Text style={{ paddingBottom: 4, fontSize: 16, fontWeight: "bold" }}>
-			{requestDetails.destination}
+			{taskInfo.destination}
 		</Text>
 		<Text style={{ paddingBottom: 4, fontSize: 14, color: "#808080" }}>
-			{requestDetails.travelFrom} until {requestDetails.travelUntil}
+			{taskInfo.travelFrom} until {taskInfo.travelUntil}
 		</Text>
 		<Text style={{ paddingBottom: 4, fontSize: 14, color: "#808080" }}>
-			{requestDetails.travelType}
+			{taskInfo.travelType}
 		</Text>
 		<View style={{ flexDirection: "row", paddingBottom: 4 }}>
 			<Text style={{ fontSize: 14 }}>By:</Text>
 			<Text style={{ paddingLeft: 8, fontSize: 14, color: "green" }}>
-				{requestDetails.requestorName}
+				{taskInfo.requestorName}
 			</Text>
 		</View>
 		<View style={{ flexDirection: "row" }}>
 			<Text style={{ fontSize: 14 }}>Status:</Text>
 			<Text style={{ paddingLeft: 8, fontSize: 14, color: "#f27178" }}>
-				{requestDetails.status}
+				{taskInfo.status}
 			</Text>
 		</View>
 	</View>

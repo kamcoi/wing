@@ -1,11 +1,12 @@
 import { connect } from "react-redux";
-import GuidelineHome from "./GuidelineHome";
 import GuidelineContent from "./GuidelineContent";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    content: state.guideline
+    guidelineId: ownProps.navigation.state.params.guidelineId,
+    guideline: state.guideline.filter(g => g.id == ownProps.navigation.state.params.guidelineId)[0],
+    guideline2: state.guideline.filter(g => g.id == ownProps.navigation.state.params.guidelineId)[0].data,
   };
 };
 
-export default mapStateToProps(GuidelineContent)(GuidelineHome);
+export default connect(mapStateToProps)(GuidelineContent);

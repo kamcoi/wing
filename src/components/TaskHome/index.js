@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import Task from "./Task";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     taskHome: state.task,
-    user: state.user
+    user: state.user,
   };
 };
 

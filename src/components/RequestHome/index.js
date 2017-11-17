@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import Request from "./Request";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     requestHome: state.request,
-    user: state.user
+    user: state.user,
   };
 };
 
